@@ -1304,6 +1304,7 @@ if(typeof document!=='undefined'){ document.addEventListener('DOMContentLoaded',
    APP: viste, archivio (local + Supabase), serializzazione
    ============================================================ */
 var LSKEY='lp_docs_v1', SBCFG='lp_sb_cfg_v1';
+var SB_AUTO={url:'https://udnnzbmtqpyidnazecdf.supabase.co', key:'sb_publishable_5wg_4g1_RzwQ-O-t6LUs-w_T9yhkxSW'};
 var currentDocId=null, currentDocCreated=null, currentFilter='emesso', BLANK=null;
 var SB=null, sbConnected=false;
 
@@ -1514,6 +1515,11 @@ async function sbConnect(){
 }
 
 
+function sbAutoInit(){ if(!SB_AUTO||!SB_AUTO.url) return;
+  var u=document.getElementById('sbUrl'), k=document.getElementById('sbKey');
+  if(u) u.value=SB_AUTO.url; if(k) k.value=SB_AUTO.key;
+  try{ sbConnect(); }catch(e){ console.warn('auto sbConnect',e); } }
+if(typeof document!=='undefined'){ document.addEventListener('DOMContentLoaded', function(){ setTimeout(sbAutoInit,60); }); }
 if(typeof module!=='undefined'){ module.exports={num:num,eur:eur}; }
 </script>
 </body>
