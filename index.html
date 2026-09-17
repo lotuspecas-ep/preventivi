@@ -459,6 +459,130 @@
     .ftab{flex:1;text-align:center}
   }
 
+
+  /* =================== v13 · pagamenti, validazione, stati =================== */
+  .head input[type=date]{color-scheme:dark;width:138px}
+  .head input.vd{width:46px;text-align:center}
+  .head .validity{font-size:11.5px;opacity:.92;margin-top:5px}
+  .head .meta{flex-wrap:wrap}
+
+  .stbanner{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 26px;font-size:12.5px;
+    border-bottom:1px solid var(--line);background:var(--tint2)}
+  .stbanner .pill{font-weight:700;font-size:11px;border-radius:20px;padding:3px 10px}
+  .stbanner.bozza .pill{background:#fdf1e2;color:#a5642a}
+  .stbanner.emesso .pill{background:#e2f4ea;color:#1f7a48}
+  .stbanner.firmato .pill{background:var(--teal-deep);color:#fff}
+  .stbanner .sh{color:var(--muted);font-size:11px;word-break:break-all}
+
+  /* payment steps */
+  .pstep{border:1px solid var(--line);border-radius:12px;margin-top:12px;background:#fff}
+  .pstep > .ph{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid var(--line);background:var(--tint2);border-radius:12px 12px 0 0}
+  .pstep > .ph .pn{width:22px;height:22px;border-radius:50%;background:var(--teal-deep);color:#fff;font-size:11.5px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .pstep > .ph .pt{font-size:13.5px;font-weight:700;color:var(--ink)}
+  .pstep > .ph .pv{margin-left:auto;font-size:13px;font-weight:700;color:var(--teal-deep);font-variant-numeric:tabular-nums}
+  .pstep > .pb{padding:12px 14px}
+  .pstep.off > .pb{display:none}
+  .pstep.off > .ph{border-bottom:0;border-radius:12px}
+  .phelp{font-size:11.5px;color:var(--muted);line-height:1.45;margin:0 0 10px}
+
+  .pseg{display:flex;flex-wrap:wrap;gap:8px}
+  .pseg label{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--line);border-radius:10px;
+    padding:9px 14px;font-size:13px;font-weight:600;cursor:pointer;background:#fff;min-height:44px;color:var(--ink)}
+  .pseg label small{font-weight:400;color:var(--muted);font-size:11px}
+  .pseg input.sr{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+  .pseg label.on{border-color:var(--teal);background:var(--tint);color:var(--teal-deep)}
+  .pseg label:focus-within{outline:3px solid rgba(21,138,136,.45);outline-offset:2px}
+
+  .switch{display:inline-flex;align-items:center;gap:9px;cursor:pointer;font-size:13px;font-weight:600}
+  .switch input{width:18px;height:18px;accent-color:var(--teal)}
+
+  .fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 14px;margin-top:10px}
+  .fgrid.two{grid-template-columns:1fr 1fr}
+  .ff{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .ff > span{font-size:10.5px;color:var(--muted);font-weight:600}
+  .box{border:1px solid var(--line);border-radius:8px;padding:8px 9px;font-size:13.5px;background:#fff;width:100%;color:var(--ink);min-height:40px}
+  .box:focus{outline:0;border-color:var(--teal);box-shadow:0 0 0 3px var(--tint)}
+  .box.amt{text-align:right;font-variant-numeric:tabular-nums}
+  .box[disabled],.in[disabled],select[disabled]{background:transparent;color:var(--ink);opacity:1;-webkit-text-fill-color:var(--ink)}
+  .ro{font-size:13.5px;padding:9px 0;font-variant-numeric:tabular-nums;font-weight:600}
+
+  .sched{width:100%;border-collapse:collapse;margin-top:10px;font-size:12.5px}
+  .sched th{background:var(--teal-deep);color:#fff;font-size:10.5px;font-weight:700;padding:7px 8px;text-align:left}
+  .sched th.num{text-align:right}
+  .sched td{border-bottom:1px solid var(--line);padding:4px 6px;vertical-align:middle}
+  .sched td .box{min-height:36px;padding:6px 8px}
+  .sched td.lab{font-weight:600;white-space:nowrap}
+  .sched tr.man td .box.amt{border-color:var(--teal);background:var(--tint2)}
+  .sched tfoot td{font-weight:700;padding:8px;border-bottom:0}
+  .sched tfoot td.num{text-align:right;font-variant-numeric:tabular-nums}
+  .balance{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:10px;font-size:12.5px}
+  .balance .bv{font-weight:700;font-variant-numeric:tabular-nums;border-radius:7px;padding:4px 10px}
+  .balance .bv.ok{background:#e2f4ea;color:#1f7a48}
+  .balance .bv.ko{background:#f9e3de;color:var(--danger)}
+  .lnk{border:0;background:transparent;color:var(--teal-deep);font-weight:600;font-size:12.5px;cursor:pointer;padding:8px 4px;text-decoration:underline}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .chips label{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:20px;padding:6px 11px;font-size:12px;background:#fff;cursor:pointer;min-height:36px}
+  .chips label.on{border-color:var(--teal);background:var(--tint);color:var(--teal-deep);font-weight:600}
+  .chips input{accent-color:var(--teal)}
+  .note{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.45}
+
+  /* summary plan */
+  .totbox .l.sub{font-size:12px;padding:6px 14px;background:#fff}
+  .totbox .l.sub span:first-child{color:var(--muted)}
+  .totbox .l.head2{font-size:10.5px;font-weight:700;color:var(--teal-deep);background:var(--tint);padding:6px 14px}
+  .totbox .l.chk span:last-child{font-weight:700}
+  .totbox .l.chk.ok{color:#1f7a48}.totbox .l.chk.ko{color:var(--danger)}
+  .summary{grid-template-columns:1fr 340px}
+
+  /* validation */
+  .err,.box.err,.in.err{border-color:var(--danger) !important;box-shadow:0 0 0 2px rgba(180,68,46,.18) !important;background:#fdf3f1 !important}
+  .errmsg{display:block;font-size:10.5px;color:var(--danger);font-weight:600;margin-top:2px}
+  .elist{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+  .elist li{border:1px solid #f0cdc5;background:#fdf3f1;border-radius:8px;padding:8px 10px;font-size:12.5px;display:flex;gap:10px;align-items:center}
+  .elist li b{color:var(--danger);font-size:10.5px;flex:0 0 auto;min-width:88px}
+  .elist li span{flex:1}
+  .elist li button{border:1px solid var(--line);background:#fff;border-radius:7px;padding:6px 10px;font-size:11.5px;cursor:pointer;color:var(--teal-deep);font-weight:600}
+  .mintro{font-size:13px;color:var(--ink);margin:0}
+
+  /* locked document */
+  #doc.docLocked .addrow,#doc.docLocked .rowdel,#doc.docLocked .lnk{display:none !important}
+  #doc.docLocked .pseg label:not(.on),#doc.docLocked .chips label:not(.on){display:none}
+  .sigwait{border:1.5px dashed var(--line);border-radius:10px;padding:14px;font-size:12px;color:var(--muted);text-align:center}
+  button.tb.primary{background:#fff;color:var(--teal-deep);box-shadow:0 0 0 2px #fff inset}
+  button.tb.warn{background:transparent;color:#fff;border:1px solid #f3c7bc}
+
+  /* export / print: show only selected choices */
+  #doc.exporting .pseg label:not(.on),#doc.exporting .chips label:not(.on),#doc.exporting .lnk,#doc.exporting .sigwait{display:none !important}
+  #doc.exporting .pseg label,#doc.exporting .chips label{border:0;background:transparent;padding:0;min-height:0}
+  #doc.exporting .errmsg{display:none}
+  @media print{
+    .pseg label:not(.on),.chips label:not(.on),.lnk,.sigwait,.stbanner .sh2{display:none !important}
+    .pseg label,.chips label{border:0 !important;background:transparent !important;padding:0 !important;min-height:0 !important}
+    .pseg input.sr{display:none}
+    .box{border-color:transparent}
+    .errmsg{display:none}
+  }
+  @media (max-width:640px){
+    .fgrid,.fgrid.two{grid-template-columns:1fr}
+    .summary{grid-template-columns:1fr}
+    .sched{min-width:460px}
+    .elist li{flex-wrap:wrap}
+  }
+
+  .badge.firmato{background:var(--teal-deep);color:#fff}
+  .aform{display:flex;flex-direction:column;gap:12px}
+  .alinks{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+  .lerr.okmsg{color:#1f7a48}
+  .pinin{font-size:28px !important;letter-spacing:10px;text-align:center;font-variant-numeric:tabular-nums}
+  body.share-mode .ownonly{display:none !important}
+  body.share-mode #viewEditor .tb-note{display:none}
+  .sharebox{display:flex;flex-direction:column;gap:12px;border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--tint2)}
+  .pinbox{display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+  .pinbox span{font-size:11px;color:var(--muted);font-weight:600}
+  .pinbox b.mono{font-size:30px;letter-spacing:6px;color:var(--teal-deep)}
+  .pinbox small{font-size:11px;color:var(--muted)}
+  .sharebox .pseg .tb{min-height:44px}
+
 </style>
 </head>
 <body class="locked">
@@ -467,16 +591,31 @@
   <div class="lcard">
     <img class="llogo" src="data:image/jpeg;base64,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" alt="Lotus Pecas">
     <div class="ltitle">Copia Commissioni</div>
-    <div class="lsub">Accesso riservato</div>
-    <div class="lroles">
-      <label><input type="radio" name="lrole" value="team" checked> Team Lotus Pecas Italia</label>
-      <label><input type="radio" name="lrole" value="rivenditore"> Rivenditore esterno</label>
+    <div class="lsub">Accesso riservato a team e rivenditori Lotus Pecas</div>
+    <div id="authLogin" class="aform">
+      <input id="lemail" type="email" class="lin" placeholder="Email" autocomplete="username">
+      <input id="lpass" type="password" class="lin" placeholder="Password" autocomplete="current-password">
+      <button class="lbtn" type="button" onclick="doLogin()">Accedi</button>
+      <div class="alinks"><button class="linkbtn" type="button" onclick="authMode('authReset')">Password dimenticata?</button>
+        <button class="linkbtn hide" id="toSignup" type="button" onclick="authMode('authSignup')">Registrati</button></div>
     </div>
-    <input id="luser" class="lin" placeholder="Nome utente" autocomplete="username">
-    <input id="lpass" type="password" class="lin" placeholder="Password" autocomplete="current-password">
-    <button class="lbtn" type="button" onclick="doLogin()">Entra</button>
-    <div id="lerr" class="lerr"></div>
-    <div class="lnote">Accesso locale (gate provvisorio). L'autenticazione sicura sar\u00e0 gestita da Supabase.</div>
+    <div id="authSignup" class="aform hide">
+      <input id="semail" type="email" class="lin" placeholder="Email" autocomplete="username">
+      <input id="spass" type="password" class="lin" placeholder="Password (min. 8 caratteri)" autocomplete="new-password">
+      <input id="spass2" type="password" class="lin" placeholder="Ripeti password" autocomplete="new-password">
+      <button class="lbtn" type="button" onclick="doSignup()">Crea account</button>
+      <button class="linkbtn" type="button" onclick="authMode('authLogin')">Ho già un account</button>
+    </div>
+    <div id="authReset" class="aform hide">
+      <input id="remail" type="email" class="lin" placeholder="Email dell'account" autocomplete="username">
+      <button class="lbtn" type="button" onclick="doReset()">Invia link di reset</button>
+      <button class="linkbtn" type="button" onclick="authMode('authLogin')">Torna all'accesso</button>
+    </div>
+    <div id="authNewPw" class="aform hide">
+      <input id="npass" type="password" class="lin" placeholder="Nuova password (min. 8 caratteri)" autocomplete="new-password">
+      <button class="lbtn" type="button" onclick="doNewPw()">Salva nuova password</button>
+    </div>
+    <div id="lerr" class="lerr" role="status"></div>
   </div>
 </div>
 
@@ -507,15 +646,13 @@
       <span class="sep">·</span>
       <label class="linkbtn" style="cursor:pointer">Importa backup<input type="file" id="impFile" accept="application/json" style="display:none" onchange="importBackup(this)"></label>
       <span class="sep">·</span>
-      <button class="linkbtn" type="button" onclick="toggleSettings()">Impostazioni cloud (Supabase)</button>
+      <button class="linkbtn" type="button" onclick="toggleSettings()">Stato database</button>
     </div>
     <div id="cloudPanel" class="cloudpanel hide">
-      <div class="cpt">Connessione Supabase</div>
-      <div class="cprow"><input id="sbUrl" class="lin" placeholder="Project URL (https://xxxx.supabase.co)"></div>
-      <div class="cprow"><input id="sbKey" class="lin" placeholder="anon public key"></div>
-      <div class="cprow"><button class="lbtn" type="button" onclick="sbConnect()">Connetti</button>
-        <span id="sbState" class="sbstate">Non connesso — archivio locale attivo</span></div>
-      <div class="cpnote">Le chiavi restano sul tuo dispositivo. Serve una tabella <code>documenti</code> con RLS (vedi istruzioni fornite).</div>
+      <div class="cpt">Database</div>
+      <div class="cprow"><span id="sbState" class="sbstate">Non connesso</span>
+        <button class="linkbtn" type="button" onclick="sbConnect()">Sincronizza ora</button></div>
+      <div class="cpnote">I documenti sono salvati su Supabase e sincronizzati su questo dispositivo. I rivenditori vedono solo i propri documenti.</div>
     </div>
   </div>
 </div>
@@ -541,22 +678,38 @@
   </div>
 </div>
 
+<div id="viewShare" class="view">
+  <div class="login" style="position:static;min-height:100vh">
+    <div class="lcard">
+      <img class="llogo" src="data:image/jpeg;base64,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" alt="Lotus Pecas">
+      <div class="ltitle">Documento da firmare</div>
+      <div class="lsub">Lotus Pecas Italia ti ha inviato una Copia Commissioni.</div>
+      <p class="lnote" style="font-size:12.5px">Inserisci il PIN di 6 cifre che ti è stato comunicato separatamente (telefono, WhatsApp o SMS).</p>
+      <input id="pinIn" class="lin pinin" inputmode="numeric" autocomplete="one-time-code" maxlength="7" placeholder="000000" aria-label="PIN">
+      <button class="lbtn" type="button" onclick="shareOpen()">Apri il documento</button>
+      <div id="pinErr" class="lerr" role="status"></div>
+      <div class="lnote">Dopo 5 PIN errati il link si blocca. Il documento è protetto da impronta SHA-256: se viene alterato non è firmabile.</div>
+    </div>
+  </div>
+</div>
+
 <div id="viewEditor" class="view">
 <div class="toolbar" id="toolbar">
   <span class="tb-title">Copia Commissioni</span>
-  <button class="tb ghost" type="button" onclick="showView('hub')">← Home</button>
-  <div class="seg" title="Modello di pagamento">
-    <label><input type="radio" name="paymode" value="classica" checked onchange="setPayMode(this.value)"><span>Vendita classica</span></label>
-    <label><input type="radio" name="paymode" value="noleggio" onchange="setPayMode(this.value)"><span>Noleggio operativo</span></label>
-  </div>
-  <button class="tb" type="button" onclick="saveDoc('bozza')">Salva bozza</button>
-  <button class="tb" type="button" onclick="saveDoc('emesso')">Emetti</button>
-  <button class="tb" onclick="exportPDF()">Scarica PDF</button>
-  <button class="tb ghost" onclick="window.print()">Stampa</button>
-  <button class="tb ghost" type="button" onclick="newDoc()">Nuovo</button>
-  <span class="who">Utente: <b id="whoami">\u2014</b></span>
-  <button class="tb ghost" type="button" onclick="logout()">Esci</button>
-  <div class="tb-note">Nome file: <span id="fnamePreview">—</span> &nbsp;·&nbsp; Compila i campi, aggiungi le righe necessarie: imponibile, IVA e totale si calcolano da soli. “Scarica PDF” genera il file mantenendo grafica e impaginazione.</div>
+  <button class="tb ghost ownonly" type="button" onclick="goHome()">← Home</button>
+  <button class="tb ghost" type="button" id="btnSave" onclick="saveDraft()">Salva bozza</button>
+  <button class="tb primary" type="button" id="btnEmit" onclick="emitDoc()">Firma per emettere</button>
+  <button class="tb warn hide" type="button" id="btnEdit" onclick="editEmitted()">Modifica</button>
+  <button class="tb warn hide" type="button" id="btnRev" onclick="createRevision()">Crea revisione</button>
+  <button class="tb primary hide" type="button" id="btnShare" onclick="openShare()">Invia al cliente</button>
+  <button class="tb ghost hide" type="button" id="btnUpload" onclick="openUpload()">Carica copia firmata</button>
+  <button class="tb ghost hide" type="button" id="btnCopy" onclick="openSignedCopy()">Apri copia firmata</button>
+  <button class="tb" type="button" onclick="exportPDF()">Scarica PDF</button>
+  <button class="tb ghost" type="button" onclick="printDoc()">Stampa</button>
+  <button class="tb ghost ownonly" type="button" onclick="newDoc()">Nuovo</button>
+  <span class="who ownonly">Utente: <b id="whoami">—</b></span>
+  <button class="tb ghost ownonly" type="button" onclick="logout()">Esci</button>
+  <div class="tb-note">Nome file: <span id="fnamePreview">—</span></div>
 </div>
 
 <div class="page">
@@ -567,20 +720,21 @@
     <div class="brand"><div class="n">Lotus Pecas<span style="font-size:11px;vertical-align:super">®</span></div><div class="s">Your Point of Sale</div></div>
     <div class="doctitle">
       <div class="t">COPIA COMMISSIONI</div>
-      <div class="meta"><label>Ordine N.</label><input class="ord" type="text" id="ordN" placeholder="—">
-        <label>Data</label><input class="dt" type="text" placeholder="gg"><span>/</span><input class="dt" type="text" placeholder="mm"><span>/2026</span></div>
+      <div class="meta"><label for="ordN">Ordine N.</label><input class="ord" type="text" id="ordN" data-k="head.numero" placeholder="—">
+        <label for="docDate">Data</label><input type="date" id="docDate" data-k="head.data"></div>
+      <div class="validity">Offerta valida <input class="vd" type="text" inputmode="numeric" id="validDays" data-k="head.validita"> giorni · fino al <b id="validUntil">—</b></div>
     </div>
   </div>
+  <div class="stbanner bozza" id="stBanner"><span class="pill" id="stPill">Bozza</span><span id="stText">Documento in compilazione. Firma per emettere quando è completo.</span><span class="sh" id="stHash"></span></div>
 
   <div class="body">
     <div class="creator">
       <span class="ct">Compilato da</span>
-      <label class="cf">Nome <input class="in" id="creNome"></label>
-      <label class="cf">Cognome <input class="in" id="creCognome"></label>
-      <label class="cf grow">Societ\u00e0 di riferimento <input class="in" id="creSocieta"></label>
+      <label class="cf">Nome <input class="in" id="creNome" data-k="creator.nome"></label>
+      <label class="cf">Cognome <input class="in" id="creCognome" data-k="creator.cognome"></label>
+      <label class="cf grow">Società di riferimento <input class="in" id="creSocieta" data-k="creator.societa"></label>
     </div>
 
-    <!-- PARTIES -->
     <div class="two">
       <div class="card supplier">
         <div class="ct">Fornitore</div>
@@ -596,221 +750,247 @@
       <div class="card">
         <div class="ct">Committente (Cliente)</div>
         <div class="cb">
-          <div class="fld"><label>Ragione sociale</label><span class="val"><input class="in" id="cliRagione"></span></div>
-          <div class="fld"><label>Sede legale (fatt.)</label><span class="val"><input class="in"></span></div>
-          <div class="fld"><label>Destinazione merce</label><span class="val"><input class="in"></span></div>
-          <div class="fld"><label>P.IVA / C.F.</label><span class="val"><input class="in"></span></div>
-          <div class="fld"><label>Codice SDI / PEC</label><span class="val"><input class="in"></span></div>
-          <div class="fld"><label>Referente</label><span class="val"><input class="in"></span></div>
-          <div class="fld"><label>Tel / Email</label><span class="val"><input class="in"></span></div>
+          <div class="fld"><label>Ragione sociale</label><span class="val"><input class="in" id="cliRagione" data-k="cli.ragione"></span></div>
+          <div class="fld"><label>Sede legale (fatt.)</label><span class="val"><input class="in" data-k="cli.sede"></span></div>
+          <div class="fld"><label>Destinazione merce</label><span class="val"><input class="in" data-k="cli.dest"></span></div>
+          <div class="fld"><label>P.IVA / C.F.</label><span class="val"><input class="in" data-k="cli.piva"></span></div>
+          <div class="fld"><label>Codice SDI / PEC</label><span class="val"><input class="in" data-k="cli.sdi"></span></div>
+          <div class="fld"><label>Referente</label><span class="val"><input class="in" data-k="cli.referente"></span></div>
+          <div class="fld"><label>Tel / Email</label><span class="val"><input class="in" data-k="cli.contatti"></span></div>
         </div>
       </div>
     </div>
 
-    <!-- SOFTWARE -->
     <div class="sec">
       <div class="h"><span class="num">1</span> Software &amp; Licenze — Infrastruttura, SaaS, Cloud</div>
       <div class="tblwrap"><table id="tblSw">
         <thead><tr>
-          <th style="width:34%">Nome software / servizio</th>
-          <th style="width:18%">Tipo licenza</th>
-          <th style="width:14%">Durata</th>
-          <th class="num" style="width:9%">Q.tà</th>
-          <th class="num" style="width:13%">Prezzo unit.</th>
-          <th class="num" style="width:14%">Totale (IVA esc.)</th>
-          <th class="act"></th>
-        </tr></thead>
-        <tbody></tbody>
+          <th style="width:34%">Nome software / servizio</th><th style="width:18%">Tipo licenza</th><th style="width:14%">Durata</th>
+          <th class="num" style="width:9%">Q.tà</th><th class="num" style="width:13%">Prezzo unit.</th><th class="num" style="width:14%">Totale (IVA esc.)</th><th class="act"></th>
+        </tr></thead><tbody></tbody>
       </table></div>
-      <div class="addrow"><button class="add" onclick="addRow('sw')">+ Aggiungi riga software</button></div>
+      <div class="addrow"><button class="add" type="button" onclick="addLine('sw')">+ Aggiungi riga software</button></div>
     </div>
 
-    <!-- HARDWARE -->
     <div class="sec">
       <div class="h"><span class="num">2</span> Hardware &amp; Dispositivi</div>
       <div class="tblwrap"><table id="tblHw">
         <thead><tr>
-          <th style="width:24%">Codice / modello</th>
-          <th style="width:38%">Descrizione tecnica</th>
-          <th class="num" style="width:9%">Q.tà</th>
-          <th class="num" style="width:14%">Prezzo unit.</th>
-          <th class="num" style="width:15%">Totale (IVA esc.)</th>
-          <th class="act"></th>
-        </tr></thead>
-        <tbody></tbody>
+          <th style="width:24%">Codice / modello</th><th style="width:38%">Descrizione tecnica</th>
+          <th class="num" style="width:9%">Q.tà</th><th class="num" style="width:14%">Prezzo unit.</th><th class="num" style="width:15%">Totale (IVA esc.)</th><th class="act"></th>
+        </tr></thead><tbody></tbody>
       </table></div>
-      <div class="addrow"><button class="add" onclick="addRow('hw')">+ Aggiungi riga hardware</button></div>
+      <div class="addrow"><button class="add" type="button" onclick="addLine('hw')">+ Aggiungi riga hardware</button></div>
     </div>
 
     <!-- PAYMENT -->
-    <div class="sec">
+    <div class="sec" id="paySec">
       <div class="h"><span class="num">3</span> Condizioni di pagamento</div>
 
-      <!-- CLASSICA -->
-      <div id="payClassica" class="paybox">
-        <div class="row">
-          <span class="chk"><input type="checkbox" id="chkBonifico" onchange="toggleBank('bankFornitore',this.checked)"> Bonifico bancario anticipato (pagamento totale anticipato)</span>
-          <span class="chk"><input type="checkbox" id="chkRiba" onchange="toggleBank('bankDebitore',this.checked)"> RD / Ri.Ba. <input class="mini"> gg</span>
-          <span class="chk"><input type="checkbox" id="chkAltro" onchange="toggleBank('altroBlock',this.checked)"> Altro (piano personalizzato)</span>
-        </div>
-        <div class="bankblock hide" id="bankFornitore">
-          <div class="bankt">Coordinate bancarie per bonifico &mdash; Fornitore</div>
-          <div class="bankgrid">
-            <label class="bf"><span>Intestatario</span><input class="in" value="Lotus Pecas Italia Srl"></label>
-            <label class="bf"><span>Banca</span><input class="in"></label>
-            <label class="bf"><span>IBAN</span><span class="ibanwrap"><input class="in mono ibanin" oninput="onIban(this)" placeholder="IT.. .. ...."><i class="vdot"></i></span></label>
-            <label class="bf"><span>BIC / SWIFT</span><span class="ibanwrap"><input class="in mono bicin" oninput="onBic(this)" placeholder="ABCDITMMXXX"><i class="vdot"></i></span></label>
+      <div class="pstep" id="stepMode">
+        <div class="ph"><span class="pn">1</span><span class="pt">Formula</span><span class="pv" id="pvMode"></span></div>
+        <div class="pb">
+          <div class="pseg">
+            <label><input class="sr" type="radio" name="pmode" value="classica" data-k="pay.mode">Vendita classica <small>importi IVA inclusa</small></label>
+            <label><input class="sr" type="radio" name="pmode" value="noleggio" data-k="pay.mode">Noleggio operativo <small>canoni IVA esclusa · 12 mesi + tacito rinnovo</small></label>
           </div>
-        </div>
-        <div class="bankblock hide" id="bankDebitore">
-          <div class="bankt">Coordinate per addebito Ri.Ba./RID &mdash; Debitore (Cliente)</div>
-          <div class="bankgrid">
-            <label class="bf"><span>Intestatario conto</span><input class="in"></label>
-            <label class="bf"><span>IBAN debitore</span><span class="ibanwrap"><input class="in mono ibanin" oninput="onIban(this)" placeholder="IT.. .. ...."><i class="vdot"></i></span></label>
-            <label class="bf"><span>BIC / SWIFT (opz. · solo banca estera)</span><span class="ibanwrap"><input class="in mono bicin" oninput="onBic(this)" placeholder="ABCDITMMXXX"><i class="vdot"></i></span></label>
-          </div>
-        </div>
-        <div class="row" style="margin-top:10px">
-          <span>Tempi di consegna — Software: attivazione in <input class="mini"> ore</span>
-          <span>Hardware: <input class="mini"> giorni lavorativi</span>
-        </div>
-        <div class="row" style="margin-top:10px">
-          <span>Spese di spedizione / installazione:</span>
-          <span class="chk"><input type="checkbox"> Incluse</span>
-          <span class="chk"><input type="checkbox"> Addebitate: € <input class="mini" style="width:90px"></span>
-        </div>
-        <div class="row planrow">
-          <span>Piano di pagamento:</span>
-          <select id="planSel" class="in planssel" onchange="setPlan(this.value)">
-            <option value="unico">Saldo unico anticipato (100%)</option>
-            <option value="acconto" selected>Acconto + saldo</option>
-            <option value="rateale">Rateale — Bonifico 30 / 60 / 90 gg</option>
-          </select>
-          <span class="planhint" id="planHint"></span>
-        </div>
-        <div class="rateblock hide" id="rateBlock">
-          <div class="bankt">Piano rateale — Bonifico · importi <b>IVA inclusa</b> · importo diviso in parti uguali tra le scadenze selezionate</div>
-          <div class="ratepick" id="ratePick">
-            <label class="rdt"><input type="checkbox" value="30" checked>30 gg</label>
-            <label class="rdt"><input type="checkbox" value="60" checked>60 gg</label>
-            <label class="rdt"><input type="checkbox" value="90" checked>90 gg</label>
-            <label class="rdt"><input type="checkbox" value="120">120 gg</label>
-            <label class="rdt"><input type="checkbox" value="150">150 gg</label>
-            <label class="rdt"><input type="checkbox" value="180">180 gg</label>
-          </div>
-          <table class="ratetbl"><thead><tr><th>Rata</th><th>Scadenza</th><th class="num">Importo (IVA incl.)</th></tr></thead>
-          <tbody id="rateBody"></tbody></table>
-          <div class="ratenote">Scadenze calcolate da <span id="rateBase">—</span> (data ordine se indicata, altrimenti oggi).</div>
-        </div>
-        <div class="rateblock hide" id="altroBlock">
-          <div class="bankt">Altro — piano personalizzato · importi <b>come inseriti</b></div>
-          <table class="ratetbl"><thead><tr><th>Voce</th><th>Scadenza</th><th class="num">Importo</th><th class="act"></th></tr></thead>
-          <tbody id="altroBody"></tbody></table>
-          <div class="addrow" style="margin-top:6px"><button class="add" type="button" onclick="addAltro()">+ Aggiungi voce</button>
-            <span class="ratenote" style="margin-left:10px">Totale personalizzato: <span id="altroSum">€ 0,00</span></span></div>
-        </div>
-                <div class="clause">
-          <b>Condizioni generali di vendita (sintesi).</b><br>
-          <b>1. Licenze software</b> — L'uso dei software è subordinato all'accettazione delle licenze d'uso (EULA) dei rispettivi produttori. Il fornitore non risponde di disservizi, bug, interruzioni o mancate conformità imputabili alle case madri.<br>
-          <b>2. Riserva di proprietà hardware</b> — I beni hardware consegnati restano di proprietà esclusiva del fornitore fino al saldo integrale e definitivo della relativa fattura.<br>
-          <b>3. Foro competente</b> — Per ogni controversia derivante dall'interpretazione, esecuzione o risoluzione del contratto è esclusivamente competente il Foro di Milano.
         </div>
       </div>
 
-      <!-- NOLEGGIO -->
-      <div id="payNoleggio" class="paybox hide">
-        <div class="chk"><input type="checkbox" checked> <b>Noleggio operativo con piano rateale</b></div>
-        <div class="clause" style="margin-top:8px">
-          <b>Durata e rinnovo</b> — Durata minima iniziale di 12 mesi dalla data di attivazione. Alla scadenza il contratto si intende tacitamente e automaticamente rinnovato per periodi di 12 mesi, salvo disdetta scritta via raccomandata A/R o PEC (lotuspecasitalia@legalmail.it) almeno 30 giorni prima della scadenza.
+      <div class="pstep" id="stepAnt">
+        <div class="ph"><span class="pn">2</span><span class="pt"><label class="switch"><input type="checkbox" id="antOn" data-k="pay.ant.on"> Anticipo alla firma</label></span><span class="pv" id="pvAnt"></span></div>
+        <div class="pb">
+          <p class="phelp">L'anticipo si sottrae dal totale: il piano di pagamento ripartisce solo il residuo.</p>
+          <div class="fgrid">
+            <label class="ff"><span>Percentuale</span><input class="box amt" id="antPct" data-k="pay.ant.pct" inputmode="decimal"></label>
+            <label class="ff"><span>Importo anticipo</span><input class="box amt" id="antAmt" data-k="pay.ant.amt" inputmode="decimal"></label>
+            <label class="ff"><span>Scadenza</span><input class="box" type="date" id="antDate" data-k="pay.ant.date"></label>
+          </div>
+          <input type="hidden" id="antManual" data-k="pay.ant.manual">
+          <div class="note">Anticipo sempre tramite bonifico sulle coordinate del fornitore.</div>
         </div>
-        <div class="canoni-head">
-          <span class="chk"><input type="checkbox" id="autoCanoni" checked onchange="onAutoToggle()"> Ripartisci l'imponibile in 12 canoni</span>
-          <span class="canoni-sum" id="canoniSum">Somma canoni: € 0,00</span>
-        </div>
-        <div class="canoni" id="canoniGrid"></div>
-        <div class="bankblock" id="bankCanoni">
-          <div class="bankt">Coordinate per il pagamento dei canoni</div>
-          <div class="bankgrid">
-            <label class="bf"><span>Metodo</span>
-              <select class="in"><option>SEPA Direct Debit (SDD)</option><option>Bonifico ricorrente</option><option>Ri.Ba.</option></select></label>
-            <label class="bf"><span>Intestatario</span><input class="in" value="Lotus Pecas Italia Srl"></label>
-            <label class="bf"><span>IBAN accredito</span><span class="ibanwrap"><input class="in mono ibanin" oninput="onIban(this)" placeholder="IT.. .. ...."><i class="vdot"></i></span></label>
-            <label class="bf"><span>BIC / SWIFT</span><span class="ibanwrap"><input class="in mono bicin" oninput="onBic(this)" placeholder="ABCDITMMXXX"><i class="vdot"></i></span></label>
-            <label class="bf"><span>IBAN Cliente (mandato SDD)</span><span class="ibanwrap"><input class="in mono ibanin" oninput="onIban(this)" placeholder="IT.. .. ...."><i class="vdot"></i></span></label>
+      </div>
+
+      <div class="pstep" id="stepPlan">
+        <div class="ph"><span class="pn">3</span><span class="pt">Piano del residuo</span><span class="pv" id="pvPlan"></span></div>
+        <div class="pb">
+          <div class="pseg">
+            <label><input class="sr" type="radio" name="pplan" value="unico" data-k="pay.plan">Saldo unico</label>
+            <label><input class="sr" type="radio" name="pplan" value="rateale" data-k="pay.plan">Rateale</label>
+            <label><input class="sr" type="radio" name="pplan" value="custom" data-k="pay.plan">Personalizzato</label>
+          </div>
+
+          <div id="planUnico" class="hide">
+            <div class="fgrid two">
+              <label class="ff"><span>Scadenza saldo</span><input class="box" type="date" id="unicoDate" data-k="pay.unicoDate"></label>
+              <div class="ff"><span>Importo saldo</span><div class="ro" id="unicoAmt">—</div></div>
+            </div>
+          </div>
+
+          <div id="planRate" class="hide">
+            <div class="fgrid">
+              <label class="ff"><span>Data di partenza</span><input class="box" type="date" id="rateStart" data-k="pay.start"></label>
+              <label class="ff"><span>&nbsp;</span><span class="switch" style="min-height:40px"><input type="checkbox" id="rateFm" data-k="pay.fm"> Fine mese (d.f.f.m.)</span></label>
+            </div>
+            <div class="note" style="margin-top:10px">Scadenze dalla data di partenza:</div>
+            <div class="chips" id="offChips"></div>
+            <div class="tblwrap"><table class="sched" id="rateTbl">
+              <thead><tr><th>Rata</th><th>Scadenza</th><th class="num">Importo</th></tr></thead>
+              <tbody id="rateBody"></tbody>
+              <tfoot><tr><td colspan="2">Totale rate</td><td class="num" id="rateSum">—</td></tr></tfoot>
+            </table></div>
+            <div class="balance"><span id="rateBal" class="bv ok">—</span>
+              <button class="lnk" type="button" onclick="resetRate()">Ripristina rate uguali</button></div>
+            <div class="note">Modificando l'importo di una rata, la differenza si ripartisce sulle rate successive. Modificando una scadenza, le successive si spostano di conseguenza.</div>
+          </div>
+
+          <div id="planCustom" class="hide">
+            <div class="tblwrap"><table class="sched">
+              <thead><tr><th>Voce</th><th>Scadenza</th><th class="num">Importo</th><th class="act"></th></tr></thead>
+              <tbody id="customBody"></tbody>
+              <tfoot><tr><td colspan="2">Totale voci</td><td class="num" id="customSum">—</td><td></td></tr></tfoot>
+            </table></div>
+            <div class="addrow"><button class="add" type="button" onclick="addCustom()">+ Aggiungi voce</button></div>
+            <div class="balance"><span>Da allocare:</span><span id="customBal" class="bv ok">—</span>
+              <button class="lnk" type="button" onclick="customFill()">Assegna la differenza all'ultima voce</button></div>
           </div>
         </div>
-        <div class="clause">
-          <b>Condizioni generali (sintesi).</b><br>
-          <b>5.1 Licenze software</b> — vincolate ai termini EULA dei produttori; il fornitore non risponde di anomalie o bug di terze parti.<br>
-          <b>5.2 Riserva di proprietà</b> — i dispositivi hardware restano di proprietà esclusiva del fornitore o della società locatrice per l'intera durata del noleggio.<br>
-          <b>5.3 Foro competente</b> — unico foro competente ed esclusivo è quello di Milano.
+      </div>
+
+      <div class="pstep" id="stepMethod">
+        <div class="ph"><span class="pn">4</span><span class="pt">Metodo di incasso del residuo</span><span class="pv" id="pvMethod"></span></div>
+        <div class="pb">
+          <div class="pseg">
+            <label><input class="sr" type="radio" name="pmeth" value="bonifico" data-k="pay.method">Bonifico</label>
+            <label><input class="sr" type="radio" name="pmeth" value="riba" data-k="pay.method">Ri.Ba.</label>
+            <label><input class="sr" type="radio" name="pmeth" value="sdd" data-k="pay.method">SEPA Direct Debit (SDD)</label>
+          </div>
+
+          <div class="bankblock hide" id="blkBonifico">
+            <div class="bankt">Coordinate bancarie del fornitore (bonifico)</div>
+            <div class="bankgrid">
+              <label class="bf"><span>Intestatario</span><input class="in" value="Lotus Pecas Italia Srl" disabled></label>
+              <label class="bf"><span>Banca</span><input class="in" data-k="pay.bank.banca" data-fixed readonly></label>
+              <label class="bf"><span>IBAN</span><span class="ibanwrap"><input class="in mono ibanin" data-k="pay.bank.iban" data-fixed readonly placeholder="IT.."><i class="vdot"></i></span></label>
+              <label class="bf"><span>BIC / SWIFT (opz.)</span><span class="ibanwrap"><input class="in mono bicin" data-k="pay.bank.bic" data-fixed readonly placeholder="ABCDITMMXXX"><i class="vdot"></i></span></label>
+            </div>
+          </div>
+
+          <div class="bankblock hide" id="blkRiba">
+            <div class="bankt">Ri.Ba. — banca d'appoggio del cliente</div>
+            <p class="phelp">Richiesta d'incasso a scadenza fissa: non automatica, l'esito dipende dalla disponibilità sul conto del cliente alla data.</p>
+            <div class="bankgrid">
+              <label class="bf"><span>Intestatario conto</span><input class="in" data-k="pay.riba.intest"></label>
+              <label class="bf"><span>Banca d'appoggio</span><input class="in" data-k="pay.riba.banca"></label>
+              <label class="bf"><span>IBAN cliente</span><span class="ibanwrap"><input class="in mono ibanin" data-k="pay.riba.iban" placeholder="IT.."><i class="vdot"></i></span></label>
+              <label class="bf"><span>BIC / SWIFT (opz. · banca estera)</span><span class="ibanwrap"><input class="in mono bicin" data-k="pay.riba.bic" placeholder="ABCDITMMXXX"><i class="vdot"></i></span></label>
+            </div>
+          </div>
+
+          <div class="bankblock hide" id="blkSdd">
+            <div class="bankt">Mandato SEPA Direct Debit — debitore</div>
+            <p class="phelp">Con il mandato il cliente autorizza Lotus Pecas Italia ad addebitare le rate sul suo conto alle scadenze indicate, senza nuove autorizzazioni.</p>
+            <div class="bankgrid">
+              <label class="bf"><span>Intestatario conto</span><input class="in" data-k="pay.sdd.intest"></label>
+              <label class="bf"><span>C.F. / P.IVA intestatario</span><input class="in" data-k="pay.sdd.cf"></label>
+              <label class="bf"><span>IBAN da addebitare</span><span class="ibanwrap"><input class="in mono ibanin" data-k="pay.sdd.iban" placeholder="IT.."><i class="vdot"></i></span></label>
+              <label class="bf"><span>BIC / SWIFT (opz.)</span><span class="ibanwrap"><input class="in mono bicin" data-k="pay.sdd.bic" placeholder="ABCDITMMXXX"><i class="vdot"></i></span></label>
+              <label class="bf"><span>Schema</span><select class="in" data-k="pay.sdd.schema"><option value="">—</option><option value="CORE">CORE</option><option value="B2B">B2B</option></select></label>
+              <label class="bf"><span>Codice identificativo creditore (CID)</span><input class="in mono" data-k="pay.sdd.cid"></label>
+              <label class="bf"><span>Tipo addebito</span><input class="in" value="Ricorrente" disabled></label>
+            </div>
+            <label class="mconsent" style="margin-top:10px"><input type="checkbox" data-k="pay.sdd.consent"><span>Il cliente sottoscrive il mandato SEPA e autorizza gli addebiti ricorrenti alle scadenze del piano. Il rimborso segue le regole dello schema scelto.</span></label>
+          </div>
         </div>
+      </div>
+
+      <div class="pstep" id="stepDeliv">
+        <div class="ph"><span class="pn">5</span><span class="pt">Consegna e spese</span><span class="pv" id="pvDeliv"></span></div>
+        <div class="pb">
+          <div class="fgrid">
+            <label class="ff"><span>Attivazione software (ore)</span><input class="box" data-k="cons.swOre" inputmode="numeric"></label>
+            <label class="ff"><span>Consegna hardware (gg lav.)</span><input class="box" data-k="cons.hwGg" inputmode="numeric"></label>
+            <div class="ff"><span>Spese di spedizione / installazione</span>
+              <div class="pseg">
+                <label><input class="sr" type="radio" name="pspese" value="incluse" data-k="cons.spese">Incluse</label>
+                <label><input class="sr" type="radio" name="pspese" value="addebitate" data-k="cons.spese">Addebitate</label>
+              </div></div>
+          </div>
+          <div class="fgrid hide" id="speseRow"><label class="ff"><span>Importo spese (IVA esc.) — sommato all'imponibile</span><input class="box amt" data-k="cons.speseAmt" inputmode="decimal"></label></div>
+        </div>
+      </div>
+
+      <div class="clause" id="clauseClassica">
+        <b>Condizioni generali di vendita (sintesi).</b><br>
+        <b>1. Licenze software</b> — L'uso dei software è subordinato all'accettazione delle licenze d'uso (EULA) dei rispettivi produttori. Il fornitore non risponde di disservizi, bug, interruzioni o mancate conformità imputabili alle case madri.<br>
+        <b>2. Riserva di proprietà hardware</b> — I beni hardware consegnati restano di proprietà esclusiva del fornitore fino al saldo integrale e definitivo della relativa fattura.<br>
+        <b>3. Foro competente</b> — Per ogni controversia derivante dall'interpretazione, esecuzione o risoluzione del contratto è esclusivamente competente il Foro di Milano.
+      </div>
+      <div class="clause hide" id="clauseNoleggio">
+        <b>4. Durata e rinnovo</b> — Durata minima iniziale di 12 mesi dalla data di attivazione. Alla scadenza il contratto si intende tacitamente e automaticamente rinnovato per periodi di 12 mesi, salvo disdetta scritta via raccomandata A/R o PEC (lotuspecasitalia@legalmail.it) almeno 30 giorni prima della scadenza.<br>
+        <b>5.1 Licenze software</b> — vincolate ai termini EULA dei produttori; il fornitore non risponde di anomalie o bug di terze parti.<br>
+        <b>5.2 Riserva di proprietà</b> — i dispositivi hardware restano di proprietà esclusiva del fornitore o della società locatrice per l'intera durata del noleggio.<br>
+        <b>5.3 Foro competente</b> — unico foro competente ed esclusivo è quello di Milano.
       </div>
     </div>
 
-    <!-- SUMMARY -->
     <div class="summary">
       <div class="deliv" id="deliveryNote"></div>
-      <div class="totbox">
-        <div class="l"><span>Totale imponibile</span><span id="sImp">€ 0,00</span></div>
-        <div class="l"><span>IVA (22%)</span><span id="sIva">€ 0,00</span></div>
-        <div class="l grand"><span>Totale ordine (IVA incl.)</span><span id="sTot">€ 0,00</span></div>
-        <div class="accbox" id="accontoRows">
-          <div class="l unicorow hide" id="unicoRow"><span>Pagamento anticipato · scad. <span id="uDate">—</span> <small>(IVA incl.)</small></span><span id="sUnico">€ 0,00</span></div>
-          <div class="l acc" id="accRow"><span>Acconto <input type="text" inputmode="numeric" class="pct" id="accPct" value="30">% · alla firma · scad. <span id="accDate">—</span> <small>(IVA incl.)</small></span><span id="sAcc">€ 0,00</span></div>
-          <div class="l saldo" id="saldoRow"><span>Saldo a seguire · alla consegna <small>(IVA incl.)</small></span><span id="sSaldo">€ 0,00</span></div>
-        </div>
-      </div>
+      <div class="totbox" id="totBox"></div>
     </div>
 
-    <!-- SIGNATURES -->
     <div class="signrow">
-      <div class="sign"><div class="lab">Luogo e data</div><div class="line" id="luogoData"></div></div>
+      <div class="sigslot" id="slot-lp">
+        <div class="lab">Firma dell'emittente — Lotus Pecas Italia / rivenditore</div>
+        <div class="sigempty"><button class="sigbtn" type="button" onclick="emitDoc()">&#9998; Firma per emettere</button></div>
+        <div class="sigdone hide"><img class="sigimg" alt="firma emittente"><div class="sigmeta"></div><button class="redo" type="button" onclick="redoSign('lp')">Rifai</button></div>
+      </div>
       <div class="sigslot" id="slot-acc">
         <div class="lab">Firma del Cliente — per accettazione</div>
-        <div class="sigempty"><button class="sigbtn" onclick="openSign('acc')">&#9998; Firma qui</button></div>
-        <div class="sigdone hide"><img class="sigimg" alt="firma cliente"><div class="sigmeta"></div><button class="redo" onclick="redoSign('acc')">Rifai</button></div>
+        <div class="sigwait">Disponibile dopo l'emissione</div>
+        <div class="sigempty hide"><button class="sigbtn" type="button" onclick="openSign('acc')">&#9998; Firma cliente</button></div>
+        <div class="sigdone hide"><img class="sigimg" alt="firma cliente"><div class="sigmeta"></div><button class="redo" type="button" onclick="redoSign('acc')">Rifai</button></div>
       </div>
     </div>
 
     <div class="vess">
       <div class="vhead"><span class="t">Approvazione specifica clausole vessatorie</span>
-        <span class="fesinfo"><button class="ibtn" type="button" onclick="toggleFes()" aria-label="Cos'\u00e8 la FES rinforzata">i</button></span></div>
+        <span class="fesinfo"><button class="ibtn" type="button" onclick="toggleFes()" aria-label="Cos'è la FES rinforzata">i</button></span></div>
       <p id="vessText"></p>
-      <div class="fescap">Firma raccolta come <b>FES rinforzata</b> (disegno + identit\u00e0 + timestamp + hash SHA-256 + consenso esplicito)</div>
+      <div class="fescap">Firma raccolta come <b>FES rinforzata</b> (disegno + identità + timestamp + hash SHA-256 + consenso esplicito)</div>
       <div class="fesnote hide" id="fesNote"></div>
       <div class="signrow" style="margin-top:14px">
         <div></div>
         <div class="sigslot" id="slot-vess">
           <div class="lab">Firma del Cliente — approvazione specifica</div>
-          <div class="sigempty"><button class="sigbtn" onclick="openSign('vess')">&#9998; Firma qui</button></div>
-          <div class="sigdone hide"><img class="sigimg" alt="firma cliente"><div class="sigmeta"></div><button class="redo" onclick="redoSign('vess')">Rifai</button></div>
+          <div class="sigwait">Disponibile dopo l'emissione</div>
+          <div class="sigempty hide"><button class="sigbtn" type="button" onclick="openSign('vess')">&#9998; Firma cliente</button></div>
+          <div class="sigdone hide"><img class="sigimg" alt="firma cliente"><div class="sigmeta"></div><button class="redo" type="button" onclick="redoSign('vess')">Rifai</button></div>
         </div>
       </div>
       <div class="integrity" id="integrityBox">
-        <div class="ilab">Impronta di integrit\u00e0 del documento firmato</div>
-        <div class="ival">SHA-256: <span class="hashval mono" id="hashMain">&mdash; (calcolata all'esportazione PDF)</span></div>
-        <div class="its">Sigillo temporale: <span id="hashTs">&mdash;</span></div>
+        <div class="ilab">Impronta di integrità del contenuto</div>
+        <div class="ival">SHA-256: <span class="hashval mono" id="hashMain">— (calcolata all'emissione)</span></div>
+        <div class="its">Sigillo temporale: <span id="hashTs">—</span></div>
       </div>
     </div>
 
-  </div><!-- /body -->
+  </div>
   <div class="footer">Lotus Pecas Italia Srl · Viale Sabotino 19/2, 20135 Milano · P.IVA IT14273320961 · info@lotuspecas.it</div>
-</div><!-- /doc -->
-</div><!-- /page -->
-</div><!-- /viewEditor -->
-
+</div>
+</div>
+</div>
 
 <div class="modal hide" id="signModal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
   <div class="mbackdrop" onclick="cancelSign()"></div>
   <div class="mcard">
-    <div class="mhead"><span id="mTitle">Firma del Cliente</span><button class="mx" type="button" onclick="cancelSign()" aria-label="Chiudi">&times;</button></div>
+    <div class="mhead"><span id="mTitle">Firma</span><button class="mx" type="button" onclick="cancelSign()" aria-label="Chiudi">&times;</button></div>
     <div class="mbody">
       <div class="mgrid">
         <label class="mf"><span>Nome e cognome *</span><input id="sfNome" class="min" autocomplete="name"></label>
         <label class="mf"><span>Ruolo / qualifica</span><input id="sfRuolo" class="min" placeholder="es. Legale rappresentante"></label>
         <label class="mf"><span>Luogo *</span><input id="sfLuogo" class="min" placeholder="es. Milano"></label>
-        <label class="mf"><span>N&deg; documento (opz.)</span><input id="sfDoc" class="min"></label>
+        <label class="mf"><span>N° documento (opz.)</span><input id="sfDoc" class="min"></label>
       </div>
       <div class="padwrap">
         <div class="padlab">Traccia la firma qui</div>
@@ -822,355 +1002,690 @@
     </div>
     <div class="mfoot">
       <button class="tb ghost dark" type="button" onclick="cancelSign()">Annulla</button>
-      <button class="tb solid" type="button" onclick="confirmSign()">Conferma firma</button>
+      <button class="tb solid" type="button" id="sfOk" onclick="confirmSign()">Conferma firma</button>
     </div>
   </div>
 </div>
 
+<div class="modal hide" id="errModal" role="alertdialog" aria-modal="true" aria-labelledby="eTitle">
+  <div class="mbackdrop" onclick="closeErr()"></div>
+  <div class="mcard">
+    <div class="mhead"><span id="eTitle">Mancano dei dati</span><button class="mx" type="button" onclick="closeErr()" aria-label="Chiudi">&times;</button></div>
+    <div class="mbody"><p class="mintro" id="eIntro"></p><ul class="elist" id="eList"></ul></div>
+    <div class="mfoot"><button class="tb solid" type="button" onclick="closeErr()">Ho capito, correggo</button></div>
+  </div>
+</div>
+
+
+<div class="modal hide" id="shareModal" role="dialog" aria-modal="true" aria-labelledby="shTitle">
+  <div class="mbackdrop" onclick="closeShare()"></div>
+  <div class="mcard">
+    <div class="mhead"><span id="shTitle">Invia al cliente per la firma</span><button class="mx" type="button" onclick="closeShare()" aria-label="Chiudi">&times;</button></div>
+    <div class="mbody">
+      <p class="mintro">Il cliente riceve il link via email e il PIN da te, su un altro canale. Senza entrambi non può aprire il documento.</p>
+      <p class="note" id="shState"></p>
+      <button class="tb solid" type="button" onclick="generateShare()">Genera nuovo link e PIN</button>
+      <div id="shResult" class="hide sharebox">
+        <label class="ff"><span>Link per il cliente</span><input class="box mono" id="shUrl" readonly></label>
+        <div class="pinbox"><span>PIN da comunicare a voce, WhatsApp o SMS</span><b class="mono" id="shPin">— —</b><small>Visibile solo ora · link valido fino al <b id="shExp">—</b></small></div>
+        <div class="pseg"><button class="tb ghost dark" type="button" onclick="copyShareLink()">Copia link</button>
+          <button class="tb ghost dark" type="button" onclick="mailShare()">Invia email al cliente</button></div>
+        <p class="note">L'email non contiene il PIN. Non inviarli mai nello stesso messaggio.</p>
+      </div>
+      <button class="lnk hide" id="shRevoke" type="button" onclick="revokeShare()">Disattiva il link</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal hide" id="uploadModal" role="dialog" aria-modal="true" aria-labelledby="upTitle">
+  <div class="mbackdrop" onclick="closeUpload()"></div>
+  <div class="mcard">
+    <div class="mhead"><span id="upTitle">Carica copia firmata</span><button class="mx" type="button" onclick="closeUpload()" aria-label="Chiudi">&times;</button></div>
+    <div class="mbody">
+      <p class="mintro">Per clienti che firmano il PDF a mano (scansione) o con firma digitale qualificata. Il file viene archiviato e il documento passa a "Firmato".</p>
+      <label class="ff"><span>PDF firmato (max 20 MB)</span><input type="file" id="upFile" accept="application/pdf,.pdf" class="box"></label>
+      <label class="mconsent"><input type="checkbox" id="upCheck"><span>Ho verificato che il PDF firmato corrisponde al documento emesso (stesso numero, importi e scadenze).</span></label>
+      <div class="merr" id="upErr"></div>
+    </div>
+    <div class="mfoot"><button class="tb ghost dark" type="button" onclick="closeUpload()">Annulla</button><button class="tb solid" type="button" onclick="doUpload()">Carica e segna come firmato</button></div>
+  </div>
+</div>
 <div id="toast" class="toast"></div>
+
 <script>
+/* ================= ENGINE (puro, senza DOM) ================= */
+var IVA_RATE=0.22;
+var CID_DEFAULT='';
+var LP_BANK={banca:'Credit Agricole Italia - Milano Ag. 38', iban:'IT04J0623009555000064501941', bic:'CRPPIT2P617'}; /* Codice identificativo creditore SEPA di Lotus Pecas Italia: inserire quando disponibile */
 
-/* ---- soft login gate ---- */
-function doLogin(){
-  var u=(document.getElementById('luser').value||'').trim();
-  var p=document.getElementById('lpass').value||'';
-  var role=document.querySelector('input[name="lrole"]:checked');
-  var err=document.getElementById('lerr');
-  if(!role){ err.textContent='Seleziona il tipo di utente.'; return; }
-  var okTeam = role.value==='team' && u==='TEAMLPITA' && p==='LP2026';
-  var okRes  = role.value==='rivenditore' && u==='RESLPITA' && p==='LP2026';
-  if(okTeam || okRes){
-    err.textContent='';
-    document.body.classList.remove('locked');
-    var ls=document.getElementById('loginScreen'); if(ls) ls.style.display='none';
-    var isTeam=role.value==='team';
-    var soc=document.getElementById('creSocieta');
-    if(soc && !soc.value.trim() && isTeam) soc.value='Lotus Pecas Italia Srl';
-    var who=document.getElementById('whoami'); if(who) who.textContent=isTeam?'Team LP Italia':'Rivenditore esterno';
-    var hw=document.getElementById('hubWho'); if(hw) hw.textContent=isTeam?'Team LP Italia':'Rivenditore esterno';
-    if(typeof refreshCounts==='function') refreshCounts();
-    if(typeof showView==='function') showView('hub');
-  } else { err.textContent='Credenziali non valide.'; }
+function num(v){
+  if(v==null||v==='') return 0;
+  if(typeof v==='number') return isFinite(v)?v:0;
+  var s=(''+v).replace(/[\s€]/g,'');
+  if(s.indexOf(',')>=0){ s=s.replace(/\./g,'').replace(',','.'); }
+  else if(/^-?\d+\.\d{1,2}$/.test(s)){ /* 12.5 -> decimale */ }
+  else { s=s.replace(/\./g,''); }
+  var x=parseFloat(s); return isFinite(x)?x:0;
 }
-function logout(){
-  document.body.classList.add('locked');
-  var ls=document.getElementById('loginScreen'); if(ls) ls.style.display='';
-  var lp=document.getElementById('lpass'); if(lp) lp.value='';
-}
-if(typeof document!=='undefined'){
-  document.addEventListener('DOMContentLoaded',function(){
-    var lp=document.getElementById('lpass');
-    if(lp) lp.addEventListener('keydown',function(e){ if(e.key==='Enter') doLogin(); });
-    var lu=document.getElementById('luser');
-    if(lu) lu.addEventListener('keydown',function(e){ if(e.key==='Enter'){ var p=document.getElementById('lpass'); if(p) p.focus(); } });
-  });
-}
+function cents(v){ return Math.round(num(v)*100); }
+function eurC(c){ c=isFinite(c)?c:0; return '€ '+(c/100).toLocaleString('it-IT',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function eur(n){ return eurC(Math.round((isFinite(n)?n:0)*100)); }
+function fmtAmtC(c){ return (c/100).toLocaleString('it-IT',{minimumFractionDigits:2,maximumFractionDigits:2}); }
 
-var VESS_CLASSICA="Ai sensi e per gli effetti degli artt. 1341 e 1342 c.c., il Cliente dichiara di aver letto e di approvare specificamente le clausole relative a: art. 1 (limitazioni di responsabilità del fornitore sul software), art. 2 (riserva di proprietà sull'hardware) e art. 3 (foro esclusivamente competente di Milano).";
-var VESS_NOLEGGIO="Ai sensi e per gli effetti degli artt. 1341 e 1342 c.c., il Cliente approva espressamente le clausole relative a: art. 4 (durata e tacito rinnovo automatico dopo 12 mesi), art. 5.1 (limitazioni di responsabilità sul software), art. 5.2 (riserva di proprietà dei beni hardware) e art. 5.3 (foro esclusivamente competente di Milano).";
+/* date ISO yyyy-mm-dd, UTC per evitare problemi di ora legale */
+function isoOk(s){ return /^\d{4}-\d{2}-\d{2}$/.test(s||'') && !isNaN(Date.parse(s+'T00:00:00Z')); }
+function isoToday(){ var t=new Date(); return t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2); }
+function isoAdd(s,days){ var d=new Date(s+'T00:00:00Z'); d.setUTCDate(d.getUTCDate()+days); return d.toISOString().slice(0,10); }
+function isoEom(s){ var d=new Date(s+'T00:00:00Z'); var e=new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth()+1,0)); return e.toISOString().slice(0,10); }
+function isoDiff(a,b){ return Math.round((Date.parse(b+'T00:00:00Z')-Date.parse(a+'T00:00:00Z'))/86400000); }
+function isoFmt(s){ return isoOk(s)?s.slice(8,10)+'/'+s.slice(5,7)+'/'+s.slice(0,4):'—'; }
 
-function eur(n){ n=isFinite(n)?n:0; return '€ '+n.toLocaleString('it-IT',{minimumFractionDigits:2,maximumFractionDigits:2}); }
-function num(v){ if(v==null) return 0; v=(''+v).replace(/\s/g,'').replace(/\./g,'').replace(',','.'); var x=parseFloat(v); return isFinite(x)?x:0; }
-
-function swRow(){
-  var tr=document.createElement('tr');
-  tr.innerHTML=
-    '<td><input class="in"></td>'+
-    '<td><select class="in"><option value=""></option><option>Perpetua</option><option>Abbonamento</option></select></td>'+
-    '<td><input class="in"></td>'+
-    '<td class="cellnum"><input class="in cellnum qty"></td>'+
-    '<td class="cellnum"><input class="in cellnum price"></td>'+
-    '<td class="tot">€ 0,00</td>'+
-    '<td class="act"><button class="rowdel" title="Rimuovi" onclick="delRow(this)">×</button></td>';
-  return tr;
-}
-function hwRow(){
-  var tr=document.createElement('tr');
-  tr.innerHTML=
-    '<td><input class="in"></td>'+
-    '<td><input class="in"></td>'+
-    '<td class="cellnum"><input class="in cellnum qty"></td>'+
-    '<td class="cellnum"><input class="in cellnum price"></td>'+
-    '<td class="tot">€ 0,00</td>'+
-    '<td class="act"><button class="rowdel" title="Rimuovi" onclick="delRow(this)">×</button></td>';
-  return tr;
-}
-function addRow(kind){
-  var body=document.querySelector(kind==='sw'?'#tblSw tbody':'#tblHw tbody');
-  var tr=kind==='sw'?swRow():hwRow();
-  body.appendChild(tr);
-  tr.querySelectorAll('.qty,.price').forEach(function(el){ el.addEventListener('input',recalc); });
-  recalc();
-  return tr;
-}
-function delRow(btn){ var tr=btn.closest('tr'); tr.parentNode.removeChild(tr); recalc(); }
-
-function rowTotals(){
-  var total=0;
-  document.querySelectorAll('#tblSw tbody tr,#tblHw tbody tr').forEach(function(tr){
-    var q=num(tr.querySelector('.qty').value), p=num(tr.querySelector('.price').value);
-    var t=q*p; total+=t;
-    tr.querySelector('.tot').textContent=eur(t);
-  });
-  return total;
-}
-
-var canoniTouched=false;
-function buildCanoni(){
-  var g=document.getElementById('canoniGrid'); if(!g) return;
-  g.innerHTML='';
-  for(var i=1;i<=12;i++){
-    var d=document.createElement('div'); d.className='c';
-    d.innerHTML='<label>Canone '+i+'</label><input data-canone="1" inputmode="decimal">';
-    g.appendChild(d);
-  }
-  g.querySelectorAll('input').forEach(function(el){
-    el.addEventListener('input',function(){ canoniTouched=true; document.getElementById('autoCanoni').checked=false; sumCanoni(); });
-  });
-}
-function fillCanoni(imp){
-  var auto=document.getElementById('autoCanoni');
-  if(!auto||!auto.checked) return;
-  var each=Math.round((imp/12)*100)/100;
-  var inputs=document.querySelectorAll('#canoniGrid input');
-  var acc=0;
-  inputs.forEach(function(el,idx){
-    var v = idx<11 ? each : Math.round((imp-acc)*100)/100; // last row absorbs rounding
-    acc+=each;
-    el.value = imp>0 ? v.toLocaleString('it-IT',{minimumFractionDigits:2,maximumFractionDigits:2}) : '';
-  });
-  sumCanoni();
-}
-function sumCanoni(){
-  var s=0; document.querySelectorAll('#canoniGrid input').forEach(function(el){ s+=num(el.value); });
-  var el=document.getElementById('canoniSum'); if(el) el.textContent='Somma canoni: '+eur(s);
-  return s;
-}
-function onAutoToggle(){
-  var auto=document.getElementById('autoCanoni');
-  if(auto.checked){ canoniTouched=false; fillCanoni(currentImponibile); }
-}
-
-var currentImponibile=0;
-function recalc(){
-  var imp=rowTotals();
-  currentImponibile=imp;
-  var iva=Math.round(imp*0.22*100)/100;
-  var tot=Math.round((imp+iva)*100)/100;
-  document.getElementById('sImp').textContent=eur(imp);
-  document.getElementById('sIva').textContent=eur(iva);
-  document.getElementById('sTot').textContent=eur(tot);
-  var pctEl=document.getElementById('accPct');
-  var pct=pctEl?Math.max(0,Math.min(100,num(pctEl.value))):30;
-  var acc=Math.round(tot*pct/100*100)/100;
-  var saldo=Math.round((tot-acc)*100)/100;
-  var aEl=document.getElementById('sAcc'), sEl=document.getElementById('sSaldo');
-  if(aEl) aEl.textContent=eur(acc);
-  if(sEl) sEl.textContent=eur(saldo);
-  var isClassica=(currentPayMode==='classica');
-  var plan=isClassica?currentPlan:null;
-  var bd=fmtDate(baseDate());
-  var uni=document.getElementById('unicoRow'), aR=document.getElementById('accRow'), sR=document.getElementById('saldoRow');
-  var ab=document.getElementById('accontoRows');
-  var showBox=isClassica && (plan==='unico'||plan==='acconto');
-  if(ab) ab.style.display=showBox?'':'none';
-  if(plan==='unico'){
-    if(uni){ uni.classList.remove('hide'); var ud=document.getElementById('uDate'); if(ud)ud.textContent=bd;
-      var su=document.getElementById('sUnico'); if(su)su.textContent=eur(tot); }
-    if(aR)aR.classList.add('hide'); if(sR)sR.classList.add('hide');
-  } else if(plan==='acconto'){
-    if(uni)uni.classList.add('hide'); if(aR)aR.classList.remove('hide'); if(sR)sR.classList.remove('hide');
-    var ad=document.getElementById('accDate'); if(ad)ad.textContent=bd;
-  } else { if(uni)uni.classList.add('hide'); if(aR)aR.classList.add('hide'); if(sR)sR.classList.add('hide'); }
-  var showRate=isClassica && plan==='rateale';
-  var rbk=document.getElementById('rateBlock'); if(rbk) rbk.classList.toggle('hide',!showRate);
-  if(showRate) buildRate(tot);
-  var ph=document.getElementById('planHint');
-  if(ph){ ph.textContent = plan==='unico' ? 'Intero importo (IVA inclusa) versato anticipatamente · scad. '+bd
-        : plan==='acconto' ? 'Acconto alla firma, saldo alla consegna.'
-        : 'Bonifici alle scadenze selezionate (IVA inclusa).'; }
-  if(document.getElementById('autoCanoni') && document.getElementById('autoCanoni').checked) fillCanoni(imp);
-  else sumCanoni();
-  updateFname();
-}
-
-function setPayMode(mode){
-  currentPayMode=mode;
-  var c=document.getElementById('payClassica'), n=document.getElementById('payNoleggio');
-  var dn=document.getElementById('deliveryNote'), vt=document.getElementById('vessText');
-  if(mode==='noleggio'){ c.classList.add('hide'); n.classList.remove('hide');
-    dn.textContent='Pagamento tramite noleggio operativo — 12 canoni mensili (IVA esclusa), rinnovo tacito 12 mesi.';
-    vt.textContent=VESS_NOLEGGIO;
-  } else { n.classList.add('hide'); c.classList.remove('hide');
-    dn.textContent='';
-    vt.textContent=VESS_CLASSICA;
-  }
-  if(typeof recalc==='function') recalc();
-}
-
-function freezeControls(root){
-  var swaps=[];
-  root.querySelectorAll('input, select, textarea').forEach(function(el){
-    var span=document.createElement('span'); span.className='frz';
-    var cs=window.getComputedStyle?getComputedStyle(el):null;
-    if(cs){ span.style.font=cs.font; span.style.textAlign=cs.textAlign; span.style.color=cs.color;
-      span.style.letterSpacing=cs.letterSpacing;
-      var w=parseFloat(cs.width);
-      span.style.display = (cs.display==='block'||el.tagName==='TEXTAREA')?'block':'inline-block';
-      if(el.tagName==='TEXTAREA'||cs.display==='block') span.style.width=cs.width;
-      else span.style.minWidth=(w?Math.min(w, w)+'px':'');
-      span.style.padding=cs.padding;
-    }
-    if(el.type==='checkbox'||el.type==='radio'){ span.textContent=el.checked?'☑':'☐'; }
-    else if(el.tagName==='SELECT'){ span.textContent=el.selectedIndex>=0?el.options[el.selectedIndex].text:''; }
-    else { span.textContent=el.value||''; }
-    el.style.display='none';
-    el.parentNode.insertBefore(span, el.nextSibling);
-    swaps.push([el,span]);
-  });
-  return swaps;
-}
-function unfreeze(swaps){
-  swaps.forEach(function(p){ var el=p[0],span=p[1];
-    el.style.display=''; if(span&&span.parentNode) span.parentNode.removeChild(span); });
-}
-
-function slugName(str){
-  if(!str) return 'Cliente';
-  str=(''+str).normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-  var parts=str.replace(/S\.?r\.?l\.?|S\.?p\.?A\.?|S\.?n\.?c\.?|S\.?a\.?s\.?/ig,'')
-              .replace(/[^A-Za-z0-9 ]/g,' ').trim().split(/\s+/).filter(Boolean);
-  var out=parts.map(function(w){return w.charAt(0).toUpperCase()+w.slice(1);}).join('');
-  return (out.slice(0,24))||'Cliente';
-}
-function orderDate(){
-  var d=document.querySelectorAll('.head input.dt');
-  var gg=d[0]?d[0].value.trim():'', mm=d[1]?d[1].value.trim():'';
-  if(/^\d{1,2}$/.test(gg)&&/^\d{1,2}$/.test(mm)) return '2026-'+('0'+mm).slice(-2)+'-'+('0'+gg).slice(-2);
-  var t=new Date();
-  return t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2);
-}
-function filename(){
-  var el=document.getElementById('cliRagione');
-  var cli=slugName(el?el.value:'');
-  var imp=Math.round(currentImponibile||0);
-  var amt=imp>0?('_'+imp+'EUR'):'';
-  return orderDate()+'_CopiaCommissioni_'+cli+amt+'.pdf';
-}
-function updateFname(){ var el=document.getElementById('fnamePreview'); if(el) el.textContent=filename(); }
-
-/* ---- bank / IBAN ---- */
-function toggleBank(id,show){ var el=document.getElementById(id); if(el) el.classList.toggle('hide',!show); }
 function ibanValid(iban){
-  iban=(''+iban).replace(/\s+/g,'').toUpperCase();
+  iban=(''+(iban||'')).replace(/\s+/g,'').toUpperCase();
   if(!/^[A-Z]{2}[0-9]{2}[A-Z0-9]{10,30}$/.test(iban)) return false;
+  if(iban.slice(0,2)==='IT' && iban.length!==27) return false;
   var r=iban.slice(4)+iban.slice(0,4);
   var exp=r.replace(/[A-Z]/g,function(c){return (c.charCodeAt(0)-55).toString();});
   var rem=0; for(var i=0;i<exp.length;i++){ rem=(rem*10+(exp.charCodeAt(i)-48))%97; }
   return rem===1;
 }
-function bicValid(bic){ return /^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$/.test((''+bic).replace(/\s+/g,'').toUpperCase()); }
-function fmtIban(iban){ return (''+iban).replace(/\s+/g,'').toUpperCase().replace(/(.{4})/g,'$1 ').trim(); }
-function setDot(input,ok,empty){ var d=input.parentNode.querySelector('.vdot'); if(!d)return;
-  d.classList.remove('ok','bad'); if(empty)return; d.classList.add(ok?'ok':'bad'); }
-function onIban(input){ var raw=input.value; var empty=!raw.trim();
-  var ok=ibanValid(raw); setDot(input,ok,empty); }
-function onBic(input){ var empty=!input.value.trim(); setDot(input,bicValid(input.value),empty); }
+function bicValid(bic){ return /^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$/.test((''+(bic||'')).replace(/\s+/g,'').toUpperCase()); }
+function pivaItValid(s){ if(!/^\d{11}$/.test(s)) return false; var sum=0;
+  for(var i=0;i<11;i++){ var d=+s[i]; if(i%2===1){ d*=2; if(d>9)d-=9; } sum+=d; } return sum%10===0; }
+function cfValid(s){ return /^[A-Z]{6}[0-9LMNPQRSTUV]{2}[A-Z][0-9LMNPQRSTUV]{2}[A-Z][0-9LMNPQRSTUV]{3}[A-Z]$/.test(s); }
+function taxIdValid(v){
+  var s=(''+(v||'')).replace(/\s+/g,'').toUpperCase();
+  if(!s) return false;
+  if(/^IT\d{11}$/.test(s)) return pivaItValid(s.slice(2));
+  if(/^\d{11}$/.test(s)) return pivaItValid(s);
+  if(s.length===16) return cfValid(s);
+  if(/^[A-Z]{2}[A-Z0-9]{2,13}$/.test(s) && s.slice(0,2)!=='IT') return true; /* P.IVA UE estera */
+  return false;
+}
+function sdiPecValid(v){ var s=(''+(v||'')).trim();
+  return /^[A-Z0-9]{7}$/i.test(s) || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s); }
 
-async function exportPDF(){
-  var doc=document.getElementById('doc');
-  try{ await computeIntegrity(); }catch(e){ console.warn('hash',e.message);
-    document.querySelectorAll('.hashval').forEach(function(x){x.textContent='(non calcolabile in questo contesto)';}); }
-  if(!(window.html2canvas && window.jspdf)){ alert('Libreria non disponibile: uso la stampa di sistema (Salva come PDF).'); window.print(); return; }
-  var swaps=freezeControls(doc); doc.classList.add('exporting');
-  var prevW=doc.style.width; doc.style.width='800px';
-  try{
-    var canvas=await html2canvas(doc,{scale:2,backgroundColor:'#ffffff',useCORS:true,windowWidth:820,width:800});
-    var img=canvas.toDataURL('image/jpeg',0.95);
-    var jsPDF=window.jspdf.jsPDF;
-    var pdf=new jsPDF('p','mm','a4');
-    var pw=210, ph=297;
-    var iw=pw, ih=canvas.height*pw/canvas.width;
-    pdf.addImage(img,'JPEG',0,0,iw,ih,'','FAST');
-    var heightLeft=ih-ph;
-    while(heightLeft>0.5){ pdf.addPage(); pdf.addImage(img,'JPEG',0,-(ih-heightLeft),iw,ih,'','FAST'); heightLeft-=ph; }
-    pdf.save(filename());
-  }catch(e){ console.error(e); alert('Export non riuscito ('+e.message+'). Uso la stampa di sistema.'); window.print(); }
-  finally{ doc.style.width=prevW; doc.classList.remove('exporting'); unfreeze(swaps); }
+function blankPayload(){
+  var today=isoToday();
+  return { v:2,
+    head:{numero:'',data:today,validita:'30'},
+    creator:{nome:'',cognome:'',societa:''},
+    cli:{ragione:'',sede:'',dest:'',piva:'',sdi:'',referente:'',contatti:''},
+    sw:[{},{},{}], hw:[{},{},{}],
+    cons:{swOre:'',hwGg:'',spese:'incluse',speseAmt:''},
+    pay:{ mode:'classica',
+      ant:{on:false,pct:'30',amt:'',manual:'',date:''},
+      plan:'unico', unicoDate:'', start:'', fm:false, offsets:[30,60,90], rate:[],
+      custom:[], method:'bonifico',
+      bank:{banca:LP_BANK.banca,iban:LP_BANK.iban,bic:LP_BANK.bic},
+      riba:{intest:'',banca:'',iban:'',bic:''},
+      sdd:{intest:'',cf:'',iban:'',bic:'',schema:'',cid:CID_DEFAULT,consent:false} },
+    sign:{lp:null,acc:null,vess:null}
+  };
 }
 
-
-
-/* ---- payment plan (classica) ---- */
-var currentPlan='acconto';
-function setPlan(v){ currentPlan=v; recalc(); }
-function baseDate(){
-  var d=document.querySelectorAll('.head input.dt');
-  var gg=d[0]?d[0].value.trim():'', mm=d[1]?d[1].value.trim():'';
-  if(/^\d{1,2}$/.test(gg)&&/^\d{1,2}$/.test(mm)){ var dt=new Date(2026,(+mm)-1,+gg); if(!isNaN(dt)) return dt; }
-  return new Date();
-}
-function addDays(dt,n){ var x=new Date(dt.getTime()); x.setDate(x.getDate()+n); return x; }
-function fmtDate(dt){ return ('0'+dt.getDate()).slice(-2)+'/'+('0'+(dt.getMonth()+1)).slice(-2)+'/'+dt.getFullYear(); }
-function buildRate(tot){
-  var body=document.getElementById('rateBody'); if(!body) return;
-  var picks=[]; document.querySelectorAll('#ratePick input:checked').forEach(function(c){picks.push(+c.value);});
-  picks.sort(function(x,y){return x-y;});
-  var base=baseDate(); var rb=document.getElementById('rateBase'); if(rb) rb.textContent=fmtDate(base);
-  body.innerHTML='';
-  if(!picks.length){ body.innerHTML='<tr><td colspan="3" class="ratenote">Seleziona almeno una scadenza.</td></tr>'; return; }
-  var n=picks.length, each=Math.round(tot/n*100)/100;
-  for(var i=0;i<n;i++){
-    var amt = i<n-1 ? each : Math.round((tot-each*(n-1))*100)/100;
-    var due=addDays(base,picks[i]);
-    body.innerHTML+='<tr><td>Rata '+(i+1)+' &middot; '+picks[i]+' gg</td><td>'+fmtDate(due)+'</td><td class="num">'+eur(amt)+'</td></tr>';
+/* sincronizza le rate: date a cascata dall'ultima data modificata, importi liberi ripartiti in parti uguali */
+function syncRate(pay, residuo, docDate){
+  var offs=(pay.offsets||[]).map(Number).filter(function(x){return x>0;}).sort(function(a,b){return a-b;});
+  var start=isoOk(pay.start)?pay.start:docDate;
+  var old=pay.rate||[];
+  var rows=[];
+  for(var i=0;i<offs.length;i++){
+    var o=old[i]&&old[i].off===offs[i]?old[i]:{};
+    rows.push({off:offs[i], date:o.date||'', amt:o.amt, mDate:!!o.mDate, mAmt:!!o.mAmt});
   }
+  /* date */
+  var anchor=null;
+  rows.forEach(function(r){
+    if(r.mDate && isoOk(r.date)){ anchor=r; return; }
+    var d = anchor ? isoAdd(anchor.date, r.off-anchor.off) : isoAdd(start, r.off);
+    if(pay.fm) d=isoEom(d);
+    r.date=d; r.mDate=false;
+  });
+  /* importi */
+  var fixed=0, free=[];
+  rows.forEach(function(r){ if(r.mAmt){ r.amtC=cents(r.amt); fixed+=r.amtC; } else free.push(r); });
+  var rem=residuo-fixed;
+  if(free.length){
+    var each=Math.floor(rem/free.length);
+    var extra=rem-each*free.length;
+    free.forEach(function(r,idx){ r.amtC = each + (idx===free.length-1?extra:0); r.amt=fmtAmtC(r.amtC); });
+  }
+  rows.forEach(function(r){ r.amt=fmtAmtC(r.amtC); });
+  pay.rate=rows.map(function(r){ return {off:r.off,date:r.date,amt:r.amt,mDate:r.mDate,mAmt:r.mAmt}; });
+  return rows.map(function(r,i){ return {label:'Rata '+(i+1), date:r.date, amtC:r.amtC, manual:r.mAmt, off:r.off}; });
 }
-/* ---- Altro custom plan ---- */
-function addAltro(){
-  var b=document.getElementById('altroBody'); if(!b) return;
+
+/* modifica importo rata k: blocca rate 0..k, libera le successive */
+function rateEditAmt(pay,k,val){
+  (pay.rate||[]).forEach(function(r,i){ if(i<k) r.mAmt=true; else if(i>k) r.mAmt=false; });
+  if(pay.rate[k]){ pay.rate[k].amt=val; pay.rate[k].mAmt=true; }
+}
+/* modifica data rata k: le successive si ricalcolano a cascata */
+function rateEditDate(pay,k,val){
+  (pay.rate||[]).forEach(function(r,i){ if(i>k) r.mDate=false; });
+  if(pay.rate[k]){ pay.rate[k].date=val; pay.rate[k].mDate=isoOk(val); }
+}
+
+function computeAll(p){
+  var c={lines:[], errors:[]};
+  var docDate=isoOk(p.head&&p.head.data)?p.head.data:isoToday();
+  c.docDate=docDate;
+  var vd=parseInt(p.head&&p.head.validita,10);
+  c.validUntil = vd>0 ? isoAdd(docDate,vd) : '';
+  var imp=0;
+  ['sw','hw'].forEach(function(k){ (p[k]||[]).forEach(function(r,i){
+    var q=num(r.qty), pr=cents(r.price), t=Math.round(q*pr); imp+=t; c.lines.push({k:k,i:i,totC:t}); }); });
+  c.righeC=imp;
+  c.speseC = (p.cons&&p.cons.spese==='addebitate') ? cents(p.cons.speseAmt) : 0;
+  imp+=c.speseC;
+  c.impC=imp; c.ivaC=Math.round(imp*IVA_RATE); c.totC=imp+c.ivaC;
+  var pay=p.pay; var nol=pay.mode==='noleggio';
+  c.baseC = nol ? c.impC : c.totC;
+  c.baseLabel = nol ? 'Totale canoni (IVA esclusa)' : 'Totale ordine (IVA inclusa)';
+  /* anticipo */
+  c.antC=0; c.antPct=0;
+  if(pay.ant.on){
+    if(pay.ant.manual==='1'){ c.antC=cents(pay.ant.amt); c.antPct = c.baseC? Math.round(c.antC/c.baseC*10000)/100 : 0; }
+    else { c.antPct=Math.max(0,num(pay.ant.pct)); c.antC=Math.round(c.baseC*c.antPct/100); }
+    c.antDate = isoOk(pay.ant.date)?pay.ant.date:docDate;
+  }
+  c.resC=c.baseC-c.antC;
+  /* piano */
+  var rows=[];
+  if(pay.plan==='unico'){
+    rows=[{label:'Saldo', date: isoOk(pay.unicoDate)?pay.unicoDate:(pay.ant.on?isoAdd(docDate,30):docDate), amtC:c.resC}];
+  } else if(pay.plan==='rateale'){
+    rows=syncRate(pay, c.resC, docDate);
+  } else if(pay.plan==='custom'){
+    rows=(pay.custom||[]).map(function(r,i){ return {label:r.voce||('Voce '+(i+1)), date:r.date, amtC:cents(r.amt)}; });
+  }
+  c.rows=rows;
+  c.sched=[]; if(pay.ant.on) c.sched.push({label:'Anticipo', date:c.antDate, amtC:c.antC});
+  c.sched=c.sched.concat(rows);
+  c.planSumC=rows.reduce(function(s,r){return s+(r.amtC||0);},0);
+  c.schedSumC=c.antC+c.planSumC;
+  c.diffC=c.baseC-c.schedSumC;
+  c.calcOk=calcCheck(p,c).length===0;
+  return c;
+}
+
+/* self-check dei calcoli: ricalcola tutto da zero e confronta */
+function calcCheck(p,c){
+  var e=[];
+  var sum=0; c.lines.forEach(function(l){ sum+=l.totC; });
+  if(sum!==c.righeC) e.push({k:'tot',msg:'La somma delle righe non coincide con l\'imponibile.'});
+  if(c.righeC+c.speseC!==c.impC) e.push({k:'tot',msg:'Imponibile incoerente con righe e spese.'});
+  if(c.impC+c.ivaC!==c.totC) e.push({k:'tot',msg:'Imponibile + IVA non coincide con il totale.'});
+  if(c.ivaC!==Math.round(c.impC*IVA_RATE)) e.push({k:'tot',msg:'IVA non pari al 22% dell\'imponibile.'});
+  if(p.pay.ant.on){
+    if(c.antC<=0) e.push({k:'pay.ant.pct',msg:'L\'anticipo deve essere maggiore di zero.'});
+    if(c.antC>c.baseC) e.push({k:'pay.ant.amt',msg:'L\'anticipo supera il totale.'});
+  }
+  if(c.resC>0){
+    if(!c.rows.length) e.push({k:p.pay.plan==='rateale'?'pay.offsets':'pay.plan',msg:'Il residuo di '+eurC(c.resC)+' non ha scadenze.'});
+    c.rows.forEach(function(r,i){
+      var key = p.pay.plan==='rateale'?'pay.rate.'+i+'.amt' : p.pay.plan==='custom'?'pay.custom.'+i+'.amt':'pay.unicoDate';
+      if(!(r.amtC>0)) e.push({k:key,msg:r.label+': importo mancante o non positivo.'});
+    });
+  }
+  if(c.schedSumC!==c.baseC){
+    var key2 = p.pay.plan==='custom'?'pay.custom':(p.pay.plan==='rateale'?'pay.rate':'pay.plan');
+    e.push({k:key2,msg:'Il piano ('+eurC(c.schedSumC)+') non coincide con il '+c.baseLabel.toLowerCase()+' ('+eurC(c.baseC)+'): differenza '+eurC(c.diffC)+'.'});
+  }
+  var prev=null;
+  c.sched.forEach(function(r,i){
+    var key = r.label==='Anticipo'?'pay.ant.date':(p.pay.plan==='rateale'?'pay.rate.'+(p.pay.ant.on?i-1:i)+'.date':p.pay.plan==='custom'?'pay.custom.'+(p.pay.ant.on?i-1:i)+'.date':'pay.unicoDate');
+    if(!isoOk(r.date)){ e.push({k:key,msg:r.label+': scadenza mancante.'}); return; }
+    if(r.date<c.docDate) e.push({k:key,msg:r.label+': scadenza precedente alla data del documento.'});
+    if(prev && r.date<prev) e.push({k:key,msg:r.label+': scadenza precedente a quella della voce prima.'});
+    prev=r.date;
+  });
+  return e;
+}
+
+/* validazione completa per l'emissione */
+function validateDoc(p,c){
+  var e=[];
+  function req(k,v,msg,sec){ if(!(''+(v==null?'':v)).trim()) e.push({k:k,msg:msg,sec:sec}); }
+  req('head.numero',p.head.numero,'Numero ordine','Intestazione');
+  if(!isoOk(p.head.data)) e.push({k:'head.data',msg:'Data del documento',sec:'Intestazione'});
+  if(!(parseInt(p.head.validita,10)>0)) e.push({k:'head.validita',msg:'Giorni di validità dell\'offerta',sec:'Intestazione'});
+  req('creator.nome',p.creator.nome,'Nome di chi compila','Compilato da');
+  req('creator.cognome',p.creator.cognome,'Cognome di chi compila','Compilato da');
+  req('creator.societa',p.creator.societa,'Società di riferimento','Compilato da');
+  req('cli.ragione',p.cli.ragione,'Ragione sociale','Cliente');
+  req('cli.sede',p.cli.sede,'Sede legale','Cliente');
+  if(!taxIdValid(p.cli.piva)) e.push({k:'cli.piva',msg:(p.cli.piva?'P.IVA / C.F. non valida':'P.IVA / C.F.'),sec:'Cliente'});
+  if(!sdiPecValid(p.cli.sdi)) e.push({k:'cli.sdi',msg:(p.cli.sdi?'Codice SDI (7 caratteri) o PEC non valida':'Codice SDI o PEC'),sec:'Cliente'});
+  req('cli.referente',p.cli.referente,'Referente','Cliente');
+  req('cli.contatti',p.cli.contatti,'Telefono o email','Cliente');
+  var anyLine=false;
+  [['sw','Software','nome'],['hw','Hardware','descr']].forEach(function(t){
+    (p[t[0]]||[]).forEach(function(r,i){
+      var hasTxt=(r.nome||r.codice||r.descr||'').trim(), q=num(r.qty), pr=num(r.price);
+      if(!hasTxt && !q && !pr) return;
+      if(!hasTxt) e.push({k:t[0]+'.'+i+'.'+t[2],msg:'Riga '+(i+1)+': descrizione',sec:t[1]});
+      if(!(q>0)) e.push({k:t[0]+'.'+i+'.qty',msg:'Riga '+(i+1)+': quantità',sec:t[1]});
+      if(!(pr>0)) e.push({k:t[0]+'.'+i+'.price',msg:'Riga '+(i+1)+': prezzo unitario',sec:t[1]});
+      if(hasTxt&&q>0&&pr>0) anyLine=true;
+    });
+  });
+  if(!anyLine) e.push({k:'sw.0.nome',msg:'Almeno una riga software o hardware completa',sec:'Righe'});
+  if(p.cons.spese==='addebitate' && !(cents(p.cons.speseAmt)>0)) e.push({k:'cons.speseAmt',msg:'Importo delle spese addebitate',sec:'Consegna e spese'});
+  var pay=p.pay;
+  if(!pay.plan) e.push({k:'pay.plan',msg:'Scegli il piano del residuo',sec:'Pagamento'});
+  if(pay.plan==='rateale' && !(pay.offsets||[]).length) e.push({k:'pay.offsets',msg:'Seleziona almeno una scadenza',sec:'Pagamento'});
+  if(pay.plan==='custom') (pay.custom||[]).forEach(function(r,i){ req('pay.custom.'+i+'.voce',r.voce,'Voce '+(i+1)+': descrizione','Pagamento'); });
+  if(c.resC>0 || pay.ant.on){
+    if(pay.method==='bonifico' || pay.ant.on){
+      req('pay.bank.banca',pay.bank.banca,'Banca del fornitore (bonifico)','Coordinate bonifico');
+      if(!ibanValid(pay.bank.iban)) e.push({k:'pay.bank.iban',msg:pay.bank.iban?'IBAN fornitore non valido':'IBAN fornitore',sec:'Coordinate bonifico'});
+      if(pay.bank.bic && !bicValid(pay.bank.bic)) e.push({k:'pay.bank.bic',msg:'BIC fornitore non valido',sec:'Coordinate bonifico'});
+    }
+    if(c.resC>0 && pay.method==='riba'){
+      req('pay.riba.intest',pay.riba.intest,'Intestatario del conto','Ri.Ba.');
+      req('pay.riba.banca',pay.riba.banca,'Banca d\'appoggio','Ri.Ba.');
+      if(!ibanValid(pay.riba.iban)) e.push({k:'pay.riba.iban',msg:pay.riba.iban?'IBAN cliente non valido':'IBAN cliente',sec:'Ri.Ba.'});
+      if(pay.riba.bic && !bicValid(pay.riba.bic)) e.push({k:'pay.riba.bic',msg:'BIC non valido',sec:'Ri.Ba.'});
+    }
+    if(c.resC>0 && pay.method==='sdd'){
+      req('pay.sdd.intest',pay.sdd.intest,'Intestatario del conto','SDD');
+      if(!taxIdValid(pay.sdd.cf)) e.push({k:'pay.sdd.cf',msg:pay.sdd.cf?'C.F. / P.IVA intestatario non valido':'C.F. / P.IVA intestatario',sec:'SDD'});
+      if(!ibanValid(pay.sdd.iban)) e.push({k:'pay.sdd.iban',msg:pay.sdd.iban?'IBAN da addebitare non valido':'IBAN da addebitare',sec:'SDD'});
+      if(pay.sdd.bic && !bicValid(pay.sdd.bic)) e.push({k:'pay.sdd.bic',msg:'BIC non valido',sec:'SDD'});
+      req('pay.sdd.schema',pay.sdd.schema,'Schema SDD (CORE o B2B)','SDD');
+      req('pay.sdd.cid',pay.sdd.cid,'Codice identificativo creditore (CID)','SDD');
+      if(!pay.sdd.consent) e.push({k:'pay.sdd.consent',msg:'Sottoscrizione del mandato SEPA',sec:'SDD'});
+    }
+  }
+  if(!(c.totC>0)) e.push({k:'sw.0.price',msg:'Il totale del documento è zero',sec:'Righe'});
+  calcCheck(p,c).forEach(function(x){ e.push({k:x.k,msg:x.msg,sec:'Calcoli'}); });
+  /* dedup per chiave+messaggio */
+  var seen={}; return e.filter(function(x){ var id=x.k+'|'+x.msg; if(seen[id]) return false; seen[id]=1; return true; });
+}
+
+/* contenuto canonico per l'hash (senza firme) */
+function canon(o){
+  if(Array.isArray(o)) return '['+o.map(canon).join(',')+']';
+  if(o && typeof o==='object'){ return '{'+Object.keys(o).sort().map(function(k){ return JSON.stringify(k)+':'+canon(o[k]); }).join(',')+'}'; }
+  return JSON.stringify(o===undefined?null:o);
+}
+function contentString(p){
+  var q=JSON.parse(JSON.stringify(p)); delete q.sign; delete q.meta;
+  var c=computeAll(JSON.parse(JSON.stringify(q)));
+  return canon({doc:q, calc:{imp:c.impC,iva:c.ivaC,tot:c.totC,base:c.baseC,ant:c.antC,
+    sched:c.sched.map(function(r){return [r.label,r.date,r.amtC];})}});
+}
+async function sha256Hex(str){
+  var subtle=(typeof crypto!=='undefined'&&crypto.subtle)?crypto.subtle:null;
+  if(!subtle) throw new Error('WebCrypto non disponibile');
+  var h=await subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.prototype.map.call(new Uint8Array(h),function(b){return ('0'+b.toString(16)).slice(-2);}).join('');
+}
+async function contentHash(p){ return sha256Hex(contentString(p)); }
+
+if(typeof module!=='undefined'){ module.exports={num:num,cents:cents,eurC:eurC,isoAdd:isoAdd,isoEom:isoEom,ibanValid:ibanValid,
+  taxIdValid:taxIdValid,sdiPecValid:sdiPecValid,blankPayload:blankPayload,computeAll:computeAll,calcCheck:calcCheck,
+  validateDoc:validateDoc,rateEditAmt:rateEditAmt,rateEditDate:rateEditDate,contentHash:contentHash,contentString:contentString}; }
+
+/* ================= UI ================= */
+
+var CURRENT_ROLE='';
+var VESS_CLASSICA="Ai sensi e per gli effetti degli artt. 1341 e 1342 c.c., il Cliente dichiara di aver letto e di approvare specificamente le clausole relative a: art. 1 (limitazioni di responsabilità del fornitore sul software), art. 2 (riserva di proprietà sull'hardware) e art. 3 (foro esclusivamente competente di Milano).";
+var VESS_NOLEGGIO="Ai sensi e per gli effetti degli artt. 1341 e 1342 c.c., il Cliente approva espressamente le clausole relative a: art. 4 (durata e tacito rinnovo automatico dopo 12 mesi), art. 5.1 (limitazioni di responsabilità sul software), art. 5.2 (riserva di proprietà dei beni hardware) e art. 5.3 (foro esclusivamente competente di Milano).";
+var OFFSETS_ALL=[30,60,90,120,150,180,210,240,270,300,330,360];
+
+var P=null;            /* payload corrente */
+var DOC={id:null,created:null,status:'bozza',hash:'',numeroBase:''};
+var LAST={c:null};
+
+function $(id){ return document.getElementById(id); }
+function setText(id,t){ var e=$(id); if(e) e.textContent=t; }
+function esc(t){ return (''+(t==null?'':t)).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
+
+/* ---- path helpers ---- */
+function getPath(o,path){ return path.split('.').reduce(function(a,k){ return a==null?undefined:a[k]; },o); }
+function setPath(o,path,v){ var ks=path.split('.'); var cur=o;
+  for(var i=0;i<ks.length-1;i++){ var k=ks[i]; if(cur[k]==null) cur[k]=/^\d+$/.test(ks[i+1])?[]:{}; cur=cur[k]; }
+  cur[ks[ks.length-1]]=v; }
+
+/* ---- righe software/hardware ---- */
+function lineRow(kind,i){
   var tr=document.createElement('tr');
-  tr.innerHTML='<td><input class="in"></td>'+
-    '<td><input class="in" placeholder="gg/mm/aaaa o evento"></td>'+
-    '<td class="cellnum"><input class="in cellnum altimp"></td>'+
-    '<td class="act"><button class="rowdel" type="button" onclick="delAltro(this)">&times;</button></td>';
-  b.appendChild(tr);
-  var imp=tr.querySelector('.altimp'); if(imp) imp.addEventListener('input',sumAltro);
-  sumAltro();
+  var del='<td class="act"><button class="rowdel" type="button" title="Rimuovi" aria-label="Rimuovi riga" onclick="delLine(\''+kind+'\','+i+')">×</button></td>';
+  if(kind==='sw') tr.innerHTML=
+    '<td><input class="in" data-k="sw.'+i+'.nome"></td>'+
+    '<td><select class="in" data-k="sw.'+i+'.tipo"><option value=""></option><option>Perpetua</option><option>Abbonamento</option></select></td>'+
+    '<td><input class="in" data-k="sw.'+i+'.durata"></td>'+
+    '<td class="cellnum"><input class="in cellnum" inputmode="decimal" data-k="sw.'+i+'.qty"></td>'+
+    '<td class="cellnum"><input class="in cellnum" inputmode="decimal" data-k="sw.'+i+'.price"></td>'+
+    '<td class="tot" data-tot="sw.'+i+'">€ 0,00</td>'+del;
+  else tr.innerHTML=
+    '<td><input class="in" data-k="hw.'+i+'.codice"></td>'+
+    '<td><input class="in" data-k="hw.'+i+'.descr"></td>'+
+    '<td class="cellnum"><input class="in cellnum" inputmode="decimal" data-k="hw.'+i+'.qty"></td>'+
+    '<td class="cellnum"><input class="in cellnum" inputmode="decimal" data-k="hw.'+i+'.price"></td>'+
+    '<td class="tot" data-tot="hw.'+i+'">€ 0,00</td>'+del;
+  return tr;
 }
-function delAltro(btn){ var tr=btn.closest('tr'); tr.parentNode.removeChild(tr); sumAltro(); }
-function sumAltro(){ var s=0; document.querySelectorAll('#altroBody .altimp').forEach(function(el){ s+=num(el.value); });
-  var el=document.getElementById('altroSum'); if(el) el.textContent=eur(s); }
+function renderLines(){
+  ['sw','hw'].forEach(function(kind){
+    var body=document.querySelector(kind==='sw'?'#tblSw tbody':'#tblHw tbody'); body.innerHTML='';
+    (P[kind]||[]).forEach(function(_,i){ body.appendChild(lineRow(kind,i)); });
+  });
+}
+function addLine(kind){ if(isLocked()) return; collect(); P[kind].push({}); renderStructure(); }
+function delLine(kind,i){ if(isLocked()) return; collect(); P[kind].splice(i,1); if(!P[kind].length) P[kind].push({}); renderStructure(); }
 
+/* ---- voci personalizzate ---- */
+function renderCustom(){
+  var b=$('customBody'); b.innerHTML='';
+  (P.pay.custom||[]).forEach(function(_,i){
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td><input class="box" data-k="pay.custom.'+i+'.voce" placeholder="es. Saldo alla consegna"></td>'+
+      '<td><input class="box" type="date" data-k="pay.custom.'+i+'.date"></td>'+
+      '<td><input class="box amt" inputmode="decimal" data-k="pay.custom.'+i+'.amt"></td>'+
+      '<td class="act"><button class="rowdel" type="button" aria-label="Rimuovi voce" onclick="delCustom('+i+')">×</button></td>';
+    b.appendChild(tr);
+  });
+}
+function addCustom(){ if(isLocked()) return; collect(); P.pay.custom.push({voce:'',date:'',amt:''}); renderStructure(); }
+function delCustom(i){ if(isLocked()) return; collect(); P.pay.custom.splice(i,1); renderStructure(); }
+function customFill(){
+  if(isLocked()) return; collect(); var c=computeAll(clone(P));
+  if(!P.pay.custom.length){ P.pay.custom.push({voce:'Saldo',date:'',amt:''}); }
+  var last=P.pay.custom[P.pay.custom.length-1];
+  last.amt=fmtAmtC(cents(last.amt)+c.diffC);
+  renderStructure();
+}
 
-/* ===================== FES rinforzata ===================== */
-var currentPayMode='classica';
-var SIGN={acc:null, vess:null};
-var activeSlot=null;
-var pad=null;
-var FES_NOTE="Firma Elettronica Semplice rinforzata: firma grafica tracciata dal firmatario, dati identificativi dichiarati, marca temporale del dispositivo all'atto della firma, consenso esplicito alle condizioni e alle clausole vessatorie, e impronta crittografica SHA-256 che sigilla l'integrit\u00e0 del documento firmato. Non equivale alla firma autografa/qualificata (FEQ): efficacia probatoria liberamente valutabile dal giudice ex artt. 20-21 CAD.";
-
-function toggleFes(){ var n=document.getElementById('fesNote'); if(!n)return;
-  if(!n.textContent) n.textContent=FES_NOTE; n.classList.toggle('hide'); }
-
-function consentText(slot){
-  if(slot==='vess'){
-    var arts=currentPayMode==='noleggio'?'art. 4, 5.1, 5.2, 5.3':'art. 1, 2, 3';
-    return "Approvo specificamente, ai sensi degli artt. 1341-1342 c.c., le clausole vessatorie del contratto ("+arts+").";
+/* ---- rate ---- */
+function renderChips(){
+  var box=$('offChips'); box.innerHTML='';
+  OFFSETS_ALL.forEach(function(o){
+    var on=(P.pay.offsets||[]).indexOf(o)>=0;
+    var l=document.createElement('label'); if(on) l.className='on';
+    l.innerHTML='<input type="checkbox" data-off="'+o+'"'+(on?' checked':'')+'> '+o+' gg';
+    box.appendChild(l);
+  });
+}
+function renderRateRows(c){
+  var b=$('rateBody'); var rows=c.rows;
+  if(b.children.length!==rows.length || b.getAttribute('data-n')!==String(rows.length)){
+    b.innerHTML=''; b.setAttribute('data-n',rows.length);
+    rows.forEach(function(r,i){
+      var tr=document.createElement('tr');
+      tr.innerHTML='<td class="lab">Rata '+(i+1)+' <small style="color:var(--muted);font-weight:400">'+r.off+' gg</small></td>'+
+        '<td><input class="box" type="date" data-rate="'+i+'" data-f="date" data-k2="pay.rate.'+i+'.date"></td>'+
+        '<td><input class="box amt" inputmode="decimal" data-rate="'+i+'" data-f="amt" data-k2="pay.rate.'+i+'.amt"></td>';
+      b.appendChild(tr);
+    });
+    if(!rows.length) b.innerHTML='<tr><td colspan="3" class="note">Seleziona almeno una scadenza.</td></tr>';
   }
+  var act=document.activeElement;
+  rows.forEach(function(r,i){
+    var d=b.querySelector('[data-rate="'+i+'"][data-f="date"]'), a=b.querySelector('[data-rate="'+i+'"][data-f="amt"]');
+    if(d && d!==act) d.value=r.date||'';
+    if(a && a!==act) a.value=fmtAmtC(r.amtC);
+    if(a) a.closest('tr').classList.toggle('man',!!r.manual);
+  });
+}
+function resetRate(){ if(isLocked()) return; collect(); P.pay.rate=[]; P.pay.start=P.pay.start||''; refresh(); }
+
+/* ---- collect / apply ---- */
+function clone(o){ return JSON.parse(JSON.stringify(o)); }
+function collect(){
+  if(!P) P=blankPayload();
+  document.querySelectorAll('#doc [data-k]').forEach(function(el){
+    var k=el.getAttribute('data-k');
+    if(el.type==='radio'){ if(el.checked) setPath(P,k,el.value); return; }
+    if(el.type==='checkbox'){ setPath(P,k,el.checked); return; }
+    setPath(P,k,el.value);
+  });
+  var offs=[]; document.querySelectorAll('#offChips input[data-off]').forEach(function(x){ if(x.checked) offs.push(+x.getAttribute('data-off')); });
+  if(document.querySelector('#offChips input')) P.pay.offsets=offs;
+  return P;
+}
+function applyValues(){
+  document.querySelectorAll('#doc [data-k]').forEach(function(el){
+    var v=getPath(P,el.getAttribute('data-k'));
+    if(el.type==='radio') el.checked=(v===el.value);
+    else if(el.type==='checkbox') el.checked=!!v;
+    else el.value=(v==null?'':v);
+  });
+  document.querySelectorAll('#doc .ibanin').forEach(function(x){ dot(x,ibanValid(x.value),!x.value.trim()); });
+  document.querySelectorAll('#doc .bicin').forEach(function(x){ dot(x,bicValid(x.value),!x.value.trim()); });
+}
+function renderStructure(){ renderLines(); renderCustom(); renderChips(); applyValues(); refresh(); }
+
+/* ---- ricalcolo e rendering ---- */
+function refresh(){
+  collect();
+  var c=computeAll(P); LAST.c=c;
+  var pay=P.pay, nol=pay.mode==='noleggio';
+  c.lines.forEach(function(l){ var td=document.querySelector('[data-tot="'+l.k+'.'+l.i+'"]'); if(td) td.textContent=eurC(l.totC); });
+  setText('validUntil',c.validUntil?isoFmt(c.validUntil):'—');
+  /* segmented state */
+  document.querySelectorAll('#doc .pseg label, #offChips label').forEach(function(l){ var i=l.querySelector('input'); if(i) l.classList.toggle('on',i.checked); });
+  /* formula */
+  setText('pvMode',nol?'Noleggio operativo':'Vendita classica');
+  $('clauseClassica').classList.toggle('hide',nol); $('clauseNoleggio').classList.toggle('hide',!nol);
+  setText('vessText',nol?VESS_NOLEGGIO:VESS_CLASSICA);
+  setText('deliveryNote', nol?'Noleggio operativo: importi del piano IVA esclusa, durata minima 12 mesi con rinnovo tacito.':'Vendita classica: importi del piano IVA inclusa.');
+  /* anticipo */
+  $('stepAnt').classList.toggle('off',!pay.ant.on);
+  setText('pvAnt', pay.ant.on? eurC(c.antC)+' ('+(''+c.antPct).replace('.',',')+'%)' : 'Nessuno');
+  var act=document.activeElement;
+  if(pay.ant.on){
+    if(pay.ant.manual==='1'){ if($('antPct')!==act) $('antPct').value=(''+c.antPct).replace('.',','); }
+    else { if($('antAmt')!==act) $('antAmt').value=fmtAmtC(c.antC); }
+    if(!pay.ant.date && $('antDate')!==act){ $('antDate').value=c.antDate; pay.ant.date=c.antDate; }
+  }
+  /* piano */
+  $('planUnico').classList.toggle('hide',pay.plan!=='unico');
+  $('planRate').classList.toggle('hide',pay.plan!=='rateale');
+  $('planCustom').classList.toggle('hide',pay.plan!=='custom');
+  var planName={unico:'Saldo unico',rateale:'Rateale',custom:'Personalizzato'}[pay.plan]||'—';
+  setText('pvPlan', planName+' · '+eurC(c.resC));
+  if(pay.plan==='unico'){
+    if($('unicoDate')!==act && !pay.unicoDate){ $('unicoDate').value=c.rows[0].date; }
+    setText('unicoAmt',eurC(c.resC));
+  }
+  if(pay.plan==='rateale'){
+    if($('rateStart')!==act && !pay.start){ $('rateStart').value=c.docDate; }
+    renderRateRows(c);
+    setText('rateSum',eurC(c.planSumC));
+    var rb=$('rateBal'); var okR=c.planSumC===c.resC;
+    rb.className='bv '+(okR?'ok':'ko'); rb.textContent= okR?'Le rate coprono il residuo':'Differenza '+eurC(c.resC-c.planSumC);
+  }
+  if(pay.plan==='custom'){
+    setText('customSum',eurC(c.planSumC));
+    var cb=$('customBal'); var okC=c.planSumC===c.resC;
+    cb.className='bv '+(okC?'ok':'ko'); cb.textContent=eurC(c.resC-c.planSumC);
+  }
+  /* metodo */
+  var needRes=c.resC>0;
+  $('stepMethod').classList.toggle('off',!needRes && !pay.ant.on);
+  setText('pvMethod',{bonifico:'Bonifico',riba:'Ri.Ba.',sdd:'SDD'}[pay.method]||'—');
+  $('blkBonifico').classList.toggle('hide',!(pay.method==='bonifico'||pay.ant.on));
+  $('blkRiba').classList.toggle('hide',!(needRes && pay.method==='riba'));
+  $('blkSdd').classList.toggle('hide',!(needRes && pay.method==='sdd'));
+  /* consegna */
+  $('speseRow').classList.toggle('hide',P.cons.spese!=='addebitate');
+  setText('pvDeliv', P.cons.spese==='addebitate'?'Spese '+eurC(c.speseC):'Spese incluse');
+  renderTotals(c);
+  updateFname();
+}
+
+function renderTotals(c){
+  var h='';
+  h+='<div class="l"><span>Totale imponibile'+(c.speseC?' <small>(incl. spese '+eurC(c.speseC)+')</small>':'')+'</span><span>'+eurC(c.impC)+'</span></div>';
+  h+='<div class="l"><span>IVA (22%)</span><span>'+eurC(c.ivaC)+'</span></div>';
+  h+='<div class="l grand"><span>Totale ordine (IVA incl.)</span><span>'+eurC(c.totC)+'</span></div>';
+  if(P.pay.mode==='noleggio') h+='<div class="l"><span>Base del piano <small>(IVA esclusa)</small></span><span>'+eurC(c.baseC)+'</span></div>';
+  h+='<div class="l head2"><span>Piano di pagamento'+(P.pay.mode==='noleggio'?' · IVA esclusa':' · IVA inclusa')+'</span><span></span></div>';
+  c.sched.forEach(function(r){ h+='<div class="l sub"><span>'+esc(r.label)+' · '+isoFmt(r.date)+'</span><span>'+eurC(r.amtC)+'</span></div>'; });
+  var ok=c.calcOk;
+  h+='<div class="l chk '+(ok?'ok':'ko')+'"><span>'+(ok?'Piano = totale':'Piano non coerente')+'</span><span>'+(ok?'✓ '+eurC(c.schedSumC):'Δ '+eurC(c.diffC))+'</span></div>';
+  $('totBox').innerHTML=h;
+}
+
+/* ---- eventi delegati ---- */
+function onDocInput(e){
+  var t=e.target;
+  var ee=t.closest&&t.closest('.err'); if(ee) clearErr(ee);
+  if(t.classList.contains('ibanin')) dot(t,ibanValid(t.value),!t.value.trim());
+  if(t.classList.contains('bicin')) dot(t,bicValid(t.value),!t.value.trim());
+  if(isLocked()) return;
+  if(t.hasAttribute('data-rate')) return;        /* gestite su change */
+  if(t.id==='antAmt'){ $('antManual').value='1'; }
+  if(t.id==='antPct'){ $('antManual').value=''; }
+  if(t.getAttribute('data-k')==='pay.mode'){ collect(); applyModeDefaults(); return; }
+  if(t.getAttribute('data-off')){ collect(); P.pay.rate=[]; renderStructure(); return; }
+  if(t.getAttribute('data-k')==='pay.plan' && t.value==='custom' && !P.pay.custom.length){ collect(); P.pay.custom=[{voce:'',date:'',amt:''}]; renderStructure(); return; }
+  if(t.id==='rateStart' || t.id==='rateFm'){ collect(); (P.pay.rate||[]).forEach(function(r){ r.mDate=false; }); }
+  if(t.id==='docDate'){
+    var od=P.head.data; collect(); var nd=P.head.data;
+    if(isoOk(nd)&&isoOk(od)&&nd!==od){
+      if(P.pay.start===od) P.pay.start=nd;
+      if(P.pay.ant.date===od) P.pay.ant.date=nd;
+      if(P.pay.unicoDate===od) P.pay.unicoDate=nd; else if(P.pay.unicoDate===isoAdd(od,30)) P.pay.unicoDate=isoAdd(nd,30);
+      applyValues();
+    }
+    (P.pay.rate||[]).forEach(function(r){ r.mDate=false; });
+  }
+  refresh();
+}
+function onDocChange(e){
+  var t=e.target;
+  if(isLocked()) return;
+  if(t.hasAttribute('data-rate')){
+    collect();
+    var i=+t.getAttribute('data-rate');
+    if(t.getAttribute('data-f')==='amt') rateEditAmt(P.pay,i,t.value); else rateEditDate(P.pay,i,t.value);
+    refresh(); return;
+  }
+  if(t.type==='radio'||t.type==='checkbox'||t.tagName==='SELECT'||t.type==='date') onDocInput(e);
+  if(t.classList.contains('amt') && !t.hasAttribute('data-rate')){
+    /* normalizza il formato importo */
+    if(t.value.trim()) t.value=fmtAmtC(cents(t.value)); refresh();
+  }
+}
+function applyModeDefaults(){
+  if(P.pay.mode==='noleggio'){ P.pay.plan='rateale'; P.pay.offsets=OFFSETS_ALL.slice(); P.pay.method='sdd'; }
+  else { P.pay.plan='unico'; P.pay.offsets=[30,60,90]; P.pay.method='bonifico'; }
+  P.pay.rate=[]; renderStructure();
+}
+
+/* ---- IBAN dot ---- */
+function dot(input,ok,empty){ var d=input.parentNode.querySelector('.vdot'); if(!d)return;
+  d.classList.remove('ok','bad'); if(empty)return; d.classList.add(ok?'ok':'bad'); }
+
+/* ---- nome file ---- */
+function slugName(str){
+  if(!str) return 'Cliente';
+  str=(''+str).normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  var parts=str.replace(/S\.?r\.?l\.?|S\.?p\.?A\.?|S\.?n\.?c\.?|S\.?a\.?s\.?/ig,'').replace(/[^A-Za-z0-9 ]/g,' ').trim().split(/\s+/).filter(Boolean);
+  return (parts.map(function(w){return w.charAt(0).toUpperCase()+w.slice(1);}).join('').slice(0,24))||'Cliente';
+}
+function filename(){
+  var c=LAST.c||computeAll(P);
+  var imp=Math.round(c.impC/100);
+  return c.docDate+'_CopiaCommissioni_'+slugName(P.cli.ragione)+(imp>0?('_'+imp+'EUR'):'')+'.pdf';
+}
+function updateFname(){ setText('fnamePreview',filename()); }
+
+/* ================= VALIDAZIONE UI ================= */
+function fieldFor(k){
+  var el=document.querySelector('#doc [data-k="'+k+'"]') || document.querySelector('#doc [data-k2="'+k+'"]');
+  if(el && el.type==='radio'){ return el.closest('.pseg')||el; }
+  if(!el && k==='pay.offsets') el=$('offChips');
+  if(!el && k==='pay.custom') el=$('customBody');
+  if(!el && k==='pay.rate') el=$('rateBody');
+  if(!el && k==='pay.plan') el=document.querySelector('#stepPlan .pseg');
+  if(!el && k==='tot') el=$('totBox');
+  return el;
+}
+function markErrors(list){
+  clearAllErr();
+  list.forEach(function(x){
+    var el=fieldFor(x.k); if(!el) return;
+    if(el.type==='checkbox'){ el=el.closest('label')||el; }
+    el.classList.add('err');
+    var host=el.closest('.fld .val, .bf, .ff, .cf, td, .mconsent') || el.parentNode;
+    if(host && !host.querySelector('.errmsg')){ var s=document.createElement('span'); s.className='errmsg'; s.textContent=x.msg; host.appendChild(s); }
+    var step=el.closest('.pstep'); if(step) step.classList.remove('off');
+  });
+}
+function clearErr(el){ el.classList.remove('err'); var host=el.closest('.fld .val, .bf, .ff, .cf, td, .mconsent')||el.parentNode; var m=host&&host.querySelector('.errmsg'); if(m) m.remove(); }
+function clearAllErr(){ document.querySelectorAll('#doc .err').forEach(function(e){ e.classList.remove('err'); }); document.querySelectorAll('#doc .errmsg').forEach(function(e){ e.remove(); }); }
+function showErrors(title,intro,list){
+  setText('eTitle',title); setText('eIntro',intro);
+  var ul=$('eList'); ul.innerHTML='';
+  list.forEach(function(x,i){
+    var li=document.createElement('li');
+    li.innerHTML='<b>'+esc(x.sec||'')+'</b><span>'+esc(x.msg)+'</span>'+(fieldFor(x.k)?'<button type="button" data-i="'+i+'">Vai al campo</button>':'');
+    ul.appendChild(li);
+  });
+  ul.onclick=function(ev){ var b=ev.target.closest('button[data-i]'); if(!b) return; var x=list[+b.getAttribute('data-i')]; closeErr(); goField(x.k); };
+  $('errModal').classList.remove('hide'); document.documentElement.classList.add('modal-open');
+}
+function closeErr(){ $('errModal').classList.add('hide'); document.documentElement.classList.remove('modal-open'); }
+function goField(k){ var el=fieldFor(k); if(!el) return; try{ el.scrollIntoView({behavior:'smooth',block:'center'}); }catch(e){}
+  if(el.focus) setTimeout(function(){ try{ el.focus({preventScroll:true}); }catch(e){ el.focus(); } },250); }
+
+/* ================= STATO DOCUMENTO ================= */
+function isLocked(){ return !!SHARE || DOC.status==='emesso'||DOC.status==='firmato'; }
+function hasClientSign(){ return DOC.status==='firmato' || !!(P.sign&&(P.sign.acc||P.sign.vess)); }
+function applyLock(){
+  var locked=isLocked();
+  var d=$('doc'); d.classList.toggle('docLocked',locked);
+  document.querySelectorAll('#doc [data-k], #doc [data-k2], #offChips input').forEach(function(el){
+    if(el.id==='antManual') return;
+    if(locked) el.setAttribute('disabled',''); else if(!el.hasAttribute('data-fixed')) el.removeAttribute('disabled');
+  });
+  var ban=$('stBanner'); ban.className='stbanner '+DOC.status;
+  var labels={bozza:'Bozza',emesso:'Emesso',firmato:'Firmato'};
+  setText('stPill',labels[DOC.status]);
+  setText('stText', DOC.status==='bozza'?'Documento in compilazione. Firma per emettere quando è completo.'
+    : DOC.status==='emesso'?'Emesso e bloccato. In attesa delle firme del cliente.'
+    : 'Firmato da emittente e cliente. Per cambiarlo crea una revisione.');
+  setText('stHash', DOC.hash?'SHA-256 '+DOC.hash.slice(0,16)+'…':'');
+  var owner=!SHARE;
+  $('btnEmit').classList.toggle('hide',locked);
+  $('btnSave').classList.toggle('hide',locked);
+  $('btnEdit').classList.toggle('hide',!(owner && locked && !hasClientSign()));
+  $('btnRev').classList.toggle('hide',!(owner && locked && hasClientSign()));
+  $('btnShare').classList.toggle('hide',!(owner && DOC.status==='emesso'));
+  $('btnUpload').classList.toggle('hide',!(owner && DOC.status==='emesso'));
+  var sc=P.meta&&P.meta.signedCopy;
+  $('btnCopy').classList.toggle('hide',!(owner && sc));
+  if(SHARE){ setText('stText', DOC.status==='firmato'?'Documento firmato. Puoi scaricarne il PDF.':'Verifica i dati e firma nei due riquadri in fondo al documento.'); }
+  else if(sc){ setText('stText','Firmato con copia PDF caricata il '+new Date(sc.ts).toLocaleDateString('it-IT')+(sc.by?' da '+sc.by:'')+'.'); }
+  ['acc','vess'].forEach(function(s){ var box=$('slot-'+s); box.querySelector('.sigwait').classList.toggle('hide',locked); });
+  ['lp','acc','vess'].forEach(renderSign);
+  setText('hashMain', DOC.hash||'— (calcolata all\'emissione)');
+  setText('hashTs', P.sign&&P.sign.lp?P.sign.lp.ts:'—');
+}
+
+/* ================= FIRME ================= */
+var activeSlot=null, pad=null, emitPending=false;
+var FES_NOTE="Firma Elettronica Semplice rinforzata: firma grafica tracciata dal firmatario, dati identificativi dichiarati, marca temporale del dispositivo all'atto della firma, consenso esplicito alle condizioni e alle clausole vessatorie, e impronta crittografica SHA-256 che sigilla l'integrità del contenuto firmato. Non equivale alla firma qualificata (FEQ): efficacia probatoria liberamente valutabile dal giudice ex artt. 20-21 CAD.";
+function toggleFes(){ var n=$('fesNote'); if(!n.textContent) n.textContent=FES_NOTE; n.classList.toggle('hide'); }
+function consentText(slot){
+  if(slot==='lp') return "Confermo che dati, importi e scadenze sono corretti ed emetto il documento. Dopo l'emissione il contenuto è bloccato.";
+  if(slot==='vess'){ var arts=P.pay.mode==='noleggio'?'art. 4, 5.1, 5.2, 5.3':'art. 1, 2, 3';
+    return "Approvo specificamente, ai sensi degli artt. 1341-1342 c.c., le clausole vessatorie del contratto ("+arts+")."; }
   return "Dichiaro di aver preso visione e di accettare integralmente le condizioni generali di fornitura e il piano economico indicato.";
 }
-
 function makePad(canvas){
   var ctx=canvas.getContext('2d'); var drawing=false,last=null,strokes=0;
   function size(){ var r=canvas.getBoundingClientRect(); var dpr=window.devicePixelRatio||1;
-    var w=r.width||480,h=r.height||200;
-    canvas.width=Math.round(w*dpr); canvas.height=Math.round(h*dpr);
-    ctx.setTransform(1,0,0,1,0,0); ctx.scale(dpr,dpr);
-    ctx.lineWidth=2.4; ctx.lineCap='round'; ctx.lineJoin='round'; ctx.strokeStyle='#0E2A28'; }
+    var w=r.width||480,h=r.height||200; canvas.width=Math.round(w*dpr); canvas.height=Math.round(h*dpr);
+    ctx.setTransform(1,0,0,1,0,0); ctx.scale(dpr,dpr); ctx.lineWidth=2.4; ctx.lineCap='round'; ctx.lineJoin='round'; ctx.strokeStyle='#0E2A28'; }
   function xy(e){ var r=canvas.getBoundingClientRect(); var cx=e.clientX,cy=e.clientY;
     if(cx==null&&e.touches&&e.touches[0]){cx=e.touches[0].clientX;cy=e.touches[0].clientY;}
-    if(cx==null&&e.changedTouches&&e.changedTouches[0]){cx=e.changedTouches[0].clientX;cy=e.changedTouches[0].clientY;}
     return {x:(cx||0)-r.left,y:(cy||0)-r.top}; }
   function down(e){ if(e.cancelable)e.preventDefault(); drawing=true; last=xy(e);
     if(canvas.setPointerCapture&&e.pointerId!=null){try{canvas.setPointerCapture(e.pointerId);}catch(_){}}
@@ -1178,52 +1693,35 @@ function makePad(canvas){
   function move(e){ if(!drawing)return; if(e.cancelable)e.preventDefault(); var p=xy(e);
     ctx.beginPath(); ctx.moveTo(last.x,last.y); ctx.lineTo(p.x,p.y); ctx.stroke(); last=p; strokes++; }
   function up(){ drawing=false; }
-  if(window.PointerEvent){
-    canvas.addEventListener('pointerdown',down);
-    canvas.addEventListener('pointermove',move);
-    canvas.addEventListener('pointerup',up);
-    canvas.addEventListener('pointercancel',up);
-  } else {
-    canvas.addEventListener('mousedown',down);
-    canvas.addEventListener('mousemove',move);
-    window.addEventListener('mouseup',up);
-    canvas.addEventListener('touchstart',down,{passive:false});
-    canvas.addEventListener('touchmove',move,{passive:false});
-    canvas.addEventListener('touchend',up);
-  }
-  return { size:size,
-    clear:function(){ ctx.clearRect(0,0,canvas.width,canvas.height); strokes=0; },
-    isEmpty:function(){ return strokes===0; },
-    stroke:function(n){ strokes+=(n||1); },
+  if(window.PointerEvent){ canvas.addEventListener('pointerdown',down); canvas.addEventListener('pointermove',move);
+    canvas.addEventListener('pointerup',up); canvas.addEventListener('pointercancel',up); }
+  else { canvas.addEventListener('mousedown',down); canvas.addEventListener('mousemove',move); window.addEventListener('mouseup',up);
+    canvas.addEventListener('touchstart',down,{passive:false}); canvas.addEventListener('touchmove',move,{passive:false}); canvas.addEventListener('touchend',up); }
+  return { size:size, clear:function(){ ctx.clearRect(0,0,canvas.width,canvas.height); strokes=0; },
+    isEmpty:function(){ return strokes===0; }, stroke:function(n){ strokes+=(n||1); },
     dataURL:function(){ try{return canvas.toDataURL('image/png');}catch(e){return '';} } };
 }
-
-function openSign(slot){
+var LAST_SIGNER={};
+function openSign(slot, keepConsent){
+  if(SHARE && (slot==='lp' || !SHARE.intact || DOC.status!=='emesso')) return;
   activeSlot=slot;
-  document.getElementById('mTitle').textContent = slot==='vess'?'Firma — approvazione clausole vessatorie':'Firma — accettazione';
-  document.getElementById('sfConsentText').textContent=consentText(slot);
-  document.getElementById('sfConsent').checked=false;
-  document.getElementById('sfErr').textContent='';
-  var pre=SIGN[slot]||SIGN.acc||SIGN.vess;
-  document.getElementById('sfNome').value=pre?pre.nome:'';
-  document.getElementById('sfRuolo').value=pre?pre.ruolo:'';
-  document.getElementById('sfLuogo').value=pre?pre.luogo:'';
-  document.getElementById('sfDoc').value=pre?pre.doc:'';
+  setText('mTitle', slot==='lp'?'Firma per emettere':slot==='vess'?'Firma cliente — clausole vessatorie':'Firma cliente — accettazione');
+  setText('sfConsentText',consentText(slot));
+  setText('sfOk', slot==='lp'?'Firma ed emetti':'Conferma firma');
+  $('sfErr').textContent='';
+  var cur=P.sign[slot];
+  var pre = cur || (slot==='lp' ? {nome:(P.creator.nome+' '+P.creator.cognome).trim(), ruolo:P.creator.societa, luogo:LAST_SIGNER.luogo||'', doc:''}
+                                : (P.sign.acc||P.sign.vess||{nome:P.cli.referente,ruolo:'',luogo:'',doc:''}));
+  $('sfNome').value=pre.nome||''; $('sfRuolo').value=pre.ruolo||''; $('sfLuogo').value=pre.luogo||''; $('sfDoc').value=pre.doc||'';
+  $('sfConsent').checked=!!(keepConsent && cur && cur.consent);
   document.documentElement.classList.add('modal-open');
-  document.getElementById('signModal').classList.remove('hide');
-  if(!pad) pad=makePad(document.getElementById('sigPad'));
+  $('signModal').classList.remove('hide');
+  if(!pad) pad=makePad($('sigPad'));
   requestAnimationFrame(function(){ pad.size(); pad.clear(); });
-  setTimeout(function(){ if(pad) pad.size(); },70);
-  if(!window.__padResize){ window.__padResize=1;
-    window.addEventListener('resize',function(){ var m=document.getElementById('signModal');
-      if(pad&&m&&!m.classList.contains('hide')&&pad.isEmpty()) pad.size(); });
-    window.addEventListener('orientationchange',function(){ setTimeout(function(){
-      var m=document.getElementById('signModal'); if(pad&&m&&!m.classList.contains('hide')&&pad.isEmpty()) pad.size(); },200); });
-  }
+  setTimeout(function(){ if(pad&&pad.isEmpty()) pad.size(); },70);
 }
 function clearPad(){ if(pad) pad.clear(); }
-function cancelSign(){ document.getElementById('signModal').classList.add('hide'); document.documentElement.classList.remove('modal-open'); activeSlot=null; }
-
+function cancelSign(){ $('signModal').classList.add('hide'); document.documentElement.classList.remove('modal-open'); activeSlot=null; emitPending=false; }
 function validateSign(d){
   if(!d.nome.trim()) return 'Inserisci nome e cognome.';
   if(!d.luogo.trim()) return 'Inserisci il luogo.';
@@ -1231,296 +1729,564 @@ function validateSign(d){
   if(d.empty) return 'Apponi la firma nel riquadro.';
   return '';
 }
-function confirmSign(){
-  var d={ nome:document.getElementById('sfNome').value, ruolo:document.getElementById('sfRuolo').value,
-    luogo:document.getElementById('sfLuogo').value, doc:document.getElementById('sfDoc').value,
-    consent:document.getElementById('sfConsent').checked, empty: pad?pad.isEmpty():true };
-  var err=validateSign(d);
-  if(err){ document.getElementById('sfErr').textContent=err; return; }
-  d.ts=new Date().toLocaleString('it-IT'); d.img=pad?pad.dataURL():'';
-  SIGN[activeSlot]=d; renderSign(activeSlot); cancelSign();
+async function confirmSign(){
+  var d={ nome:$('sfNome').value, ruolo:$('sfRuolo').value, luogo:$('sfLuogo').value, doc:$('sfDoc').value,
+    consent:$('sfConsent').checked, empty: pad?pad.isEmpty():true };
+  var err=validateSign(d); if(err){ $('sfErr').textContent=err; return; }
+  d.ts=new Date().toLocaleString('it-IT'); d.tsIso=new Date().toISOString(); d.img=pad?pad.dataURL():''; delete d.empty;
+  LAST_SIGNER.luogo=d.luogo;
+  var slot=activeSlot, wasEmit=emitPending;
+  $('signModal').classList.add('hide'); document.documentElement.classList.remove('modal-open'); activeSlot=null; emitPending=false;
+  if(slot==='lp' && wasEmit){ await finishEmit(d); return; }
+  if(slot==='lp'){ d.docHash=DOC.hash; P.sign.lp=d; await persist(DOC.status); applyLock(); toast('Firma emittente aggiornata'); return; }
+  if(SHARE){ await shareSign(slot,d); return; }
+  /* cliente in presenza: verifica integrità prima di registrare */
+  var ok=await guardIntegrity('firma'); if(!ok) return;
+  d.docHash=DOC.hash; P.sign[slot]=d;
+  var status = (P.sign.acc && P.sign.vess) ? 'firmato' : 'emesso';
+  await persist(status); applyLock();
+  toast(status==='firmato'?'Documento firmato dal cliente':'Firma cliente registrata');
 }
-function esc(t){ return (''+t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
 function renderSign(slot){
-  var s=SIGN[slot]; var box=document.getElementById('slot-'+slot); if(!box)return;
+  var s=P&&P.sign?P.sign[slot]:null; var box=$('slot-'+slot); if(!box)return;
   var empty=box.querySelector('.sigempty'), done=box.querySelector('.sigdone');
-  if(!s){ empty.classList.remove('hide'); done.classList.add('hide'); return; }
+  var locked=isLocked();
+  if(!s){
+    done.classList.add('hide');
+    empty.classList.toggle('hide', slot==='lp' ? locked : !(locked && DOC.status==='emesso' && (!SHARE||SHARE.intact)));
+    return;
+  }
   empty.classList.add('hide'); done.classList.remove('hide');
   var img=done.querySelector('.sigimg'); if(s.img) img.src=s.img;
-  var meta=done.querySelector('.sigmeta');
-  var p1=['<b>'+esc(s.nome)+'</b>']; if(s.ruolo.trim()) p1.push(esc(s.ruolo));
-  var p2=[]; if(s.doc.trim()) p2.push('Doc. '+esc(s.doc)); p2.push(esc(s.luogo)); p2.push(s.ts);
-  meta.innerHTML=p1.join(' &middot; ')+'<br>'+p2.join(' &middot; ')+'<br><span class="fesbadge">FES RINFORZATA</span>';
-  if(slot==='acc'){ var ld=document.getElementById('luogoData'); if(ld) ld.textContent=s.luogo+', '+s.ts; }
+  var p1=['<b>'+esc(s.nome)+'</b>']; if((s.ruolo||'').trim()) p1.push(esc(s.ruolo));
+  var p2=[]; if((s.doc||'').trim()) p2.push('Doc. '+esc(s.doc)); p2.push(esc(s.luogo)); p2.push(esc(s.ts));
+  done.querySelector('.sigmeta').innerHTML=p1.join(' · ')+'<br>'+p2.join(' · ')+'<br><span class="fesbadge">FES RINFORZATA</span>'+(s.docHash?' <span class="mono" style="font-size:9px;color:var(--muted)">#'+s.docHash.slice(0,12)+'</span>':'');
+  /* rifai: cliente solo a documento emesso e non ancora completo; emittente solo se emesso senza firme cliente */
+  var redo=done.querySelector('.redo');
+  redo.classList.toggle('hide', SHARE ? true : (slot==='lp' ? !(locked && !hasClientSign()) : DOC.status==='firmato'));
 }
-function redoSign(slot){ SIGN[slot]=null; renderSign(slot);
-  var ld=document.getElementById('luogoData'); if(slot==='acc'&&ld) ld.textContent=''; openSign(slot); }
+function redoSign(slot){ openSign(slot,true); }
 
-function docSnapshot(){
-  var fields=[];
-  document.querySelectorAll('#doc input, #doc select, #doc textarea').forEach(function(el){
-    var v=(el.type==='checkbox'||el.type==='radio')?(el.checked?'1':'0'):(el.tagName==='SELECT'?el.value:el.value);
-    fields.push((el.id||el.className||el.name||'f')+'='+v); });
-  function sig(s){ return s?[s.nome,s.ruolo,s.doc,s.luogo,s.ts,s.consent?'1':'0',s.img||''].join('|'):'NONE'; }
-  return JSON.stringify({payMode:currentPayMode,fields:fields,acc:sig(SIGN.acc),vess:sig(SIGN.vess)});
+/* ================= FLUSSO EMISSIONE ================= */
+async function emitDoc(){
+  if(isLocked()) return;
+  collect(); var c=computeAll(P); LAST.c=c;
+  var errs=validateDoc(P,c);
+  if(errs.length){
+    markErrors(errs);
+    showErrors('Non puoi ancora emettere', errs.length+(errs.length===1?' dato da completare o correggere.':' dati da completare o correggere. I campi sono evidenziati in rosso.'), errs);
+    return;
+  }
+  clearAllErr();
+  emitPending=true; openSign('lp');
 }
-async function sha256Hex(str){
-  var subtle=(window.crypto&&window.crypto.subtle)?window.crypto.subtle:null;
-  if(!subtle) throw new Error('WebCrypto non disponibile');
-  var h=await subtle.digest('SHA-256', new TextEncoder().encode(str));
-  return Array.prototype.map.call(new Uint8Array(h),function(b){return ('0'+b.toString(16)).slice(-2);}).join('');
+async function finishEmit(sig){
+  collect();
+  var hash=await contentHash(P);
+  sig.docHash=hash; P.sign.lp=sig; DOC.hash=hash;
+  var saved=await persist('emesso');
+  applyLock();
+  /* self-check post-registrazione: rilettura dal database (o dall'archivio locale) */
+  var check=await verifyStored();
+  if(!check.ok){
+    await revertToDraft('Il controllo dopo la registrazione non è riuscito: '+check.msg);
+    return;
+  }
+  toast(saved.remote?'Emesso e registrato nel database':'Emesso · salvato in locale (database non raggiungibile)');
 }
-async function computeIntegrity(){
-  var hash=await sha256Hex(docSnapshot());
-  document.querySelectorAll('.hashval').forEach(function(e){ e.textContent=hash; });
-  var ts=document.getElementById('hashTs'); if(ts) ts.textContent=new Date().toLocaleString('it-IT');
-  return hash;
+async function verifyStored(){
+  var rec=null, src='locale';
+  if(sbConnected&&SB){
+    try{ var r=await SB.from('documenti').select('*').eq('id',DOC.id).maybeSingle(); if(r.error) throw r.error; if(r.data){ rec=fromSbRow(r.data); src='database'; } }
+    catch(e){ console.warn('verify',e); }
+  }
+  if(!rec) rec=Store.getLocal(DOC.id);
+  if(!rec) return {ok:false,msg:'documento non trovato in archivio ('+src+').'};
+  var p=migrate(rec.payload); var c=computeAll(clone(p));
+  var calc=calcCheck(p,c); if(calc.length) return {ok:false,msg:calc[0].msg};
+  var h=await contentHash(p);
+  if(h!==rec.hash) return {ok:false,msg:'impronta SHA-256 del '+src+' diversa dal contenuto.'};
+  return {ok:true};
 }
-if(typeof window!=='undefined'){
-  window._testInject=function(slot,d){ SIGN[slot]=d; renderSign(slot); };
-  window._snapshot=docSnapshot; window._sha256=sha256Hex; window._validate=validateSign; window._consent=consentText;
+/* verifica integrità prima di stampa, PDF, firma cliente */
+async function guardIntegrity(action){
+  collect(); var c=computeAll(clone(P)); var calc=calcCheck(P,c);
+  if(SHARE){ var hs=await contentHash(P); if(hs===DOC.hash) return true;
+    showErrors('Documento non integro','Il contenuto non corrisponde all\'impronta registrata.',[{k:'tot',sec:'Integrità',msg:'SHA-256 diverso'}]); return false; }
+  if(!isLocked()){
+    if(calc.length){ markErrors(calc.map(function(x){x.sec='Calcoli';return x;}));
+      showErrors('Calcoli non coerenti','Correggi prima di '+(action==='pdf'?'scaricare il PDF':'stampare')+'.',calc.map(function(x){x.sec='Calcoli';return x;})); return false; }
+    return true;
+  }
+  var h=await contentHash(P);
+  if(!calc.length && h===DOC.hash) return true;
+  var why = calc.length? calc[0].msg : 'il contenuto non corrisponde più all\'impronta registrata.';
+  if(hasClientSign()){
+    showErrors('Documento non integro','Il documento è firmato dal cliente: non può tornare bozza. Crea una revisione.',[{k:'tot',sec:'Integrità',msg:why}]);
+    return false;
+  }
+  await revertToDraft(why); return false;
+}
+async function revertToDraft(why){
+  P.sign.lp=null; DOC.hash='';
+  await persist('bozza'); applyLock(); refresh();
+  showErrors('Documento riportato in bozza','Il controllo di integrità non è riuscito. La firma dell\'emittente è stata annullata: correggi e firma di nuovo.',[{k:'tot',sec:'Integrità',msg:why}]);
+}
+async function editEmitted(){
+  if(!isLocked()||hasClientSign()) return;
+  if(!confirm('Il documento torna in bozza e la firma dell\'emittente viene annullata. Continuare?')) return;
+  P.sign.lp=null; DOC.hash=''; await persist('bozza'); applyLock(); refresh(); toast('Documento riportato in bozza');
+}
+async function createRevision(){
+  if(!hasClientSign()) return;
+  if(!confirm('Crei una revisione in bozza con gli stessi dati. L\'originale firmato resta invariato. Continuare?')) return;
+  var base=(P.head.numero||'').replace(/-R\d+$/,'');
+  var n=1; Store.list().forEach(function(r){ var m=new RegExp('^'+base.replace(/[-]/g,'\\-')+'-R(\\d+)$').exec(r.numero||''); if(m) n=Math.max(n,+m[1]+1); });
+  var orig=DOC.id;
+  P=migrate(clone(P)); P.sign={lp:null,acc:null,vess:null}; P.head.numero=base+'-R'+n; P.meta={revOf:orig};
+  DOC={id:null,created:null,status:'bozza',hash:''};
+  renderStructure(); applyLock(); toast('Revisione '+P.head.numero+' creata');
 }
 
-
-function init(){
-  addRow('sw'); addRow('sw'); addRow('sw');
-  addRow('hw'); addRow('hw'); addRow('hw');
-  buildCanoni();
-  setPayMode('classica');
-  renderSign('acc'); renderSign('vess');
-  ['input','change'].forEach(function(ev){
-    var cr=document.getElementById('cliRagione'); if(cr) cr.addEventListener(ev,updateFname);
-    document.querySelectorAll('.head input.dt, .head input.ord').forEach(function(x){x.addEventListener(ev,updateFname);x.addEventListener(ev,recalc);});
+/* ================= OUTPUT ================= */
+function freezeControls(root){
+  var swaps=[];
+  root.querySelectorAll('input, select, textarea').forEach(function(el){
+    if(el.type==='hidden') return;
+    if(el.type==='radio'||(el.type==='checkbox'&&el.closest('.chips'))){ el.style.display='none'; swaps.push([el,null]); return; }
+    var span=document.createElement('span'); span.className='frz';
+    var cs=window.getComputedStyle?getComputedStyle(el):null;
+    if(cs){ span.style.font=cs.font; span.style.textAlign=cs.textAlign; span.style.color=cs.color; span.style.padding=cs.padding;
+      span.style.display=(cs.display==='block'||el.tagName==='TEXTAREA')?'block':'inline-block';
+      if(el.tagName==='TEXTAREA'||cs.display==='block'||el.classList.contains('box')) span.style.width=cs.width; }
+    if(el.type==='checkbox'){ span.textContent=el.checked?'☑':'☐'; }
+    else if(el.tagName==='SELECT'){ span.textContent=el.selectedIndex>=0?el.options[el.selectedIndex].text:''; }
+    else if(el.type==='date'){ span.textContent=isoFmt(el.value); }
+    else { span.textContent=el.value||''; }
+    el.style.display='none'; el.parentNode.insertBefore(span, el.nextSibling); swaps.push([el,span]);
   });
-  var ap=document.getElementById('accPct'); if(ap) ap.addEventListener('input',recalc);
-  document.querySelectorAll('#ratePick input').forEach(function(c){ c.addEventListener('change',recalc); });
-  updateFname();
-  recalc();
-  try{ BLANK=JSON.parse(JSON.stringify(collectForm())); }catch(e){}
+  return swaps;
 }
-if(typeof document!=='undefined'){ document.addEventListener('DOMContentLoaded',init); }
+function unfreeze(swaps){ swaps.forEach(function(p){ p[0].style.display=''; if(p[1]&&p[1].parentNode) p[1].parentNode.removeChild(p[1]); }); }
+async function exportPDF(){
+  if(!(await guardIntegrity('pdf'))) return;
+  var doc=$('doc');
+  if(!(window.html2canvas && window.jspdf)){ alert('Libreria non disponibile: uso la stampa di sistema (Salva come PDF).'); window.print(); return; }
+  var swaps=freezeControls(doc); doc.classList.add('exporting');
+  var prevW=doc.style.width; doc.style.width='800px';
+  try{
+    var canvas=await html2canvas(doc,{scale:2,backgroundColor:'#ffffff',useCORS:true,windowWidth:820,width:800});
+    var img=canvas.toDataURL('image/jpeg',0.95);
+    var pdf=new window.jspdf.jsPDF('p','mm','a4'); var pw=210, ph=297; var ih=canvas.height*pw/canvas.width;
+    pdf.addImage(img,'JPEG',0,0,pw,ih,'','FAST'); var left=ih-ph;
+    while(left>0.5){ pdf.addPage(); pdf.addImage(img,'JPEG',0,-(ih-left),pw,ih,'','FAST'); left-=ph; }
+    pdf.save(filename());
+  }catch(e){ console.error(e); alert('Export non riuscito ('+e.message+'). Uso la stampa di sistema.'); window.print(); }
+  finally{ doc.style.width=prevW; doc.classList.remove('exporting'); unfreeze(swaps); }
+}
+async function printDoc(){ if(!(await guardIntegrity('print'))) return; window.print(); }
 
-/* ============================================================
-   APP: viste, archivio (local + Supabase), serializzazione
-   ============================================================ */
-var LSKEY='lp_docs_v1', SBCFG='lp_sb_cfg_v1';
+
+/* ================= ARCHIVIO · AUTH · CONDIVISIONE (rilascio 2) ================= */
 var SB_AUTO={url:'https://udnnzbmtqpyidnazecdf.supabase.co', key:'sb_publishable_5wg_4g1_RzwQ-O-t6LUs-w_T9yhkxSW'};
-var currentDocId=null, currentDocCreated=null, currentFilter='emesso', BLANK=null;
-var SB=null, sbConnected=false;
+var SIGNUP_ENABLED=false;   /* true per mostrare "Registrati" (abilitare anche il sign-up in Supabase) */
+var SB=null, sbConnected=false, currentFilter='emesso', USER=null;
+var SHARE=null;            /* {token,pin} in modalità cliente */
+var LSKEY='lp_docs_v2';
 
-function toast(msg){ var t=document.getElementById('toast'); if(!t)return; t.textContent=msg; t.classList.add('show');
-  clearTimeout(t._t); t._t=setTimeout(function(){ t.classList.remove('show'); },1900); }
-function valId(id){ var e=document.getElementById(id); return e?(e.value||'').trim():''; }
-
+function toast(msg){ var t=$('toast'); if(!t)return; t.textContent=msg; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(function(){ t.classList.remove('show'); },3000); }
 function showView(name){
-  ['viewHub','viewList','viewEditor'].forEach(function(v){
-    var el=document.getElementById(v); if(el) el.classList.toggle('active', v==='view'+name.charAt(0).toUpperCase()+name.slice(1)); });
-  try{ if(window.scrollTo) window.scrollTo(0,0); }catch(e){}
+  ['viewHub','viewList','viewEditor','viewShare'].forEach(function(v){ var el=$(v); if(el) el.classList.toggle('active', v==='view'+name.charAt(0).toUpperCase()+name.slice(1)); });
+  try{ window.scrollTo(0,0); }catch(e){}
 }
+function goHome(){ refreshCounts(); showView('hub'); }
+function cacheKey(){ return LSKEY+'_'+(USER?USER.id:'anon'); }
+function lsLoad(){ try{ return JSON.parse(localStorage.getItem(cacheKey())||'[]'); }catch(e){ return []; } }
+function lsSaveAll(a){ try{ localStorage.setItem(cacheKey(), JSON.stringify(a)); return true; }catch(e){ return false; } }
+function sbRow(r){ return { id:r.id,status:r.status,created_at:r.created_at,updated_at:r.updated_at,numero:r.numero,data:r.data,cliente:r.cliente,
+  importo:r.importo,pay_mode:r.payMode,plan:r.plan,signed:r.signed,hash:r.hash,role:r.role,creator:r.creator,payload:r.payload }; }
+function fromSbRow(row){ return { id:row.id,status:row.status,created_at:row.created_at,updated_at:row.updated_at,numero:row.numero,data:row.data,
+  cliente:row.cliente,importo:row.importo,payMode:row.pay_mode,plan:row.plan,signed:row.signed,hash:row.hash,role:row.role,creator:row.creator,payload:row.payload,owner:row.owner }; }
 
-/* ---------- local store ---------- */
-function lsLoad(){ try{ return JSON.parse(localStorage.getItem(LSKEY)||'[]'); }catch(e){ return []; } }
-function lsSaveAll(a){ try{ localStorage.setItem(LSKEY, JSON.stringify(a)); return true; }catch(e){ return false; } }
-var Store={
-  list:function(){ return lsLoad(); },
-  get:function(id){ var f=lsLoad().filter(function(r){return r.id===id;}); return f[0]; },
-  upsert:function(rec){ var a=lsLoad().filter(function(r){return r.id!==rec.id;}); a.push(rec); lsSaveAll(a);
-    if(sbConnected&&SB){ try{ SB.from('documenti').upsert(sbRow(rec)); }catch(e){ console.warn('sb upsert',e); } } },
-  remove:function(id){ lsSaveAll(lsLoad().filter(function(r){return r.id!==id;}));
-    if(sbConnected&&SB){ try{ SB.from('documenti').delete().eq('id',id); }catch(e){} } }
-};
-function sbRow(r){ return { id:r.id,status:r.status,created_at:r.created_at,updated_at:r.updated_at,
-  numero:r.numero,data:r.data,cliente:r.cliente,importo:r.importo,pay_mode:r.payMode,plan:r.plan,
-  signed:r.signed,hash:r.hash,role:r.role,creator:r.creator,payload:r.payload }; }
-
-/* ---------- serialization ---------- */
-function staticEls(){ return Array.prototype.filter.call(
-  document.querySelectorAll('#doc input, #doc select, #doc textarea'),
-  function(el){ return !el.closest('#tblSw tbody, #tblHw tbody, #altroBody, #canoniGrid'); }); }
-function ctrlVals(tr){ return Array.prototype.map.call(tr.querySelectorAll('input,select,textarea'),
-  function(el){ return el.type==='checkbox'||el.type==='radio'?(el.checked?1:0):el.value; }); }
-function rowsData(sel){ return Array.prototype.map.call(document.querySelectorAll(sel+' tbody tr'), ctrlVals); }
-function altroData(){ return Array.prototype.map.call(document.querySelectorAll('#altroBody tr'), ctrlVals); }
-function canoniData(){ return Array.prototype.map.call(document.querySelectorAll('#canoniGrid input'),
-  function(el){ return el.value; }); }
-
-function collectForm(){
-  return {
-    payMode: currentPayMode, plan: currentPlan,
-    stat: staticEls().map(function(el){ return el.type==='checkbox'||el.type==='radio'?(el.checked?1:0):el.value; }),
-    sw: rowsData('#tblSw'), hw: rowsData('#tblHw'), altro: altroData(),
-    canoni: canoniData(),
-    sign: { acc: SIGN.acc, vess: SIGN.vess }
-  };
-}
-function fillRow(tr, arr){ var els=tr.querySelectorAll('input,select,textarea');
-  for(var i=0;i<els.length;i++){ var el=els[i], v=arr[i];
-    if(el.type==='checkbox'||el.type==='radio') el.checked=!!v; else el.value=(v==null?'':v); } }
-function rebuildTable(kind, sel, data){
-  var body=document.querySelector(sel+' tbody'); if(!body) return; body.innerHTML='';
-  (data||[]).forEach(function(rowArr){ var tr=addRow(kind); fillRow(tr,rowArr); });
-}
-function applyForm(p){
-  p=p||{};
-  // tables first
-  rebuildTable('sw','#tblSw',p.sw||[[],[],[]]);
-  rebuildTable('hw','#tblHw',p.hw||[[],[],[]]);
-  var ab=document.getElementById('altroBody'); if(ab){ ab.innerHTML=''; (p.altro||[]).forEach(function(r){ addAltro(); fillRow(document.querySelectorAll('#altroBody tr')[document.querySelectorAll('#altroBody tr').length-1], r); }); sumAltro(); }
-  // static by index
-  var els=staticEls();
-  (p.stat||[]).forEach(function(v,i){ var el=els[i]; if(!el) return;
-    if(el.type==='checkbox'||el.type==='radio') el.checked=!!v; else el.value=(v==null?'':v); });
-  // plan + paymode
-  currentPlan=p.plan||'acconto'; var ps=document.getElementById('planSel'); if(ps) ps.value=currentPlan;
-  var pm=p.payMode||'classica';
-  var radio=document.querySelector('input[name="paymode"][value="'+pm+'"]'); if(radio) radio.checked=true;
-  setPayMode(pm);
-  // canoni
-  buildCanoni(); var ci=document.querySelectorAll('#canoniGrid input');
-  (p.canoni||[]).forEach(function(v,i){ if(ci[i]) ci[i].value=v; });
-  // signatures
-  SIGN.acc=p.sign?p.sign.acc:null; SIGN.vess=p.sign?p.sign.vess:null; renderSign('acc'); renderSign('vess');
-  // bank block visibility from restored checkboxes
-  var cb=document.getElementById('chkBonifico'); if(cb) toggleBank('bankFornitore',cb.checked);
-  var cr=document.getElementById('chkRiba'); if(cr) toggleBank('bankDebitore',cr.checked);
-  var ca=document.getElementById('chkAltro'); if(ca) toggleBank('altroBlock',ca.checked);
-  recalc();
-}
-
-/* ---------- documents lifecycle ---------- */
-function nextNumero(){
-  var y=new Date().getFullYear(), max=0;
-  Store.list().forEach(function(r){ var m=/LP-(\d{4})-(\d+)/.exec(r.numero||''); if(m && +m[1]===y){ var n=+m[2]; if(n>max)max=n; } });
-  return 'LP-'+y+'-'+('000'+(max+1)).slice(-4);
-}
-function resetForm(){
-  var keep={ n:valId('creNome'), c:valId('creCognome'), s:valId('creSocieta') };
-  applyForm(JSON.parse(JSON.stringify(BLANK||collectForm())));
-  var a=document.getElementById('creNome'), b=document.getElementById('creCognome'), c=document.getElementById('creSocieta');
-  if(a)a.value=keep.n; if(b)b.value=keep.c; if(c)c.value=keep.s;
-}
-function newDoc(){
-  currentDocId=null; currentDocCreated=null;
-  resetForm();
-  var o=document.getElementById('ordN'); if(o && !o.value.trim()) o.value=nextNumero();
-  recalc(); showView('editor');
-}
-async function saveDoc(status){
-  var cli=valId('cliRagione');
-  if(status==='emesso' && !cli){ toast('Inserisci la ragione sociale del cliente'); return; }
-  var id=currentDocId || ('doc_'+Date.now()+'_'+Math.random().toString(36).slice(2,7));
-  var payload=collectForm();
-  var hash=''; try{ hash=await sha256Hex(docSnapshot()); }catch(e){}
-  var rec={ id:id, status:status,
-    created_at: currentDocCreated || new Date().toISOString(), updated_at:new Date().toISOString(),
-    numero: valId('ordN'), data: orderDate(), cliente: cli, importo: Math.round(currentImponibile||0),
-    payMode: currentPayMode, plan: currentPlan, signed:{acc:!!SIGN.acc,vess:!!SIGN.vess}, hash:hash,
-    role: (document.getElementById('whoami')||{}).textContent||'',
-    creator:{nome:valId('creNome'),cognome:valId('creCognome'),societa:valId('creSocieta')},
-    payload: payload };
-  currentDocId=id; currentDocCreated=rec.created_at;
-  Store.upsert(rec); refreshCounts();
-  toast(status==='bozza'?'Bozza salvata':'Documento emesso e archiviato');
-}
-function openDoc(id){ var r=Store.get(id); if(!r) return; applyForm(r.payload);
-  currentDocId=r.id; currentDocCreated=r.created_at; showView('editor'); toast('Documento aperto'); }
-function dupDoc(id){ var r=Store.get(id); if(!r) return; applyForm(r.payload);
-  currentDocId=null; currentDocCreated=null; var o=document.getElementById('ordN'); if(o)o.value=nextNumero();
-  showView('editor'); toast('Duplicato \u2014 nuovo documento'); }
-function delDoc(id){ if(!confirm('Eliminare questo documento?')) return; Store.remove(id); renderList(); refreshCounts(); toast('Eliminato'); }
-
-/* ---------- list / hub ---------- */
-function refreshCounts(){ var a=Store.list();
-  var e=a.filter(function(r){return r.status==='emesso';}).length;
-  var b=a.filter(function(r){return r.status==='bozza';}).length;
-  var ce=document.getElementById('cntEmessi'), cb=document.getElementById('cntBozze');
-  if(ce)ce.textContent=e; if(cb)cb.textContent=b; }
-function setFilter(f){ currentFilter=f;
-  document.querySelectorAll('.ftab').forEach(function(t){ t.classList.toggle('active', t.getAttribute('data-f')===f); });
-  renderList(); }
-function showList(f){ setFilter(f); showView('list'); }
-function fmtImporto(n){ return '\u20ac '+(Math.round(n||0)).toLocaleString('it-IT'); }
-function esc2(t){ return (''+t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
-function renderList(){
-  var body=document.getElementById('listBody'); if(!body) return;
-  var q=(valId('listSearch')||'').toLowerCase();
-  var recs=Store.list().filter(function(r){
-    if(currentFilter!=='all' && r.status!==currentFilter) return false;
-    if(q && (r.cliente||'').toLowerCase().indexOf(q)<0) return false; return true; });
-  recs.sort(function(a,b){ return (b.updated_at||'').localeCompare(a.updated_at||''); });
-  body.innerHTML='';
-  recs.forEach(function(r){
-    var firme=(r.signed&&r.signed.acc?1:0)+(r.signed&&r.signed.vess?1:0);
-    var plan = r.payMode==='noleggio'?'Noleggio':(r.plan==='rateale'?'Rateale':r.plan==='unico'?'Anticipato':'Acconto');
-    var tr=document.createElement('tr');
-    tr.innerHTML='<td>'+esc2(r.data||'')+'</td><td>'+esc2(r.numero||'')+'</td><td>'+esc2(r.cliente||'\u2014')+'</td>'+
-      '<td class="num">'+fmtImporto(r.importo)+'</td><td>'+plan+'</td><td>'+firme+'/2</td>'+
-      '<td><span class="badge '+r.status+'">'+(r.status==='emesso'?'Emesso':'Bozza')+'</span></td>'+
-      '<td class="act"><a onclick="openDoc(\''+r.id+'\')">Apri</a><a onclick="dupDoc(\''+r.id+'\')">Duplica</a><a class="del" onclick="delDoc(\''+r.id+'\')">Elimina</a></td>';
-    body.appendChild(tr);
-  });
-  var empty=document.getElementById('listEmpty'); if(empty) empty.classList.toggle('hide', recs.length>0);
-}
-
-/* ---------- backup ---------- */
-function exportBackup(){
-  var data=JSON.stringify(Store.list(),null,2);
-  var blob=new Blob([data],{type:'application/json'});
-  var url=URL.createObjectURL(blob); var a=document.createElement('a');
-  a.href=url; a.download='LP_backup_'+new Date().toISOString().slice(0,10)+'.json';
-  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-  toast('Backup esportato');
-}
-function importBackup(input){
-  var f=input.files&&input.files[0]; if(!f) return;
-  var rd=new FileReader();
-  rd.onload=function(){ try{ var arr=JSON.parse(rd.result); if(!Array.isArray(arr)) throw 0;
-    arr.forEach(function(r){ if(r&&r.id) Store.upsert(r); }); refreshCounts(); toast('Backup importato ('+arr.length+')'); }
-    catch(e){ toast('File non valido'); } input.value=''; };
-  rd.readAsText(f);
-}
-
-/* ---------- Supabase (best-effort, needs user keys) ---------- */
-function toggleSettings(){ var p=document.getElementById('cloudPanel'); if(p) p.classList.toggle('hide');
-  try{ var cfg=JSON.parse(localStorage.getItem(SBCFG)||'{}'); if(cfg.url)document.getElementById('sbUrl').value=cfg.url; if(cfg.key)document.getElementById('sbKey').value=cfg.key; }catch(e){} }
 function loadSupabase(){ return new Promise(function(res,rej){
   if(window.supabase&&window.supabase.createClient) return res();
   var sc=document.createElement('script'); sc.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
-  sc.onload=res; sc.onerror=function(){ rej(new Error('CDN non raggiungibile')); }; document.head.appendChild(sc); }); }
-async function sbConnect(){
-  var url=valId('sbUrl'), key=valId('sbKey'); var st=document.getElementById('sbState');
-  if(!url||!key){ st.textContent='Inserisci URL e anon key'; return; }
-  st.textContent='Connessione\u2026';
-  try{
-    await loadSupabase();
-    SB=window.supabase.createClient(url,key);
-    var sel=await SB.from('documenti').select('id').limit(1);
-    if(sel.error) throw sel.error;
-    // pull remote and merge into local
-    var all=await SB.from('documenti').select('*');
-    if(!all.error && Array.isArray(all.data)){
-      var local=lsLoad(); var byId={}; local.forEach(function(r){byId[r.id]=r;});
-      all.data.forEach(function(row){ byId[row.id]={ id:row.id,status:row.status,created_at:row.created_at,updated_at:row.updated_at,
-        numero:row.numero,data:row.data,cliente:row.cliente,importo:row.importo,payMode:row.pay_mode,plan:row.plan,
-        signed:row.signed,hash:row.hash,role:row.role,creator:row.creator,payload:row.payload }; });
-      var merged=Object.keys(byId).map(function(k){return byId[k];}); lsSaveAll(merged);
-    }
-    // push local up
-    lsLoad().forEach(function(r){ try{ SB.from('documenti').upsert(sbRow(r)); }catch(e){} });
-    sbConnected=true;
-    localStorage.setItem(SBCFG, JSON.stringify({url:url,key:key}));
-    st.textContent='Connesso \u2014 sincronizzazione attiva'; st.classList.add('ok');
-    refreshCounts();
-  }catch(e){ sbConnected=false; st.textContent='Errore: '+(e.message||e); st.classList.remove('ok'); }
+  sc.onload=res; sc.onerror=function(){ rej(new Error('Libreria Supabase non raggiungibile')); }; document.head.appendChild(sc); }); }
+async function sbClient(){ if(SB) return SB; await loadSupabase(); SB=window.supabase.createClient(SB_AUTO.url,SB_AUTO.key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}); return SB; }
+
+var Store={
+  list:function(){ return lsLoad(); },
+  getLocal:function(id){ return lsLoad().filter(function(r){return r.id===id;})[0]; },
+  putLocal:function(rec){ var a=lsLoad().filter(function(r){return r.id!==rec.id;}); a.push(rec); lsSaveAll(a); },
+  save:async function(rec){
+    rec.pending=true; Store.putLocal(rec);
+    if(!(sbConnected&&SB)) return {remote:false};
+    try{ var clean=Object.assign({},rec); delete clean.pending;
+      var res=await SB.from('documenti').upsert(sbRow(clean)); if(res.error) throw res.error;
+      rec.pending=false; Store.putLocal(rec); setSync(); return {remote:true}; }
+    catch(e){ console.warn('sb upsert',e); setSync('Salvataggio remoto non riuscito: '+(e.message||e)); return {remote:false,error:e}; }
+  },
+  remove:async function(id){
+    if(sbConnected&&SB){ var res=await SB.from('documenti').delete().eq('id',id); if(res.error){ toast('Eliminazione non riuscita: '+res.error.message); return false; } }
+    lsSaveAll(lsLoad().filter(function(r){return r.id!==id;})); return true;
+  },
+  fetch:async function(id){
+    if(!(sbConnected&&SB)) return Store.getLocal(id);
+    var r=await SB.from('documenti').select('*').eq('id',id).maybeSingle();
+    if(r.error||!r.data) return Store.getLocal(id);
+    var rec=fromSbRow(r.data); Store.putLocal(rec); return rec;
+  }
+};
+function setSync(msg){
+  var st=$('sbState'); if(!st) return;
+  var pend=lsLoad().filter(function(r){return r.pending;}).length;
+  st.textContent = msg || (sbConnected?('Sincronizzato'+(pend?(' · '+pend+' in attesa di invio'):'')):'Non connesso');
+  st.classList.toggle('ok',sbConnected&&!msg&&!pend);
+}
+async function syncDown(){
+  var all=await SB.from('documenti').select('*');
+  if(all.error) throw all.error;
+  var local=lsLoad(), pending=local.filter(function(r){return r.pending;});
+  var byId={}; (all.data||[]).forEach(function(row){ byId[row.id]=fromSbRow(row); });
+  for(var i=0;i<pending.length;i++){
+    var p=pending[i], remote=byId[p.id];
+    if(remote && (remote.updated_at||'')>(p.updated_at||'')) continue;
+    var clean=Object.assign({},p); delete clean.pending;
+    var up=await SB.from('documenti').upsert(sbRow(clean));
+    if(!up.error){ byId[p.id]=clean; } else { byId[p.id]=p; }
+  }
+  lsSaveAll(Object.keys(byId).map(function(k){return byId[k];}));
+  setSync(); refreshCounts(); if($('viewList').classList.contains('active')) renderList();
 }
 
+/* ---- Auth ---- */
+function authMsg(t,ok){ var e=$('lerr'); if(e){ e.textContent=t||''; e.classList.toggle('okmsg',!!ok); } }
+function authMode(m){
+  ['authLogin','authSignup','authReset','authNewPw'].forEach(function(id){ var el=$(id); if(el) el.classList.toggle('hide',id!==m); });
+  authMsg('');
+}
+async function doLogin(){
+  var email=($('lemail').value||'').trim(), pw=$('lpass').value||'';
+  if(!email||!pw){ authMsg('Inserisci email e password.'); return; }
+  authMsg('Accesso in corso…',true);
+  try{ var sb=await sbClient(); var r=await sb.auth.signInWithPassword({email:email,password:pw});
+    if(r.error) throw r.error; }
+  catch(e){ authMsg(/Invalid login/i.test(e.message)?'Email o password non corretti.':/Email not confirmed/i.test(e.message)?'Conferma prima la tua email (controlla la posta).':e.message); }
+}
+async function doSignup(){
+  var email=($('semail').value||'').trim(), pw=$('spass').value||'', pw2=$('spass2').value||'';
+  if(!email||pw.length<8){ authMsg('Email e password di almeno 8 caratteri.'); return; }
+  if(pw!==pw2){ authMsg('Le password non coincidono.'); return; }
+  try{ var sb=await sbClient(); var r=await sb.auth.signUp({email:email,password:pw,options:{emailRedirectTo:location.origin+location.pathname}});
+    if(r.error) throw r.error; authMode('authLogin'); authMsg('Registrazione inviata. Se richiesto, conferma dall\'email e poi accedi.',true); }
+  catch(e){ authMsg(e.message); }
+}
+async function doReset(){
+  var email=($('remail').value||'').trim(); if(!email){ authMsg('Inserisci la tua email.'); return; }
+  try{ var sb=await sbClient(); var r=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname});
+    if(r.error) throw r.error; authMsg('Ti abbiamo inviato un\'email con il link per reimpostare la password.',true); }
+  catch(e){ authMsg(e.message); }
+}
+async function doNewPw(){
+  var pw=$('npass').value||''; if(pw.length<8){ authMsg('Almeno 8 caratteri.'); return; }
+  var r=await SB.auth.updateUser({password:pw}); if(r.error){ authMsg(r.error.message); return; }
+  authMode('authLogin'); toast('Password aggiornata'); 
+}
+async function logout(){ try{ if(SB) await SB.auth.signOut(); }catch(e){} onSignedOut(); }
+function roleOf(u){ var r=(u&&u.app_metadata&&u.app_metadata.role)||''; return r==='team'?'team':'reseller'; }
+async function onSignedIn(session){
+  USER=session.user; sbConnected=true;
+  CURRENT_ROLE = roleOf(USER)==='team'?'Team LP Italia':'Rivenditore';
+  document.body.classList.remove('locked'); var ls=$('loginScreen'); if(ls) ls.style.display='none';
+  setText('whoami',USER.email); setText('hubWho',USER.email+' · '+CURRENT_ROLE);
+  refreshCounts(); if(!$('viewEditor').classList.contains('active')) showView('hub');
+  setSync('Sincronizzazione…');
+  try{ await syncDown(); }catch(e){ setSync('Errore di sincronizzazione: '+(e.message||e)); }
+}
+function onSignedOut(){
+  USER=null; sbConnected=false; CURRENT_ROLE='';
+  document.body.classList.add('locked'); var ls=$('loginScreen'); if(ls) ls.style.display='';
+  var lp=$('lpass'); if(lp) lp.value=''; authMode('authLogin');
+}
+async function authInit(){
+  try{
+    var sb=await sbClient();
+    sb.auth.onAuthStateChange(function(ev,session){
+      if(ev==='PASSWORD_RECOVERY'){ document.body.classList.add('locked'); $('loginScreen').style.display=''; authMode('authNewPw'); return; }
+      if(ev==='SIGNED_OUT'){ onSignedOut(); return; }
+      if(session && (ev==='SIGNED_IN'||ev==='INITIAL_SESSION') && (!USER||USER.id!==session.user.id)) setTimeout(function(){ onSignedIn(session); },0);
+    });
+    var s=await sb.auth.getSession();
+    if(s.data&&s.data.session&&!USER) onSignedIn(s.data.session);
+  }catch(e){ authMsg('Servizio non raggiungibile: '+(e.message||e)); }
+  var su=$('toSignup'); if(su) su.classList.toggle('hide',!SIGNUP_ENABLED);
+}
 
-function sbAutoInit(){ if(!SB_AUTO||!SB_AUTO.url) return;
-  var u=document.getElementById('sbUrl'), k=document.getElementById('sbKey');
-  if(u) u.value=SB_AUTO.url; if(k) k.value=SB_AUTO.key;
-  try{ sbConnect(); }catch(e){ console.warn('auto sbConnect',e); } }
-if(typeof document!=='undefined'){ document.addEventListener('DOMContentLoaded', function(){ setTimeout(sbAutoInit,60); }); }
-if(typeof module!=='undefined'){ module.exports={num:num,eur:eur}; }
+/* ---- persistenza con merge delle firme cliente arrivate dal link ---- */
+async function persist(status){
+  collect();
+  if(!DOC.id) DOC.id='doc_'+Date.now()+'_'+Math.random().toString(36).slice(2,7);
+  if(DOC.id && sbConnected && SB && status!=='bozza'){
+    var remote=await Store.fetch(DOC.id);
+    if(remote && remote.payload && remote.payload.sign){
+      ['acc','vess'].forEach(function(s){ if(!P.sign[s] && remote.payload.sign[s]) P.sign[s]=remote.payload.sign[s]; });
+      if(remote.status==='firmato') status='firmato';
+    }
+  }
+  var now=new Date().toISOString(); if(!DOC.created) DOC.created=now;
+  DOC.status=status;
+  var c=computeAll(clone(P));
+  var rec={ id:DOC.id, status:status, created_at:DOC.created, updated_at:now,
+    numero:P.head.numero, data:c.docDate, cliente:P.cli.ragione, importo:Math.round(c.impC/100),
+    payMode:P.pay.mode, plan:P.pay.plan, signed:{lp:!!P.sign.lp,acc:!!P.sign.acc,vess:!!P.sign.vess}, hash:DOC.hash||'',
+    role:CURRENT_ROLE, creator:P.creator, payload:clone(P) };
+  var r=await Store.save(rec); refreshCounts();
+  if(r.error && /revisione|non può essere modificato/.test(r.error.message||'')){
+    showErrors('Salvataggio rifiutato dal database', r.error.message, [{k:'tot',sec:'Database',msg:r.error.message}]);
+  }
+  return r;
+}
+async function saveDraft(){
+  if(isLocked()) return;
+  collect(); var c=computeAll(clone(P)); var calc=calcCheck(P,c);
+  var r=await persist('bozza');
+  var base=r.remote?'Bozza salvata':'Bozza salvata in locale (non sincronizzata)';
+  toast(calc.length && c.totC>0 ? base+' · attenzione: '+calc[0].msg : base);
+}
+
+/* migrazione payload v1 (v12) -> v2 */
+function migrate(p){
+  if(p && p.v===2){ var b=blankPayload(); var m=deepMerge(b,p); if(!m.pay.bank.iban){ m.pay.bank=clone(LP_BANK); } return m; }
+  var n=blankPayload(); if(!p) return n;
+  var s=p.stat||[];
+  n.head.numero=s[0]||'';
+  if(/^\d{1,2}$/.test(s[1]||'')&&/^\d{1,2}$/.test(s[2]||'')) n.head.data='2026-'+('0'+s[2]).slice(-2)+'-'+('0'+s[1]).slice(-2);
+  n.creator={nome:s[3]||'',cognome:s[4]||'',societa:s[5]||''};
+  n.cli={ragione:s[6]||'',sede:s[7]||'',dest:s[8]||'',piva:s[9]||'',sdi:s[10]||'',referente:s[11]||'',contatti:s[12]||''};
+  n.sw=(p.sw||[]).map(function(r){ return {nome:r[0],tipo:r[1],durata:r[2],qty:r[3],price:r[4]}; });
+  n.hw=(p.hw||[]).map(function(r){ return {codice:r[0],descr:r[1],qty:r[2],price:r[3]}; });
+  if(!n.sw.length) n.sw=[{}]; if(!n.hw.length) n.hw=[{}];
+  if(p.payMode==='noleggio'){ n.pay.mode='noleggio'; n.pay.plan='rateale'; n.pay.offsets=OFFSETS_ALL.slice(); n.pay.method='sdd'; }
+  else if(p.plan==='rateale') n.pay.plan='rateale';
+  else if(p.plan==='acconto'){ n.pay.ant.on=true; n.pay.plan='unico'; }
+  n.meta={migratedFrom:'v1'};
+  return n;
+}
+function deepMerge(a,b){ Object.keys(b||{}).forEach(function(k){
+  if(b[k]&&typeof b[k]==='object'&&!Array.isArray(b[k])&&a[k]&&typeof a[k]==='object'&&!Array.isArray(a[k])) deepMerge(a[k],b[k]); else a[k]=b[k]; }); return a; }
+
+function loadInEditor(rec){
+  P=migrate(clone(rec.payload));
+  DOC={id:rec.id,created:rec.created_at,status:rec.status||'bozza',hash:rec.hash||''};
+  if(P.meta&&P.meta.migratedFrom&&DOC.status!=='bozza'){ DOC.status='bozza'; DOC.hash=''; P.sign.lp=null; }
+  renderStructure(); applyLock(); clearAllErr(); showView('editor');
+}
+async function nextNumero(){
+  if(sbConnected&&SB){ try{ var r=await SB.rpc('next_numero'); if(!r.error&&r.data) return r.data; }catch(e){} }
+  var y=new Date().getFullYear(), max=0;
+  Store.list().forEach(function(r){ var m=/^LP-(\d{4})-(\d+)$/.exec(r.numero||''); if(m && +m[1]===y){ max=Math.max(max,+m[2]); } });
+  return 'LP-'+y+'-'+('000'+(max+1)).slice(-4);
+}
+async function newDoc(){
+  var keep=P?P.creator:null;
+  P=blankPayload(); if(keep) P.creator=clone(keep);
+  if(USER&&USER.user_metadata){ var um=USER.user_metadata; if(!P.creator.nome&&um.nome) P.creator.nome=um.nome; if(!P.creator.cognome&&um.cognome) P.creator.cognome=um.cognome; if(!P.creator.societa&&um.societa) P.creator.societa=um.societa; }
+  if(!P.creator.societa && roleOf(USER)==='team') P.creator.societa='Lotus Pecas Italia Srl';
+  DOC={id:null,created:null,status:'bozza',hash:''};
+  renderStructure(); applyLock(); clearAllErr(); showView('editor');
+  P.head.numero=await nextNumero(); $('ordN').value=P.head.numero; updateFname();
+}
+async function openDoc(id){ var r=await Store.fetch(id); if(!r) return; loadInEditor(r); toast('Documento aperto'); }
+async function dupDoc(id){ var r=Store.getLocal(id); if(!r) return;
+  loadInEditor({payload:r.payload,status:'bozza'}); P.sign={lp:null,acc:null,vess:null}; if(P.meta){ delete P.meta.revOf; delete P.meta.signedCopy; }
+  DOC={id:null,created:null,status:'bozza',hash:''}; P.head.numero=await nextNumero(); renderStructure(); applyLock(); toast('Duplicato — nuovo documento'); }
+async function delDoc(id){ var r=Store.getLocal(id);
+  if(r&&r.status!=='bozza'){ if(!confirm('Il documento è '+r.status+'. Eliminarlo definitivamente dall\'archivio?')) return; }
+  else if(!confirm('Eliminare questa bozza?')) return;
+  if(await Store.remove(id)){ renderList(); refreshCounts(); toast('Eliminato'); } }
+
+function refreshCounts(){ var a=Store.list();
+  setText('cntEmessi',a.filter(function(r){return r.status==='emesso'||r.status==='firmato';}).length);
+  setText('cntBozze',a.filter(function(r){return r.status==='bozza';}).length); }
+function setFilter(f){ currentFilter=f; document.querySelectorAll('.ftab').forEach(function(t){ t.classList.toggle('active', t.getAttribute('data-f')===f); }); renderList(); }
+function showList(f){ setFilter(f); showView('list'); }
+function renderList(){
+  var body=$('listBody'); if(!body) return;
+  var q=((($('listSearch')||{}).value)||'').toLowerCase();
+  var recs=Store.list().filter(function(r){
+    if(currentFilter==='emesso' && !(r.status==='emesso'||r.status==='firmato')) return false;
+    if(currentFilter==='bozza' && r.status!=='bozza') return false;
+    if(q && (r.cliente||'').toLowerCase().indexOf(q)<0 && (r.numero||'').toLowerCase().indexOf(q)<0) return false; return true; });
+  recs.sort(function(a,b){ return (b.updated_at||'').localeCompare(a.updated_at||''); });
+  body.innerHTML='';
+  recs.forEach(function(r){
+    var s=r.signed||{}; var firme=(s.lp?1:0)+(s.acc?1:0)+(s.vess?1:0);
+    var copy=r.payload&&r.payload.meta&&r.payload.meta.signedCopy;
+    var plan=(r.payMode==='noleggio'?'Noleggio · ':'')+({unico:'Saldo unico',rateale:'Rateale',custom:'Personalizzato',acconto:'Acconto'}[r.plan]||'—');
+    var lab={bozza:'Bozza',emesso:'Emesso',firmato:'Firmato'}[r.status]||r.status;
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td>'+esc(r.data||'')+'</td><td>'+esc(r.numero||'')+'</td><td>'+esc(r.cliente||'—')+'</td>'+
+      '<td class="num">€ '+(Math.round(r.importo||0)).toLocaleString('it-IT')+'</td><td>'+esc(plan)+'</td><td>'+(copy?'PDF':firme+'/3')+'</td>'+
+      '<td><span class="badge '+esc(r.status)+'">'+esc(lab)+'</span>'+(r.pending?' <small title="Non ancora sincronizzato">⟳</small>':'')+'</td>'+
+      '<td class="act"><a onclick="openDoc(\''+r.id+'\')">Apri</a><a onclick="dupDoc(\''+r.id+'\')">Duplica</a><a class="del" onclick="delDoc(\''+r.id+'\')">Elimina</a></td>';
+    body.appendChild(tr);
+  });
+  var empty=$('listEmpty'); if(empty) empty.classList.toggle('hide', recs.length>0);
+}
+function exportBackup(){
+  var blob=new Blob([JSON.stringify(Store.list(),null,2)],{type:'application/json'});
+  var url=URL.createObjectURL(blob); var a=document.createElement('a');
+  a.href=url; a.download='LP_backup_'+new Date().toISOString().slice(0,10)+'.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  toast('Backup esportato');
+}
+function importBackup(input){
+  var f=input.files&&input.files[0]; if(!f) return; var rd=new FileReader();
+  rd.onload=async function(){ try{ var arr=JSON.parse(rd.result); if(!Array.isArray(arr)) throw 0; var n=0;
+    for(var i=0;i<arr.length;i++){ var r=arr[i]; if(!(r&&r.id)) continue;
+      if(r.status!=='bozza'){ r.payload=migrate(r.payload); r.status='bozza'; r.hash=''; if(r.payload.sign) r.payload.sign={lp:null,acc:null,vess:null}; }
+      delete r.owner; await Store.save(r); n++; }
+    refreshCounts(); toast('Importati '+n+' documenti come bozze'); }catch(e){ toast('File non valido'); } input.value=''; };
+  rd.readAsText(f);
+}
+function toggleSettings(){ var p=$('cloudPanel'); if(p) p.classList.toggle('hide'); setSync(); }
+async function sbConnect(){ if(!USER){ toast('Accedi prima'); return; } try{ setSync('Sincronizzazione…'); await syncDown(); toast('Sincronizzato'); }catch(e){ setSync('Errore: '+(e.message||e)); } }
+
+/* ---- Condivisione con il cliente: link + PIN ---- */
+function randHex(n){ var a=new Uint8Array(n); crypto.getRandomValues(a); return Array.prototype.map.call(a,function(b){return ('0'+b.toString(16)).slice(-2);}).join(''); }
+function randPin(){ var a=new Uint32Array(1), x; do{ crypto.getRandomValues(a); x=a[0]; }while(x>=4294000000); return ('00000'+(x%1000000)).slice(-6); }
+function shareUrl(token){ return location.origin+location.pathname+'?t='+token; }
+function emailFrom(s){ var m=/[^\s@,;]+@[^\s@,;]+\.[^\s@,;]{2,}/.exec(s||''); return m?m[0]:''; }
+var LAST_SHARE=null;
+async function openShare(){
+  if(DOC.status!=='emesso'){ toast('Il link si genera solo per documenti emessi'); return; }
+  if(!(sbConnected&&SB)){ toast('Serve la connessione al database'); return; }
+  var ok=await guardIntegrity('firma'); if(!ok) return;
+  var info=null; try{ var r=await SB.rpc('share_info',{p_id:DOC.id}); if(!r.error) info=r.data; }catch(e){}
+  setText('shState', info ? (info.blocked?'Link attivo ma bloccato per troppi PIN errati.':info.expired?'Link scaduto.':'Link attivo fino al '+new Date(info.expires).toLocaleDateString('it-IT')+'. Il PIN non è recuperabile: generane uno nuovo se serve.') : 'Nessun link attivo per questo documento.');
+  $('shResult').classList.add('hide'); $('shRevoke').classList.toggle('hide',!info);
+  $('shareModal').classList.remove('hide'); document.documentElement.classList.add('modal-open');
+}
+function closeShare(){ $('shareModal').classList.add('hide'); document.documentElement.classList.remove('modal-open'); }
+async function generateShare(){
+  var c=computeAll(clone(P));
+  var days=c.validUntil?Math.max(1,isoDiff(isoToday(),c.validUntil)):30;
+  var token=randHex(32), pin=randPin();
+  var r=await SB.rpc('create_share',{p_id:DOC.id,p_token:token,p_pin:pin,p_days:days});
+  if(r.error){ toast('Link non creato: '+r.error.message); return; }
+  LAST_SHARE={url:shareUrl(token),pin:pin,expires:r.data};
+  $('shUrl').value=LAST_SHARE.url; setText('shPin',pin.slice(0,3)+' '+pin.slice(3));
+  setText('shExp',new Date(r.data).toLocaleDateString('it-IT'));
+  $('shResult').classList.remove('hide'); $('shRevoke').classList.remove('hide');
+  setText('shState','Link creato. Un eventuale link precedente non funziona più.');
+}
+async function copyText(t,okMsg){ try{ await navigator.clipboard.writeText(t); toast(okMsg); }catch(e){ var i=$('shUrl'); i.select(); document.execCommand&&document.execCommand('copy'); toast(okMsg); } }
+function copyShareLink(){ if(LAST_SHARE) copyText(LAST_SHARE.url,'Link copiato'); }
+function mailShare(){ var h=mailtoHref(); if(h) location.href=h; }
+function mailtoHref(){
+  if(!LAST_SHARE) return '';
+  var to=emailFrom(P.cli.contatti);
+  var sub='Copia Commissioni '+P.head.numero+' da firmare — Lotus Pecas Italia';
+  var body='Gentile '+(P.cli.referente||'Cliente')+',\n\nle inviamo la Copia Commissioni n. '+P.head.numero+' da visionare e firmare online:\n'+LAST_SHARE.url+
+    '\n\nPer aprire il documento serve un PIN di 6 cifre che le comunicheremo separatamente.\nIl link è valido fino al '+new Date(LAST_SHARE.expires).toLocaleDateString('it-IT')+'.\n\nCordiali saluti\n'+(P.creator.nome+' '+P.creator.cognome).trim()+'\n'+(P.creator.societa||'');
+  return 'mailto:'+encodeURIComponent(to)+'?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+}
+async function revokeShare(){ if(!confirm('Disattivare il link? Il cliente non potrà più aprirlo.')) return;
+  var r=await SB.rpc('revoke_share',{p_id:DOC.id}); if(r.error){ toast(r.error.message); return; }
+  LAST_SHARE=null; $('shResult').classList.add('hide'); $('shRevoke').classList.add('hide'); setText('shState','Link disattivato.'); }
+
+/* ---- Copia firmata caricata (firma autografa o digitale del cliente) ---- */
+function openUpload(){
+  if(DOC.status!=='emesso'){ toast('Disponibile per documenti emessi'); return; }
+  if(!(sbConnected&&SB)){ toast('Serve la connessione al database'); return; }
+  $('upFile').value=''; $('upCheck').checked=false; setText('upErr','');
+  $('uploadModal').classList.remove('hide'); document.documentElement.classList.add('modal-open');
+}
+function closeUpload(){ $('uploadModal').classList.add('hide'); document.documentElement.classList.remove('modal-open'); }
+async function doUpload(){
+  var f=$('upFile').files&&$('upFile').files[0];
+  if(!f){ setText('upErr','Seleziona il PDF firmato.'); return; }
+  if(f.type!=='application/pdf'&&!/\.pdf$/i.test(f.name)){ setText('upErr','Il file deve essere un PDF.'); return; }
+  if(f.size>20*1024*1024){ setText('upErr','Massimo 20 MB.'); return; }
+  if(!$('upCheck').checked){ setText('upErr','Conferma di aver verificato il contenuto.'); return; }
+  setText('upErr','Caricamento…');
+  var path=DOC.id+'/'+Date.now()+'_firmato.pdf';
+  var up=await SB.storage.from('firmati').upload(path,f,{contentType:'application/pdf',upsert:false});
+  if(up.error){ setText('upErr','Caricamento non riuscito: '+up.error.message); return; }
+  var buf=await f.arrayBuffer(); var fh=await crypto.subtle.digest('SHA-256',buf);
+  var fileHash=Array.prototype.map.call(new Uint8Array(fh),function(b){return ('0'+b.toString(16)).slice(-2);}).join('');
+  P.meta=P.meta||{}; P.meta.signedCopy={path:path,name:f.name,size:f.size,fileHash:fileHash,docHash:DOC.hash,ts:new Date().toISOString(),by:USER?USER.email:''};
+  var r=await persist('firmato'); closeUpload(); applyLock();
+  toast(r.remote?'Copia firmata archiviata · documento firmato':'Salvato in locale, sincronizzazione in sospeso');
+}
+async function openSignedCopy(){
+  var sc=P.meta&&P.meta.signedCopy; if(!sc||!SB) return;
+  var r=await SB.storage.from('firmati').createSignedUrl(sc.path,120);
+  if(r.error){ toast(r.error.message); return; } window.open(r.data.signedUrl,'_blank','noopener');
+}
+
+/* ---- Modalità cliente (link) ---- */
+function shareErr(code,left){
+  return {LINK_NON_VALIDO:'Link non valido. Controlla di averlo copiato per intero.',LINK_SCADUTO:'Il link è scaduto. Chiedi al fornitore un nuovo link.',
+    LINK_BLOCCATO:'Link bloccato per troppi PIN errati. Chiedi al fornitore un nuovo link.',PIN_ERRATO:'PIN errato. Tentativi rimasti: '+left+'.',
+    HASH_DIVERSO:'Il documento è stato modificato dopo l\'emissione. Firma annullata: contatta il fornitore.',STATO_NON_FIRMABILE:'Il documento non è più firmabile.',
+    GIA_FIRMATO:'Questa firma è già stata registrata.',SLOT_NON_VALIDO:'Firma non valida.'}[code]||code;
+}
+async function shareOpen(){
+  var pin=($('pinIn').value||'').replace(/\D/g,'');
+  if(pin.length!==6){ setText('pinErr','Il PIN ha 6 cifre.'); return; }
+  setText('pinErr','Verifica…');
+  try{
+    var sb=await sbClient();
+    var r=await sb.rpc('open_shared_doc',{p_token:SHARE.token,p_pin:pin});
+    if(r.error) throw r.error;
+    if(r.data.error){ setText('pinErr',shareErr(r.data.error,r.data.left)); return; }
+    SHARE.pin=pin;
+    P=migrate(r.data.payload);
+    DOC={id:r.data.id,created:null,status:r.data.status,hash:r.data.hash};
+    SHARE.intact=((await contentHash(migrate(clone(r.data.payload))))===DOC.hash);
+    renderStructure();
+    SHARE.intact = SHARE.intact && ((await contentHash(P))===DOC.hash);
+    applyLock();
+    showView('editor');
+    if(!SHARE.intact) showErrors('Documento non integro','Il contenuto non corrisponde all\'impronta registrata all\'emissione. Non firmare e contatta il fornitore.',[{k:'tot',sec:'Integrità',msg:'SHA-256 diverso'}]);
+    else toast(DOC.status==='firmato'?'Documento già firmato':'Documento verificato: puoi firmare');
+  }catch(e){ setText('pinErr','Servizio non raggiungibile: '+(e.message||e)); }
+}
+async function shareSign(slot,d){
+  var h=await contentHash(P);
+  if(h!==DOC.hash){ showErrors('Documento non integro','Firma annullata.',[{k:'tot',sec:'Integrità',msg:'SHA-256 diverso'}]); return false; }
+  var sig=Object.assign({},d,{docHash:DOC.hash});
+  var r=await SB.rpc('sign_shared_doc',{p_token:SHARE.token,p_pin:SHARE.pin,p_slot:slot,p_sign:sig,p_hash:DOC.hash});
+  if(r.error){ toast('Firma non registrata: '+r.error.message); return false; }
+  if(r.data.error){ showErrors('Firma non registrata',shareErr(r.data.error,r.data.left),[{k:'tot',sec:'Firma',msg:shareErr(r.data.error,r.data.left)}]); return false; }
+  sig.channel='link+pin'; P.sign[slot]=sig; DOC.status=r.data.status; applyLock();
+  toast(DOC.status==='firmato'?'Grazie, documento firmato. Puoi scaricare il PDF.':'Firma registrata. Manca la seconda firma.');
+  return true;
+}
+
+/* ---- init ---- */
+function init(){
+  P=blankPayload();
+  renderStructure(); applyLock();
+  var d=$('doc');
+  d.addEventListener('input',onDocInput);
+  d.addEventListener('change',onDocChange);
+  [['lpass',doLogin],['lemail',function(){ $('lpass').focus(); }],['pinIn',shareOpen],['npass',doNewPw],['remail',doReset],['spass2',doSignup]].forEach(function(p){
+    var el=$(p[0]); if(el) el.addEventListener('keydown',function(e){ if(e.key==='Enter') p[1](); }); });
+  document.addEventListener('keydown',function(e){ if(e.key!=='Escape') return;
+    ['errModal','signModal','shareModal','uploadModal'].forEach(function(id){ var m=$(id); if(m&&!m.classList.contains('hide')){ if(id==='signModal') cancelSign(); else { m.classList.add('hide'); document.documentElement.classList.remove('modal-open'); } } }); });
+  var tok=new URLSearchParams(location.search).get('t');
+  if(tok){
+    SHARE={token:tok}; document.body.classList.add('share-mode'); document.body.classList.remove('locked');
+    var ls=$('loginScreen'); if(ls) ls.style.display='none';
+    showView('share'); setTimeout(function(){ var p=$('pinIn'); if(p) p.focus(); },50);
+    sbClient().catch(function(e){ setText('pinErr','Servizio non raggiungibile: '+e.message); });
+    return;
+  }
+  authInit();
+}
+if(typeof document!=='undefined'){ document.addEventListener('DOMContentLoaded',init); }
+
 </script>
 </body>
 </html>
