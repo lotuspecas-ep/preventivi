@@ -14,6 +14,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
   :root{
     --teal:#158A88; --teal-deep:#0E5F5D; --tint:#EAF5F4; --tint2:#F4FAF9;
@@ -758,6 +760,10 @@
   .bigtile .bt small{display:block;font-size:12px;opacity:.9;margin-top:3px;font-weight:400}
   .bigtile .bg{background:#fff;color:var(--teal-deep);border-radius:9px;padding:9px 14px;font-weight:700;font-size:13px;white-space:nowrap}
   @media (max-width:640px){ .bigtile{flex-wrap:wrap} .bigtile .bg{width:100%;text-align:center} }
+
+  .noteedit{display:block;margin-top:4px;position:relative}
+  .noteedit .box{background:#FFF8E6;border-color:#E5B64A;color:#8A5A12}
+  .noteedit::before{content:"Commento (visibile anche nei link ai rivenditori)";display:block;font-size:9.5px;color:#8A5A12;font-weight:600;margin-bottom:2px}
 
 </style>
 </head>
@@ -2881,7 +2887,7 @@ function renderListino(){
         '<td class="lname">'+(ed?inp(it,'nome'):'<b>'+esc(it.nome)+'</b>')+
           (ed?inp(it,'contenuto','sub'):(it.contenuto?'<small>'+esc(it.contenuto)+'</small>':''))+
           (c.k==='hardware'||it.specs?(ed?inp(it,'specs','sub'):(it.specs?'<small class="specs">'+esc(it.specs)+'</small>':'')):'')+
-          (it.note?'<small class="warn">'+esc(it.note)+'</small>':'')+'</td>'+
+          (ed?'<span class="noteedit">'+inp(it,'note','sub')+'</span>':(it.note?'<small class="warn">'+esc(it.note)+'</small>':''))+'</td>'+
         '<td>'+(ed?sel(it,'unita',unitaList()):esc(it.unita))+'</td>'+
         '<td class="num">'+(ed?inp(it,'prezzo','amt'):eurC(Math.round(num(it.prezzo)*100)))+'</td>'+cells+
         (ed?'<td class="act"><button class="abtn icon del" type="button" onclick="delListinoItem(\''+it.id+'\')" aria-label="Elimina voce">×</button></td>':'')+
