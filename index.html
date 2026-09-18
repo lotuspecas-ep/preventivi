@@ -16,6 +16,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
   :root{
     --teal:#158A88; --teal-deep:#0E5F5D; --tint:#EAF5F4; --tint2:#F4FAF9;
@@ -765,6 +769,38 @@
   .noteedit .box{background:#FFF8E6;border-color:#E5B64A;color:#8A5A12}
   .noteedit::before{content:"Commento (visibile anche nei link ai rivenditori)";display:block;font-size:9.5px;color:#8A5A12;font-weight:600;margin-bottom:2px}
 
+  /* recuperi e rifiniture modali condivisione */
+  .aform{display:flex;flex-direction:column;gap:12px}
+  .alinks{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+  .lerr.okmsg{color:#1f7a48}
+  .pinin{font-size:28px !important;letter-spacing:10px;text-align:center;font-variant-numeric:tabular-nums}
+  body.share-mode .ownonly{display:none !important}
+  .badge.firmato{background:var(--teal-deep);color:#fff}
+  .sharebox{display:flex;flex-direction:column;gap:12px;border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--tint2);margin-top:12px}
+  .pinbox{display:grid;grid-template-columns:1fr;gap:4px;background:#fff;border:1px solid var(--teal);border-radius:10px;padding:12px 14px}
+  .pinbox .pl{font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.3px}
+  .pinbox b.mono{font-size:34px;letter-spacing:8px;color:var(--teal-deep);line-height:1.15;font-variant-numeric:tabular-nums}
+  .pinbox small{font-size:11px;color:var(--muted)}
+  .sharebox .ff > span{font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.3px}
+  .sharebox .box.mono{font-size:12px;word-break:break-all}
+  .btnrow{display:flex;gap:8px;flex-wrap:wrap}
+  .btnrow .tb{flex:1 1 150px;min-height:44px;justify-content:center;text-align:center}
+  .mbody > .tb.solid{width:100%;justify-content:center;min-height:46px}
+  .chcard .tb{width:100%;justify-content:center}
+  .mfoot .lnk{margin-right:auto}
+
+  /* rifiniture finali modali */
+  #shareModal .mcard{max-width:580px}
+  .mcard{max-height:92vh;display:flex;flex-direction:column}
+  .mcard .mbody{overflow:auto}
+  .btnrow{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .btnrow .tb{width:100%;justify-content:center;min-height:46px;font-size:13.5px;white-space:nowrap}
+  .btnrow .tb.solid{grid-column:1 / -1}
+  input[type=file].box{padding:9px;font-size:12.5px;background:#fff;cursor:pointer}
+  input[type=file].box::file-selector-button{border:1px solid var(--line);background:var(--tint2);color:var(--teal-deep);
+    border-radius:7px;padding:7px 12px;margin-right:10px;font-weight:600;font-size:12.5px;cursor:pointer}
+  .mfoot{flex-wrap:wrap;gap:8px}
+
 </style>
 </head>
 <body class="locked">
@@ -1297,15 +1333,20 @@
       <button class="tb solid" type="button" onclick="generateShare()">Genera link e PIN per il cliente</button>
       <div id="shResult" class="hide sharebox">
         <label class="ff"><span>Link per il cliente</span><input class="box mono" id="shUrl" readonly></label>
-        <div class="pinbox"><span>PIN da comunicare a voce, WhatsApp o SMS</span><b class="mono" id="shPin">— —</b><small>Visibile solo ora · link valido fino al <b id="shExp">—</b></small></div>
-        <div class="pseg"><button class="tb ghost dark" type="button" onclick="copyShareLink()">Copia link</button>
+        <div class="pinbox">
+          <span class="pl">PIN da comunicare a voce, WhatsApp o SMS</span>
+          <b class="mono" id="shPin">— — —</b>
+          <small>Visibile solo adesso · link valido fino al <b id="shExp">—</b></small>
+        </div>
+        <div class="btnrow">
+          <button class="tb ghost dark" type="button" onclick="copyShareLink()">Copia link</button>
           <button class="tb ghost dark" type="button" onclick="copySharePin()">Copia PIN</button>
-          <button class="tb solid" type="button" onclick="mailShare()">Invia email al cliente</button></div>
+          <button class="tb solid" type="button" onclick="mailShare()">Invia email al cliente</button>
+        </div>
         <p class="note">L'email non contiene il PIN: mandali sempre su due canali diversi.</p>
       </div>
-      <button class="lnk hide" id="shRevoke" type="button" onclick="revokeShare()">Disattiva il link</button>
-    </div>
-    <div class="mfoot"><button class="tb ghost dark" type="button" onclick="closeShare()">Chiudi</button></div>
+          </div>
+    <div class="mfoot"><button class="lnk hide" id="shRevoke" type="button" onclick="revokeShare()">Disattiva il link</button><button class="tb ghost dark" type="button" onclick="closeShare()">Chiudi</button></div>
   </div>
 </div>
 
@@ -1400,7 +1441,7 @@
       <div id="lshResult" class="hide sharebox">
         <label class="ff"><span>Link</span><input class="box mono" id="lshUrl" readonly></label>
         <div class="note">Valido fino al <b id="lshExp">—</b></div>
-        <div class="pseg"><button class="tb ghost dark" type="button" onclick="copyListinoLink()">Copia link</button>
+        <div class="btnrow"><button class="tb ghost dark" type="button" onclick="copyListinoLink()">Copia link</button>
           <button class="tb solid" type="button" onclick="mailListino()">Invia per email</button></div>
       </div>
       <div class="cpt" style="margin-top:12px">Link attivi</div>
@@ -2652,7 +2693,7 @@ async function generateShare(){
   var r=await SB.rpc('create_share',{p_id:DOC.id,p_token:token,p_pin:pin,p_days:days});
   if(r.error){ toast('Link non creato: '+r.error.message); return; }
   LAST_SHARE={url:shareUrl(token),pin:pin,expires:r.data};
-  $('shUrl').value=LAST_SHARE.url; setText('shPin',pin.slice(0,3)+' '+pin.slice(3));
+  $('shUrl').value=LAST_SHARE.url; setText('shPin',pin.slice(0,3)+' '+pin.slice(3,6));
   setText('shExp',new Date(r.data).toLocaleDateString('it-IT'));
   $('shResult').classList.remove('hide'); $('shRevoke').classList.remove('hide');
   setText('shState','Link creato. Un eventuale link precedente non funziona più.');
