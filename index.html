@@ -12,6 +12,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
   :root{
     --teal:#158A88; --teal-deep:#0E5F5D; --tint:#EAF5F4; --tint2:#F4FAF9;
@@ -740,6 +742,23 @@
   .mblist li small{display:block;color:var(--muted);font-size:11px}
   @media print{ .lhead,.ltools,.tile,.toolbar{display:none !important} .ltbl{border-color:#ccc} }
 
+  .subblock{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-top:10px;background:#fff}
+  .sublab{font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.3px;margin-bottom:6px}
+  .pseg.small label{padding:7px 12px;min-height:40px;font-size:12.5px}
+  .ltbl .lname small.specs{color:#2b3834;background:#F2F7F6;border-radius:6px;padding:3px 6px;margin-top:4px;display:inline-block}
+  .unlist li{gap:10px}.unlist li .box{flex:1;min-height:36px}
+  .hubsplit{margin:18px 0 10px}
+  .bigtile{display:flex;align-items:center;gap:16px;width:100%;text-align:left;cursor:pointer;
+    background:linear-gradient(120deg,#0E5F5D,#158A88);border:0;border-radius:16px;padding:18px 20px;color:#fff;
+    box-shadow:0 10px 24px rgba(14,95,93,.22)}
+  .bigtile:hover{filter:brightness(1.05)}
+  .bigtile .bi{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;flex:0 0 auto}
+  .bigtile .bt{flex:1}
+  .bigtile .bt b{display:block;font-size:17px}
+  .bigtile .bt small{display:block;font-size:12px;opacity:.9;margin-top:3px;font-weight:400}
+  .bigtile .bg{background:#fff;color:var(--teal-deep);border-radius:9px;padding:9px 14px;font-weight:700;font-size:13px;white-space:nowrap}
+  @media (max-width:640px){ .bigtile{flex-wrap:wrap} .bigtile .bg{width:100%;text-align:center} }
+
 </style>
 </head>
 <body class="locked">
@@ -805,10 +824,13 @@
       <span class="sep">·</span>
       <button class="linkbtn" type="button" onclick="toggleSettings()">Stato database</button>
     </div>
-    <button class="tile hide" id="tileListino" type="button" onclick="openListino()">
-        <span class="tl">Listino prezzi</span>
-        <span class="ts">Consulta, aggiorna e condividi il listino ufficiale</span>
+    <div class="hubsplit hide" id="tileListino">
+      <button class="bigtile" type="button" onclick="openListino()">
+        <span class="bi" aria-hidden="true">€</span>
+        <span class="bt"><b>Listino prezzi ufficiale</b><small>Consulta e aggiorna prezzi, livelli partner e condizioni · condividi con un link</small></span>
+        <span class="bg">Apri &rarr;</span>
       </button>
+    </div>
     <div id="cloudPanel" class="cloudpanel hide">
       <div class="cpt">Database</div>
       <div class="cprow"><span id="sbState" class="sbstate">Non connesso</span>
@@ -868,7 +890,7 @@
         <h1 class="ltitle2">Listino prezzi 2026</h1>
         <div class="note" id="listinoSub">Prezzi IVA 22% esclusa · riservato al team Lotus Pecas</div>
       </div>
-      <button class="tb ghost dark hide" id="btnListNew" type="button" onclick="addListinoItem('software')">+ Voce</button>
+      <button class="tb ghost dark hide" id="btnListUnita" type="button" onclick="openUnita()">Unità</button>
       <button class="tb ghost dark hide" id="btnListLog" type="button" onclick="openListinoLog()">Storico</button>
       <button class="tb ghost dark hide" id="btnListShare" type="button" onclick="openListinoShare()">Condividi</button>
       <button class="tb ghost dark" type="button" onclick="window.print()">Stampa</button>
@@ -985,7 +1007,25 @@
         <div class="pb">
           <div class="pseg">
             <label><input class="sr" type="radio" name="pmode" value="classica" data-k="pay.mode">Vendita classica <small>importi IVA inclusa</small></label>
-            <label><input class="sr" type="radio" name="pmode" value="noleggio" data-k="pay.mode">Noleggio operativo <small>canoni IVA esclusa · 12 mesi + tacito rinnovo</small></label>
+            <label><input class="sr" type="radio" name="pmode" value="noleggio" data-k="pay.mode">Noleggio operativo <small>canoni IVA esclusa</small></label>
+          </div>
+          <div id="nolBox" class="hide subblock">
+            <div class="sublab">Oggetto del noleggio</div>
+            <div class="pseg">
+              <label><input class="sr" type="radio" name="pnoltipo" value="software" data-k="pay.nol.tipo">Software</label>
+              <label><input class="sr" type="radio" name="pnoltipo" value="cassa" data-k="pay.nol.tipo">Cassa automatica</label>
+              <label><input class="sr" type="radio" name="pnoltipo" value="cassa_software" data-k="pay.nol.tipo">Cassa automatica + Software</label>
+            </div>
+            <div class="sublab">Durata</div>
+            <div class="pseg small">
+              <label><input class="sr" type="radio" name="pnolmesi" value="12" data-k="pay.nol.mesi">12 mesi</label>
+              <label><input class="sr" type="radio" name="pnolmesi" value="24" data-k="pay.nol.mesi">24 mesi</label>
+              <label><input class="sr" type="radio" name="pnolmesi" value="36" data-k="pay.nol.mesi">36 mesi</label>
+              <label><input class="sr" type="radio" name="pnolmesi" value="48" data-k="pay.nol.mesi">48 mesi</label>
+              <label><input class="sr" type="radio" name="pnolmesi" value="60" data-k="pay.nol.mesi">60 mesi</label>
+              <label><input class="sr" type="radio" name="pnolmesi" value="96" data-k="pay.nol.mesi">96 mesi</label>
+            </div>
+            <p class="note" id="nolNote"></p>
           </div>
         </div>
       </div>
@@ -1005,7 +1045,7 @@
       </div>
 
       <div class="pstep" id="stepPlan">
-        <div class="ph"><span class="pn">3</span><span class="pt">Piano del residuo</span><span class="pv" id="pvPlan"></span></div>
+        <div class="ph"><span class="pn">3</span><span class="pt">Piano pagamenti residui</span><span class="pv" id="pvPlan"></span></div>
         <div class="pb">
           <div class="pseg">
             <label><input class="sr" type="radio" name="pplan" value="unico" data-k="pay.plan">Saldo unico</label>
@@ -1025,8 +1065,12 @@
               <label class="ff"><span>Data di partenza</span><input class="box" type="date" id="rateStart" data-k="pay.start"></label>
               <label class="ff"><span>&nbsp;</span><span class="switch" style="min-height:40px"><input type="checkbox" id="rateFm" data-k="pay.fm"> Fine mese (d.f.f.m.)</span></label>
             </div>
-            <div class="note" style="margin-top:10px">Scadenze dalla data di partenza:</div>
-            <div class="chips" id="offChips"></div>
+            <div class="fgrid" id="rateCfg">
+              <label class="ff"><span>Numero di rate</span><input class="box" id="rateN" data-k="pay.n" inputmode="numeric"></label>
+              <label class="ff"><span>Cadenza</span><select class="box" id="rateEvery" data-k="pay.every">
+                <option value="30">ogni 30 giorni</option><option value="60">ogni 60 giorni</option><option value="90">ogni 90 giorni</option></select></label>
+            </div>
+            <p class="note" id="rateAuto"></p>
             <div class="tblwrap"><table class="sched" id="rateTbl">
               <thead><tr><th>Rata</th><th>Scadenza</th><th class="num">Importo</th></tr></thead>
               <tbody id="rateBody"></tbody>
@@ -1089,7 +1133,6 @@
               <label class="bf"><span>IBAN da addebitare</span><span class="ibanwrap"><input class="in mono ibanin" data-k="pay.sdd.iban" placeholder="IT.."><i class="vdot"></i></span></label>
               <label class="bf"><span>BIC / SWIFT (opz.)</span><span class="ibanwrap"><input class="in mono bicin" data-k="pay.sdd.bic" placeholder="ABCDITMMXXX"><i class="vdot"></i></span></label>
               <label class="bf"><span>Schema</span><select class="in" data-k="pay.sdd.schema"><option value="">—</option><option value="CORE">CORE</option><option value="B2B">B2B</option></select></label>
-              <label class="bf"><span>Codice identificativo creditore (CID)</span><input class="in mono" data-k="pay.sdd.cid"></label>
               <label class="bf"><span>Tipo addebito</span><input class="in" value="Ricorrente" disabled></label>
             </div>
             <label class="mconsent" style="margin-top:10px"><input type="checkbox" data-k="pay.sdd.consent"><span>Il cliente sottoscrive il mandato SEPA e autorizza gli addebiti ricorrenti alle scadenze del piano. Il rimborso segue le regole dello schema scelto.</span></label>
@@ -1100,16 +1143,27 @@
       <div class="pstep" id="stepDeliv">
         <div class="ph"><span class="pn">5</span><span class="pt">Consegna e spese</span><span class="pv" id="pvDeliv"></span></div>
         <div class="pb">
-          <div class="fgrid">
-            <label class="ff"><span>Attivazione software (ore)</span><input class="box" data-k="cons.swOre" inputmode="numeric"></label>
-            <label class="ff"><span>Consegna hardware (gg lav.)</span><input class="box" data-k="cons.hwGg" inputmode="numeric"></label>
-            <div class="ff"><span>Spese di spedizione / installazione</span>
-              <div class="pseg">
-                <label><input class="sr" type="radio" name="pspese" value="incluse" data-k="cons.spese">Incluse</label>
-                <label><input class="sr" type="radio" name="pspese" value="addebitate" data-k="cons.spese">Addebitate</label>
-              </div></div>
+          <div class="subblock">
+            <div class="sublab">Attivazione e configurazione software</div>
+            <div class="fgrid">
+              <label class="ff"><span>Ore previste</span><input class="box amt" data-k="cons.attivOre" inputmode="decimal"></label>
+              <label class="ff"><span>Tariffa oraria (IVA esc.)</span><input class="box amt" data-k="cons.tariffaOra" inputmode="decimal"></label>
+              <div class="ff"><span>Importo attivazione</span><div class="ro" id="attivAmt">€ 0,00</div></div>
+            </div>
+            <p class="note">Sommato all'imponibile. Tariffa di listino: 60,00 €/ora.</p>
           </div>
-          <div class="fgrid hide" id="speseRow"><label class="ff"><span>Importo spese (IVA esc.) — sommato all'imponibile</span><input class="box amt" data-k="cons.speseAmt" inputmode="decimal"></label></div>
+          <div class="subblock">
+            <div class="sublab">Consegna hardware</div>
+            <div class="fgrid">
+              <label class="ff"><span>Giorni lavorativi dalla firma</span><input class="box" data-k="cons.hwGg" inputmode="numeric"></label>
+              <div class="ff"><span>Spese di spedizione e installazione</span>
+                <div class="pseg">
+                  <label><input class="sr" type="radio" name="pspese" value="incluse" data-k="cons.spese">Incluse</label>
+                  <label><input class="sr" type="radio" name="pspese" value="addebitate" data-k="cons.spese">Addebitate</label>
+                </div></div>
+              <label class="ff hide" id="speseRow"><span>Importo spese (IVA esc.)</span><input class="box amt" data-k="cons.speseAmt" inputmode="decimal"></label>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1349,12 +1403,24 @@
     <div class="mfoot"><button class="tb ghost dark" type="button" onclick="closeListinoShare()">Chiudi</button></div>
   </div>
 </div>
+<div class="modal hide" id="unModal" role="dialog" aria-modal="true" aria-labelledby="unTitle">
+  <div class="mbackdrop" onclick="closeUnita()"></div>
+  <div class="mcard">
+    <div class="mhead"><span id="unTitle">Unità di misura</span><button class="mx" type="button" onclick="closeUnita()" aria-label="Chiudi">&times;</button></div>
+    <div class="mbody">
+      <p class="mintro">Le unità disponibili nel listino. Puoi rinominarle o aggiungerne; quelle già usate non si possono eliminare.</p>
+      <div class="mbrow"><input id="unNew" class="min" placeholder="es. canone 36 mesi"><button class="tb solid" type="button" onclick="addUnita()">Aggiungi</button></div>
+      <ul class="mblist unlist" id="unList"></ul>
+    </div>
+    <div class="mfoot"><button class="tb ghost dark" type="button" onclick="closeUnita()">Fatto</button></div>
+  </div>
+</div>
+
 <div id="toast" class="toast"></div>
 
 <script>
 /* ================= ENGINE (puro, senza DOM) ================= */
 var IVA_RATE=0.22;
-var CID_DEFAULT='';
 var LP_BANK={banca:'Credit Agricole Italia - Milano Ag. 38', iban:'IT04J0623009555000064501941', bic:'CRPPIT2P617'}; /* Codice identificativo creditore SEPA di Lotus Pecas Italia: inserire quando disponibile */
 
 function num(v){
@@ -1411,22 +1477,27 @@ function blankPayload(){
     creator:{nome:'',cognome:'',societa:''},
     cli:{ragione:'',sede:'',dest:'',piva:'',sdi:'',referente:'',contatti:''},
     sw:[{},{},{}], hw:[{},{},{}],
-    cons:{swOre:'',hwGg:'',spese:'incluse',speseAmt:''},
-    pay:{ mode:'classica',
+    cons:{attivOre:'',tariffaOra:'60',hwGg:'',spese:'incluse',speseAmt:''},
+    pay:{ mode:'classica', nol:{tipo:'software', mesi:'12'},
       ant:{on:false,pct:'30',amt:'',manual:'',date:''},
-      plan:'unico', unicoDate:'', start:'', fm:false, offsets:[30,60,90], rate:[],
+      plan:'unico', unicoDate:'', start:'', fm:false, n:'3', every:'30', rate:[],
       custom:[], method:'bonifico',
       bank:{banca:LP_BANK.banca,iban:LP_BANK.iban,bic:LP_BANK.bic},
       riba:{intest:'',banca:'',iban:'',bic:''},
-      sdd:{intest:'',cf:'',iban:'',bic:'',schema:'',cid:CID_DEFAULT,consent:false} },
+      sdd:{intest:'',cf:'',iban:'',bic:'',schema:'',consent:false} },
     forced:{},
     sign:{lp:null,acc:null,vess:null}
   };
 }
 
 /* sincronizza le rate: date a cascata dall'ultima data modificata, importi liberi ripartiti in parti uguali */
+function rateParams(pay){
+  if(pay.mode==='noleggio'){ return {n:Math.max(1,parseInt(pay.nol&&pay.nol.mesi,10)||12), every:30, auto:true}; }
+  return {n:Math.max(0,parseInt(pay.n,10)||0), every:Math.max(1,parseInt(pay.every,10)||30), auto:false};
+}
+function rateOffsets(pay){ var p=rateParams(pay), o=[]; for(var i=1;i<=p.n;i++) o.push(p.every*i); return o; }
 function syncRate(pay, residuo, docDate){
-  var offs=(pay.offsets||[]).map(Number).filter(function(x){return x>0;}).sort(function(a,b){return a-b;});
+  var offs=rateOffsets(pay);
   var start=isoOk(pay.start)?pay.start:docDate;
   var old=pay.rate||[];
   var rows=[];
@@ -1478,7 +1549,10 @@ function computeAll(p){
     var q=num(r.qty), pr=cents(r.price), t=Math.round(q*pr); imp+=t; c.lines.push({k:k,i:i,totC:t}); }); });
   c.righeC=imp;
   c.speseC = (p.cons&&p.cons.spese==='addebitate') ? cents(p.cons.speseAmt) : 0;
-  imp+=c.speseC;
+  c.oreAttiv = p.cons?Math.max(0,num(p.cons.attivOre)):0;
+  c.tariffaC = p.cons?cents(p.cons.tariffaOra):0;
+  c.attivC = Math.round(c.oreAttiv*c.tariffaC);
+  imp+=c.speseC+c.attivC;
   c.impC=imp; c.ivaC=Math.round(imp*IVA_RATE); c.totC=imp+c.ivaC;
   var pay=p.pay; var nol=pay.mode==='noleggio';
   c.baseC = nol ? c.impC : c.totC;
@@ -1515,7 +1589,7 @@ function calcCheck(p,c){
   var e=[];
   var sum=0; c.lines.forEach(function(l){ sum+=l.totC; });
   if(sum!==c.righeC) e.push({k:'tot',msg:'La somma delle righe non coincide con l\'imponibile.'});
-  if(c.righeC+c.speseC!==c.impC) e.push({k:'tot',msg:'Imponibile incoerente con righe e spese.'});
+  if(c.righeC+c.speseC+c.attivC!==c.impC) e.push({k:'tot',msg:'Imponibile incoerente con righe, attivazione e spese.'});
   if(c.impC+c.ivaC!==c.totC) e.push({k:'tot',msg:'Imponibile + IVA non coincide con il totale.'});
   if(c.ivaC!==Math.round(c.impC*IVA_RATE)) e.push({k:'tot',msg:'IVA non pari al 22% dell\'imponibile.'});
   if(p.pay.ant.on){
@@ -1523,7 +1597,7 @@ function calcCheck(p,c){
     if(c.antC>c.baseC) e.push({k:'pay.ant.amt',msg:'L\'anticipo supera il totale.'});
   }
   if(c.resC>0){
-    if(!c.rows.length) e.push({k:p.pay.plan==='rateale'?'pay.offsets':'pay.plan',msg:'Il residuo di '+eurC(c.resC)+' non ha scadenze.'});
+    if(!c.rows.length) e.push({k:p.pay.plan==='rateale'?'pay.n':'pay.plan',msg:'Il residuo di '+eurC(c.resC)+' non ha scadenze.'});
     c.rows.forEach(function(r,i){
       var key = p.pay.plan==='rateale'?'pay.rate.'+i+'.amt' : p.pay.plan==='custom'?'pay.custom.'+i+'.amt':'pay.unicoDate';
       if(!(r.amtC>0)) e.push({k:key,msg:r.label+': importo mancante o non positivo.'});
@@ -1583,7 +1657,11 @@ function validateDoc(p,c){
   if(p.cons.spese==='addebitate' && !(cents(p.cons.speseAmt)>0)) e.push({k:'cons.speseAmt',msg:'Importo delle spese addebitate',sec:'Consegna e spese'});
   var pay=p.pay;
   if(!pay.plan) e.push({k:'pay.plan',msg:'Scegli il piano del residuo',sec:'Pagamento'});
-  if(pay.plan==='rateale' && !(pay.offsets||[]).length) e.push({k:'pay.offsets',msg:'Seleziona almeno una scadenza',sec:'Pagamento'});
+  if(pay.mode==='noleggio'){
+    if(!pay.nol || !pay.nol.tipo) e.push({k:'pay.nol.tipo',msg:'Oggetto del noleggio',sec:'Pagamento'});
+    if(!pay.nol || !(parseInt(pay.nol.mesi,10)>0)) e.push({k:'pay.nol.mesi',msg:'Durata del noleggio',sec:'Pagamento'});
+  }
+  if(pay.plan==='rateale' && !rateOffsets(pay).length) e.push({k:'pay.n',msg:'Numero di rate',sec:'Pagamento'});
   if(pay.plan==='custom') (pay.custom||[]).forEach(function(r,i){ req('pay.custom.'+i+'.voce',r.voce,'Voce '+(i+1)+': descrizione','Pagamento'); });
   if(c.resC>0 || pay.ant.on){
     if(pay.method==='bonifico' || pay.ant.on){
@@ -1603,7 +1681,6 @@ function validateDoc(p,c){
       fmt('pay.sdd.iban',pay.sdd.iban,ibanValid,'IBAN da addebitare','IBAN da addebitare non valido','SDD');
       fmt('pay.sdd.bic',pay.sdd.bic,bicValid,'','BIC non valido','SDD',true);
       req('pay.sdd.schema',pay.sdd.schema,'Schema SDD (CORE o B2B)','SDD');
-      req('pay.sdd.cid',pay.sdd.cid,'Codice identificativo creditore (CID)','SDD');
       if(!pay.sdd.consent) e.push({k:'pay.sdd.consent',msg:'Sottoscrizione del mandato SEPA',sec:'SDD'});
     }
   }
@@ -1635,14 +1712,13 @@ async function contentHash(p){ return sha256Hex(contentString(p)); }
 
 if(typeof module!=='undefined'){ module.exports={num:num,cents:cents,eurC:eurC,isoAdd:isoAdd,isoEom:isoEom,ibanValid:ibanValid,
   taxIdValid:taxIdValid,sdiPecValid:sdiPecValid,blankPayload:blankPayload,computeAll:computeAll,calcCheck:calcCheck,
-  validateDoc:validateDoc,rateEditAmt:rateEditAmt,rateEditDate:rateEditDate,contentHash:contentHash,contentString:contentString}; }
+  validateDoc:validateDoc,rateOffsets:rateOffsets,rateEditAmt:rateEditAmt,rateEditDate:rateEditDate,contentHash:contentHash,contentString:contentString}; }
 
 /* ================= UI ================= */
 
 var CURRENT_ROLE='';
 var VESS_CLASSICA="Ai sensi e per gli effetti degli artt. 1341 e 1342 c.c., il Cliente dichiara di aver letto e di approvare specificamente le clausole relative a: art. 1 (limitazioni di responsabilità del fornitore sul software), art. 2 (riserva di proprietà sull'hardware) e art. 3 (foro esclusivamente competente di Milano).";
 var VESS_NOLEGGIO="Ai sensi e per gli effetti degli artt. 1341 e 1342 c.c., il Cliente approva espressamente le clausole relative a: art. 4 (durata e tacito rinnovo automatico dopo 12 mesi), art. 5.1 (limitazioni di responsabilità sul software), art. 5.2 (riserva di proprietà dei beni hardware) e art. 5.3 (foro esclusivamente competente di Milano).";
-var OFFSETS_ALL=[30,60,90,120,150,180,210,240,270,300,330,360];
 
 var P=null;            /* payload corrente */
 var DOC={id:null,created:null,status:'bozza',hash:'',numeroBase:''};
@@ -1709,15 +1785,6 @@ function customFill(){
 }
 
 /* ---- rate ---- */
-function renderChips(){
-  var box=$('offChips'); box.innerHTML='';
-  OFFSETS_ALL.forEach(function(o){
-    var on=(P.pay.offsets||[]).indexOf(o)>=0;
-    var l=document.createElement('label'); if(on) l.className='on';
-    l.innerHTML='<input type="checkbox" data-off="'+o+'"'+(on?' checked':'')+'> '+o+' gg';
-    box.appendChild(l);
-  });
-}
 function renderRateRows(c){
   var b=$('rateBody'); var rows=c.rows;
   if(b.children.length!==rows.length || b.getAttribute('data-n')!==String(rows.length)){
@@ -1740,6 +1807,7 @@ function renderRateRows(c){
   });
 }
 function resetRate(){ if(isLocked()) return; collect(); P.pay.rate=[]; P.pay.start=P.pay.start||''; refresh(); }
+var NOLTIPO={software:'Software',cassa:'Cassa automatica',cassa_software:'Cassa automatica + Software'};
 
 /* ---- collect / apply ---- */
 function clone(o){ return JSON.parse(JSON.stringify(o)); }
@@ -1751,8 +1819,6 @@ function collect(){
     if(el.type==='checkbox'){ setPath(P,k,el.checked); return; }
     setPath(P,k,el.value);
   });
-  var offs=[]; document.querySelectorAll('#offChips input[data-off]').forEach(function(x){ if(x.checked) offs.push(+x.getAttribute('data-off')); });
-  if(document.querySelector('#offChips input')) P.pay.offsets=offs;
   return P;
 }
 function applyValues(){
@@ -1765,7 +1831,7 @@ function applyValues(){
   document.querySelectorAll('#doc .ibanin').forEach(function(x){ dot(x,ibanValid(x.value),!x.value.trim()); });
   document.querySelectorAll('#doc .bicin').forEach(function(x){ dot(x,bicValid(x.value),!x.value.trim()); });
 }
-function renderStructure(){ renderLines(); renderCustom(); renderChips(); applyValues(); refresh(); }
+function renderStructure(){ renderLines(); renderCustom(); applyValues(); refresh(); }
 
 /* ---- ricalcolo e rendering ---- */
 function refresh(){
@@ -1775,9 +1841,13 @@ function refresh(){
   c.lines.forEach(function(l){ var td=document.querySelector('[data-tot="'+l.k+'.'+l.i+'"]'); if(td) td.textContent=eurC(l.totC); });
   setText('validUntil',c.validUntil?isoFmt(c.validUntil):'—');
   /* segmented state */
-  document.querySelectorAll('#doc .pseg label, #offChips label').forEach(function(l){ var i=l.querySelector('input'); if(i) l.classList.toggle('on',i.checked); });
+  document.querySelectorAll('#doc .pseg label').forEach(function(l){ var i=l.querySelector('input'); if(i) l.classList.toggle('on',i.checked); });
   /* formula */
-  setText('pvMode',nol?'Noleggio operativo':'Vendita classica');
+  $('nolBox').classList.toggle('hide',!nol);
+  var mesi=parseInt(pay.nol&&pay.nol.mesi,10)||0;
+  if(nol && (P.pay.rate||[]).length!==mesi) P.pay.rate=(P.pay.rate||[]).slice(0,mesi);
+  setText('pvMode', nol ? ('Noleggio '+(NOLTIPO[pay.nol.tipo]||'—')+' · '+(mesi||'—')+' mesi') : 'Vendita classica');
+  setText('nolNote', nol&&mesi ? 'Il piano genera automaticamente '+mesi+' canoni mensili. Alla scadenza il contratto si rinnova tacitamente di 12 mesi salvo disdetta.' : '');
   $('clauseClassica').classList.toggle('hide',nol); $('clauseNoleggio').classList.toggle('hide',!nol);
   setText('vessText',nol?VESS_NOLEGGIO:VESS_CLASSICA);
   setText('deliveryNote', nol?'Noleggio operativo: importi del piano IVA esclusa, durata minima 12 mesi con rinnovo tacito.':'Vendita classica: importi del piano IVA inclusa.');
@@ -1801,6 +1871,8 @@ function refresh(){
     setText('unicoAmt',eurC(c.resC));
   }
   if(pay.plan==='rateale'){
+    $('rateCfg').classList.toggle('hide',nol);
+    setText('rateAuto', nol ? 'Rate determinate dalla durata del noleggio: '+(mesi||0)+' canoni mensili.' : '');
     if($('rateStart')!==act && !pay.start){ $('rateStart').value=c.docDate; }
     renderRateRows(c);
     setText('rateSum',eurC(c.planSumC));
@@ -1821,7 +1893,9 @@ function refresh(){
   $('blkSdd').classList.toggle('hide',!(needRes && pay.method==='sdd'));
   /* consegna */
   $('speseRow').classList.toggle('hide',P.cons.spese!=='addebitate');
-  setText('pvDeliv', P.cons.spese==='addebitate'?'Spese '+eurC(c.speseC):'Spese incluse');
+  setText('attivAmt',eurC(c.attivC));
+  var dp=[]; if(c.attivC) dp.push('Attivazione '+eurC(c.attivC)); dp.push(P.cons.spese==='addebitate'?'Spese '+eurC(c.speseC):'Spese incluse');
+  setText('pvDeliv', dp.join(' · '));
   renderTotals(c);
   renderForced();
   renderDock(c);
@@ -1843,7 +1917,10 @@ function renderDock(c){
 
 function renderTotals(c){
   var h='';
-  h+='<div class="l"><span>Totale imponibile'+(c.speseC?' <small>(incl. spese '+eurC(c.speseC)+')</small>':'')+'</span><span>'+eurC(c.impC)+'</span></div>';
+  h+='<div class="l sub"><span>Prodotti e servizi</span><span>'+eurC(c.righeC)+'</span></div>';
+  if(c.attivC) h+='<div class="l sub"><span>Attivazione software ('+(''+c.oreAttiv).replace('.',',')+' h × '+eurC(c.tariffaC)+')</span><span>'+eurC(c.attivC)+'</span></div>';
+  if(c.speseC) h+='<div class="l sub"><span>Spese di spedizione e installazione</span><span>'+eurC(c.speseC)+'</span></div>';
+  h+='<div class="l"><span>Totale imponibile</span><span>'+eurC(c.impC)+'</span></div>';
   h+='<div class="l"><span>IVA (22%)</span><span>'+eurC(c.ivaC)+'</span></div>';
   h+='<div class="l grand"><span>Totale ordine (IVA incl.)</span><span>'+eurC(c.totC)+'</span></div>';
   if(P.pay.mode==='noleggio') h+='<div class="l"><span>Base del piano <small>(IVA esclusa)</small></span><span>'+eurC(c.baseC)+'</span></div>';
@@ -1865,7 +1942,8 @@ function onDocInput(e){
   if(t.id==='antAmt'){ $('antManual').value='1'; }
   if(t.id==='antPct'){ $('antManual').value=''; }
   if(t.getAttribute('data-k')==='pay.mode'){ collect(); applyModeDefaults(); return; }
-  if(t.getAttribute('data-off')){ collect(); P.pay.rate=[]; renderStructure(); return; }
+  if((t.getAttribute('data-k')||'').indexOf('pay.nol')===0){ collect(); P.pay.rate=[]; }
+  if(t.id==='rateN'||t.id==='rateEvery'){ collect(); P.pay.rate=[]; }
   if(t.getAttribute('data-k')==='pay.plan' && t.value==='custom' && !P.pay.custom.length){ collect(); P.pay.custom=[{voce:'',date:'',amt:''}]; renderStructure(); return; }
   if(t.id==='rateStart' || t.id==='rateFm'){ collect(); (P.pay.rate||[]).forEach(function(r){ r.mDate=false; }); }
   if(t.id==='docDate'){
@@ -1896,8 +1974,8 @@ function onDocChange(e){
   }
 }
 function applyModeDefaults(){
-  if(P.pay.mode==='noleggio'){ P.pay.plan='rateale'; P.pay.offsets=OFFSETS_ALL.slice(); P.pay.method='sdd'; }
-  else { P.pay.plan='unico'; P.pay.offsets=[30,60,90]; P.pay.method='bonifico'; }
+  if(P.pay.mode==='noleggio'){ P.pay.plan='rateale'; P.pay.method='sdd'; if(!P.pay.nol.tipo) P.pay.nol.tipo='software'; if(!P.pay.nol.mesi) P.pay.nol.mesi='12'; }
+  else { P.pay.plan='unico'; P.pay.n='3'; P.pay.every='30'; P.pay.method='bonifico'; }
   P.pay.rate=[]; renderStructure();
 }
 
@@ -1944,7 +2022,7 @@ function renderForced(){
 function fieldFor(k){
   var el=document.querySelector('#doc [data-k="'+k+'"]') || document.querySelector('#doc [data-k2="'+k+'"]');
   if(el && el.type==='radio'){ return el.closest('.pseg')||el; }
-  if(!el && k==='pay.offsets') el=$('offChips');
+  if(!el && k==='pay.n') el=$('rateN');
   if(!el && k==='pay.custom') el=$('customBody');
   if(!el && k==='pay.rate') el=$('rateBody');
   if(!el && k==='pay.plan') el=document.querySelector('#stepPlan .pseg');
@@ -2416,7 +2494,11 @@ async function saveDraft(){
 
 /* migrazione payload v1 (v12) -> v2 */
 function migrate(p){
-  if(p && p.v===2){ var b=blankPayload(); var m=deepMerge(b,p); if(!m.pay.bank.iban){ m.pay.bank=clone(LP_BANK); } return m; }
+  if(p && p.v===2){ var b=blankPayload(); var m=deepMerge(b,p); if(!m.pay.bank.iban){ m.pay.bank=clone(LP_BANK); }
+    if(p.pay && p.pay.offsets && p.pay.offsets.length){ var o=p.pay.offsets.slice().sort(function(a,c){return a-c;});
+      m.pay.n=String(o.length); m.pay.every=String(o[0]||30); delete m.pay.offsets; }
+    if(m.pay.sdd) delete m.pay.sdd.cid;
+    return m; }
   var n=blankPayload(); if(!p) return n;
   var s=p.stat||[];
   n.head.numero=s[0]||'';
@@ -2426,7 +2508,7 @@ function migrate(p){
   n.sw=(p.sw||[]).map(function(r){ return {nome:r[0],tipo:r[1],durata:r[2],qty:r[3],price:r[4]}; });
   n.hw=(p.hw||[]).map(function(r){ return {codice:r[0],descr:r[1],qty:r[2],price:r[3]}; });
   if(!n.sw.length) n.sw=[{}]; if(!n.hw.length) n.hw=[{}];
-  if(p.payMode==='noleggio'){ n.pay.mode='noleggio'; n.pay.plan='rateale'; n.pay.offsets=OFFSETS_ALL.slice(); n.pay.method='sdd'; }
+  if(p.payMode==='noleggio'){ n.pay.mode='noleggio'; n.pay.plan='rateale'; n.pay.nol={tipo:'software',mesi:'12'}; n.pay.method='sdd'; }
   else if(p.plan==='rateale') n.pay.plan='rateale';
   else if(p.plan==='acconto'){ n.pay.ant.on=true; n.pay.plan='unico'; }
   n.meta={migratedFrom:'v1'};
@@ -2728,7 +2810,8 @@ var CATS=[
 ];
 var LIV=[{k:'cliente',t:'Cliente finale'},{k:'standard',t:'Partner Standard'},{k:'pro',t:'Partner Pro'},{k:'premium',t:'Partner Premium'}];
 var SCONTI={licenza:{standard:45,pro:60,premium:75}, update:{standard:20,pro:35,premium:50}};
-var L={items:[],stamp:null,liv:['cliente'],edit:false,token:null,livToken:null,q:''};
+var L={items:[],unita:[],stamp:null,liv:['cliente'],edit:false,token:null,livToken:null,q:''};
+function unitaList(){ return (L.unita.length?L.unita.map(function(u){return u.code;}):['una tantum','mensile','annuo','device','ora']); }
 
 function listinoCanEdit(){ return !L.token && roleOf(USER)==='team'; }
 function lvKeys(){ return L.token? [L.livToken] : L.liv.slice(); }
@@ -2751,6 +2834,8 @@ async function loadListino(){
   var r=await SB.from('listino_items').select('*');
   if(r.error){ toast('Listino non caricato: '+r.error.message); return; }
   L.items=(r.data||[]).slice().sort(function(a,b){ return (a.cat+'').localeCompare(b.cat)||a.ord-b.ord||(''+a.nome).localeCompare(b.nome); });
+  var u=await SB.from('listino_unita').select('*');
+  if(!u.error) L.unita=(u.data||[]).sort(function(a,b){ return (a.ord||0)-(b.ord||0); });
   var s=await SB.rpc('listino_stamp'); L.stamp=(!s.error&&s.data)||null;
   renderListino();
 }
@@ -2770,7 +2855,7 @@ function renderListino(){
   var chips=$('livChips');
   if(chips && !L.token){ chips.innerHTML=LIV.map(function(x){ return '<label class="'+(L.liv.indexOf(x.k)>=0?'on':'')+'"><input type="checkbox" '+(L.liv.indexOf(x.k)>=0?'checked':'')+' onchange="toggleLiv(\''+x.k+'\')"> '+x.t+'</label>'; }).join(''); }
   var eb=$('btnEditListino'); if(eb){ eb.classList.toggle('hide',!listinoCanEdit()); eb.textContent=L.edit?'Fine modifiche':'Modifica listino'; }
-  ['btnListShare','btnListLog','btnListNew'].forEach(function(id){ var b=$(id); if(b) b.classList.toggle('hide',!listinoCanEdit()); });
+  ['btnListShare','btnListLog','btnListUnita'].forEach(function(id){ var b=$(id); if(b) b.classList.toggle('hide',!listinoCanEdit()); });
   setText('listStamp', L.stamp&&L.stamp.at ? 'Ultima modifica '+new Date(L.stamp.at).toLocaleString('it-IT')+' · '+(L.stamp.by||'—')+' · '+(L.stamp.nome||'') : 'Nessuna modifica registrata');
   var html='';
   CATS.forEach(function(c){
@@ -2795,8 +2880,9 @@ function renderListino(){
       html+='<tr'+(it.active===false?' class="off"':'')+'>'+
         '<td class="lname">'+(ed?inp(it,'nome'):'<b>'+esc(it.nome)+'</b>')+
           (ed?inp(it,'contenuto','sub'):(it.contenuto?'<small>'+esc(it.contenuto)+'</small>':''))+
+          (c.k==='hardware'||it.specs?(ed?inp(it,'specs','sub'):(it.specs?'<small class="specs">'+esc(it.specs)+'</small>':'')):'')+
           (it.note?'<small class="warn">'+esc(it.note)+'</small>':'')+'</td>'+
-        '<td>'+(ed?sel(it,'unita',['una tantum','mensile','annuo','device']):esc(it.unita))+'</td>'+
+        '<td>'+(ed?sel(it,'unita',unitaList()):esc(it.unita))+'</td>'+
         '<td class="num">'+(ed?inp(it,'prezzo','amt'):eurC(Math.round(num(it.prezzo)*100)))+'</td>'+cells+
         (ed?'<td class="act"><button class="abtn icon del" type="button" onclick="delListinoItem(\''+it.id+'\')" aria-label="Elimina voce">×</button></td>':'')+
         '</tr>';
@@ -2822,7 +2908,7 @@ async function onListinoEdit(e){
   if(f==='prezzo') renderListino();
 }
 async function saveListinoItem(it){
-  var row={id:it.id,cat:it.cat,nome:it.nome,contenuto:it.contenuto||'',unita:it.unita,model:it.model,
+  var row={id:it.id,cat:it.cat,nome:it.nome,contenuto:it.contenuto||'',specs:it.specs||'',unita:it.unita,model:it.model,
     prezzo:num(it.prezzo),std:it.std,pro:it.pro,prem:it.prem,fee_pct:it.fee_pct,note:it.note||'',ord:it.ord||100,active:it.active!==false};
   var r=await SB.from('listino_items').upsert(row);
   if(r.error){ toast('Modifica non salvata: '+r.error.message); return false; }
@@ -2832,7 +2918,7 @@ async function saveListinoItem(it){
 }
 async function addListinoItem(cat){
   var fee=(cat==='ios'||cat==='android'||cat==='hardware');
-  var it={id:'it_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),cat:cat,nome:'Nuova voce',contenuto:'',
+  var it={id:'it_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),cat:cat,nome:'Nuova voce',contenuto:'',specs:'',
     unita:fee?'mensile':'una tantum',model:fee?'fee':'sconto',prezzo:0,std:0,pro:0,prem:0,fee_pct:fee?30:null,note:'',ord:999,active:true};
   if(await saveListinoItem(it)){ L.items.push(it); renderListino(); toast('Voce aggiunta'); }
 }
@@ -2942,7 +3028,7 @@ function renderPicker(){
     h+='<div class="pkcat">'+esc(c.t)+'</div>';
     arr.forEach(function(it){
       var pr=itemPrice(it,PICK.liv); if(pr==null) pr=num(it.prezzo);
-      h+='<button type="button" class="pkrow" data-id="'+esc(it.id)+'"><span class="pkn"><b>'+esc(it.nome)+'</b>'+(it.contenuto?'<small>'+esc(it.contenuto)+'</small>':'')+'</span>'+
+      h+='<button type="button" class="pkrow" data-id="'+esc(it.id)+'"><span class="pkn"><b>'+esc(it.nome)+'</b>'+(it.contenuto?'<small>'+esc(it.contenuto)+'</small>':'')+(it.specs?'<small>'+esc(it.specs)+'</small>':'')+'</span>'+
         '<span class="pkp">'+eurC(Math.round(pr*100))+'<small>'+esc(it.unita)+'</small></span></button>';
     });
   });
@@ -2956,12 +3042,43 @@ function addFromListino(id){
   var kind=PICK.kind;
   var row = kind==='sw'
     ? {nome:it.nome, tipo:(it.unita==='una tantum'?'Perpetua':'Abbonamento'), durata:(it.unita==='mensile'?'1 mese':it.unita==='annuo'?'12 mesi':''), qty:'1', price:fmtAmtC(Math.round(pr*100))}
-    : {codice:it.id.toUpperCase(), descr:it.nome+(it.contenuto?' — '+it.contenuto:''), qty:'1', price:fmtAmtC(Math.round(pr*100))};
+    : {codice:it.id.toUpperCase(), descr:it.nome+(it.contenuto?' — '+it.contenuto:'')+(it.specs?' · '+it.specs:''), qty:'1', price:fmtAmtC(Math.round(pr*100))};
   var arr=P[kind];
   var empty=arr.findIndex(function(r){ return !((r.nome||r.codice||r.descr||'').trim()) && !num(r.price); });
   if(empty>=0) arr[empty]=row; else arr.push(row);
   renderStructure();
   toast(it.nome+' aggiunto');
+}
+
+/* ---- gestione unità di misura ---- */
+async function openUnita(){
+  $('unModal').classList.remove('hide'); document.documentElement.classList.add('modal-open');
+  await renderUnita();
+}
+function closeUnita(){ $('unModal').classList.add('hide'); document.documentElement.classList.remove('modal-open'); renderListino(); }
+async function renderUnita(){
+  var r=await SB.from('listino_unita').select('*');
+  L.unita=(!r.error&&(r.data||[]).sort(function(a,b){return (a.ord||0)-(b.ord||0);}))||[];
+  var ul=$('unList'); ul.innerHTML='';
+  L.unita.forEach(function(u){
+    var used=L.items.filter(function(i){ return i.unita===u.code; }).length;
+    var li=document.createElement('li');
+    li.innerHTML='<input class="box" value="'+esc(u.label)+'"><small>'+used+' voci</small><button class="lnk del" type="button">Elimina</button>';
+    li.querySelector('input').onchange=async function(){ var v=this.value.trim(); if(!v) return;
+      var x=await SB.from('listino_unita').upsert({code:u.code,label:v,ord:u.ord}); if(x.error) toast(x.error.message); await renderUnita(); };
+    li.querySelector('button').onclick=async function(){
+      if(used){ toast('Unità usata da '+used+' voci: cambiale prima'); return; }
+      if(!confirm('Eliminare l\'unità "'+u.label+'"?')) return;
+      var x=await SB.from('listino_unita').delete().eq('code',u.code); if(x.error){ toast(x.error.message); return; } await renderUnita(); };
+    ul.appendChild(li);
+  });
+  if(!L.unita.length) ul.innerHTML='<li class="note">Nessuna unità.</li>';
+}
+async function addUnita(){
+  var v=($('unNew').value||'').trim(); if(!v) return;
+  var r=await SB.from('listino_unita').upsert({code:v.toLowerCase(),label:v,ord:(L.unita.length+1)*10});
+  if(r.error){ toast(r.error.message); return; }
+  $('unNew').value=''; await renderUnita(); toast('Unità aggiunta');
 }
 
 </script>
